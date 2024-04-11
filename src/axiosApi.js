@@ -20,7 +20,7 @@ const Projects = () => {
 
   return (
     <div>
-      <h2>Projects</h2>
+      <h2>Projects na</h2>
       <ul>
         {projects.map(project => (
           <li key={project.id}>{project.name}: {project.description}</li>
