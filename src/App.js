@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Projects from './axiosApi'; // Adjust the path as necessary
+import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap CSS is imported first
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
      </div>
      <div>
       <button className="btn btn-primary">My Bootstrap Button</button>
+      <button className="bg-blue-500 text-white p-4">Custom Styled Button</button>
     </div>
     </div>
   );
