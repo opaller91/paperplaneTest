@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import Projects from './axiosApi'; // Adjust the path as necessary
 
 function App() {
   return (
@@ -18,6 +19,13 @@ function App() {
           Learn React
         </a>
       </header>
+      <div>
+        <h1>My Projects</h1>
+        <Projects />
+     </div>
+     <div>
+      <button className="btn btn-primary">My Bootstrap Button</button>
+    </div>
     </div>
   );
 }
