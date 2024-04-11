@@ -8,7 +8,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <App /> 
+    {/* import .js and change to page that you want to run */}
   </React.StrictMode>
 );
 
