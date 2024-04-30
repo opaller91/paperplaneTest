@@ -40,3 +40,40 @@
     transform: rotate(360deg);
   }
 }
+
+.ProjectDetail {
+  display: flex; /* Establishes a flex container */
+  flex-wrap: nowrap; /* Prevents items from wrapping */
+  overflow-x: auto; /* Enables horizontal scrolling */
+  align-items: center; /* Centers items vertically */
+  padding: 20px; /* Adds padding around the content */
+}
+
+.project-item {
+  min-width: 600px; /* Ensures a minimum width for each item */
+  margin-right: 10px; /* Adds space between items */
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.fade-in-right {
+  opacity: 0;
+  transform: translateX(100%);
+  transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+}
+
+.fade-in-right.visible {
+  transform: translateX(0%);
+  opacity: 1;
+}
