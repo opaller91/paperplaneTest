@@ -11,6 +11,7 @@ import Project from './features/Project/Project';
 import Projects from './axiosApi';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap CSS is imported first
 import ScrollToTop from './components/ScrollToTop';
+import './App.css';
 
 function App() {
 

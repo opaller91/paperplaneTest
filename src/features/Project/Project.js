@@ -80,7 +80,7 @@ class Work extends Component {
         <p className='mb-16 flex font-medium text-black text-xl font-montserrat space-x-6'>
           <a href="#" onClick={() => this.handleFilterClick('ALL PROJECTS')} className={`font-semibold text-black font-montserrat no-underline hover:underline ${activeFilter === 'ALL PROJECTS' ? 'text-blue-500' : ''}`}>All</a>
           <b>|</b>
-          <a href="#" onClick={() => this.handleFilterClick('COCKTAIL BAR')} className={`font-semibold text-black font-montserrat no-underline hover:underline ${activeFilter === 'COCKTAIL BAR' ? 'text-blue-500' : ''}`}>Bar & Restaurant</a>
+          <a href="#" onClick={() => this.handleFilterClick('COCKTAIL BAR')} className={`font-semibold text-black font-montserrat no-underline hover:underline ${activeFilter === 'COCKTAIL BAR' ? 'text-blue-500' : ''}`}>Cocktail Bar</a>
           <b>|</b>
           <a href="#" onClick={() => this.handleFilterClick('RESTAURANT')} className={`font-semibold text-black font-montserrat no-underline hover:underline ${activeFilter === 'RESTAURANT' ? 'text-blue-500' : ''}`}>Restaurant</a>
         </p>

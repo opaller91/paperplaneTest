@@ -129,7 +129,7 @@ class Home extends Component {
   render() {
     const { slides, projects, currentIndex, animationDirection } = this.state;
     return (
-    <div className="Home bg-white min-h-screen relative">
+      <div>
         <section id="image-carousel">
           <div className="relative z-50 group h-screen">
             {slides.map((slide, index) => (
@@ -206,7 +206,7 @@ class Home extends Component {
     ))}
   </div>
 </section>
-      </div>
+</div>
     );
   }
 }

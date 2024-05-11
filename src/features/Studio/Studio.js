@@ -53,7 +53,7 @@ function Studio() {
     };
 
     return (
-        <div className="Studio bg-white min-h-screen relative">
+        <div className="Studio font-montserrat bg-white min-h-screen relative">
             {/* Header */}
             
             <header className="Studio-header flex justify-center items-center relative" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,1), rgba(255,255,255,0))' }}>

@@ -56,7 +56,7 @@ function ProjectDetail() {
     };
 
     return (
-        <div className={`ProjectDetail bg-white min-h-screen ${isTall ? 'd-flex flex-nowrap overflow-auto' : 'flex-column overflow-visible'}`}>
+        <div className={`ProjectDetail font-montserrat bg-white min-h-screen ${isTall ? 'd-flex flex-nowrap overflow-auto' : 'flex-column overflow-visible'}`}>
             {isTall ? (
                 <>
                     <div className="project-item ml-10" style={{ position: 'relative', height: '200px',minWidth: '500px' }}>

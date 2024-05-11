@@ -16,7 +16,7 @@ function ContactUs() {
     };
 
     return (
-        <div className="ContactUs bg-white min-h-screen relative">
+        <div className="ContactUs font-montserrat bg-white min-h-screen relative">
             {/* Header */}
             <header className="ContactUs-header flex justify-center items-center relative" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,1), rgba(255,255,255,0))' }}>
                 <div style={{ position: 'relative', width: '98%', height: '350px', overflow: 'hidden' }}>

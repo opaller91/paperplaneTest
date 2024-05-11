@@ -44,7 +44,7 @@ function Career() {
 
 
     return (
-        <div className="Career bg-white min-h-screen relative">
+        <div className="Career font-montserrat bg-white min-h-screen relative">
             <header className="Career-header flex justify-center items-center relative" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,1), rgba(255,255,255,0))' }}>
                 <div style={{ position: 'relative', width: '98%', height: '350px', overflow: 'hidden' }}>
                     <img src='/assets/images/CareerPic.jpeg' alt="Header Pic" className='mt-2' style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
