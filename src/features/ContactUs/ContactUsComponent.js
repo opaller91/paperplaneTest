@@ -7,16 +7,9 @@ class ContactUsComponent extends Component {
     render() {
         return (
             <div className="contact-us-container">
-                {/* Left Navigation Bar - Already existing */}
-                {/* This part is assumed to be already created and included in the parent component */}
-
-                {/* Right Content Section */}
+              
                 <div className="contact-us-content">
-                    {/* Top Header with Company Name and Close Icon */}
-                    <div className="contact-us-header">
-                        <h2>PAPER PLANE PROJECT STUDIO</h2>
-                        <SlClose style={{ cursor: 'pointer', fontSize: '24px', color: 'white' }} />
-                    </div>
+                    
 
                     {/* Main Content Area */}
                     <div className="contact-us-main-content">

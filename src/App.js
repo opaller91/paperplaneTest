@@ -4,6 +4,10 @@ import { Route, Routes } from "react-router-dom";
 import $ from 'jquery';
 import Home from './pages/home/Home';
 import Work from './pages/work/Space';
+import Studio from './features/Studio/StudioComponent';
+import Career from './features/Career/CareerComponent';
+import ContactUs from './features/ContactUs/ContactUsComponent';
+import ProjectDetail from './features/ProjectDetail/ProjectDetailComponent';
 import { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/Navbar';
@@ -43,6 +47,13 @@ class App extends Component {
       <Routes>
         <Route path="/" element={<Home data={this.state.homeData} />} />
         <Route path="/work" element={<Work />} />
+        <Route path="/aboutUs" element={<Studio />} />
+        <Route path="/career" element={<Career />} />
+        <Route path="/contactUs" element={<ContactUs />} />
+        <Route path="/project-detail/1" element={<ProjectDetail />} />
+        <Route path="/project-detail/2" element={<ProjectDetail />} />
+        <Route path="/project-detail/3" element={<ProjectDetail />} />
+        <Route path="/project-detail/4" element={<ProjectDetail />} />
      </Routes>
     </div>
 

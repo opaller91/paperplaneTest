@@ -6,30 +6,15 @@ import { SlClose } from "react-icons/sl";
 class StudioComponent extends Component {
     render() {
         return (
-            <div style={{ display: 'flex', minHeight: '100vh', backgroundColor: 'black', color: 'white', padding: '40px', minWidth: '100vw' }}>
-                {/* Left Navigation Bar - Already existing */}
-                {/* This part is assumed to be already created and included in the parent component */}
-
-                {/* Right Content Section */}
-                <div style={{ marginLeft: '200px', flexGrow: 1 , marginTop: '30px'}}>
-                    {/* Top Header with Company Name and Close Icon */}
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-                        <h2 style={{ fontFamily: 'Montserrat', fontSize: '24px', fontWeight: 400, textAlign: 'center', flex: 1 }}>PAPER PLANE PROJECT STUDIO</h2>
-                        <SlClose style={{ cursor: 'pointer', fontSize: '24px', color: 'white' }} />
-                    </div>
-
-                    {/* Main Content Area */}
+            <div style={{ display: 'flex', minHeight: '100vh', backgroundColor: 'black', color: 'white', position: 'fixed', right: 0, top: 0, width: '80vw', zIndex: 20, marginTop: 41, marginBottom: 40}}>
+                <div style={{flexGrow: 1, marginTop: '30px' }}>
                     <div style={{ display: 'flex', marginTop: '41px', flexWrap: 'wrap' }}>
-                        {/* Left Content Section (Header and Main Content) */}
-                        <div style={{ display: 'flex', flexDirection: 'column', marginRight: '30px', flex: '1 1 600px' }}>
-                            {/* Header */}
+                        <div style={{ display: 'flex', flexDirection: 'column',  flex: '1 1 600px' }}>
                             <header style={{ marginBottom: '40px', width: '100%', maxWidth: '666px' }}>
                                 <h1 style={{ fontFamily: 'Montserrat', fontSize: '64px', fontWeight: 400, lineHeight: '78.02px', textAlign: 'left' }}>
                                     Bring your vision into being
                                 </h1>
                             </header>
-
-                            {/* Main Content */}
                             <div style={{ flexGrow: 1, fontFamily: 'Montserrat', fontSize: '16px', fontWeight: 400, lineHeight: 1.5, textAlign: 'left', width: '100%', maxWidth: '654px' }}>
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et laoreet nulla.
@@ -61,8 +46,6 @@ class StudioComponent extends Component {
                                 </p>
                             </div>
                         </div>
-
-                        {/* Right Gray Box (Studio Picture) */}
                         <div style={{
                             flex: '1 1 600px',
                             width: '100%',

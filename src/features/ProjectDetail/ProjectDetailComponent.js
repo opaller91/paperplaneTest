@@ -72,7 +72,7 @@ class ProjectDetailComponent extends Component {
             <div className="ProjectDetail font-montserrat bg-white min-h-screen" style={{ marginLeft: '40px', marginRight: '40px' }}>
                 {/* Header */}
                 <header className="d-flex justify-content-between align-items-center p-4">
-                    <img src="/assets/images/PaperPlaneLogo.png" alt="Logo" style={{ width: '58px', height: '80px' }} />
+                    <div  style={{ width: '58px', height: '80px' }} />
                     <h1 className="m-0" style={{ fontFamily: 'Montserrat', fontSize: '64px', fontWeight: 400, lineHeight: '78.02px', textAlign: 'left' }}>Tichuca</h1>
                     <div style={{ width: '50px' }}></div> {/* Placeholder for spacing */}
                 </header>

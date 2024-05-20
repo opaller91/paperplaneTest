@@ -31,22 +31,9 @@ class CareerComponent extends Component {
     render() {
         return (
             <div className="career-container">
-                {/* Left Navigation Bar - Already existing */}
-                {/* This part is assumed to be already created and included in the parent component */}
-
-                {/* Right Content Section */}
                 <div className="career-content">
-                    {/* Top Header with Company Name and Close Icon */}
-                    <div className="career-header">
-                        <h2>PAPER PLANE PROJECT STUDIO</h2>
-                        <SlClose style={{ cursor: 'pointer', fontSize: '24px', color: 'white' }} />
-                    </div>
-
-                    {/* Main Content Area */}
                     <div className="career-main-content">
-                        {/* Left Content Section */}
                         <div className="career-left">
-                            {/* Main Content */}
                             <div className="career-left-content">
                                 <p className="title">Available Positions</p>
                                 <div className="career-detail">
@@ -56,8 +43,6 @@ class CareerComponent extends Component {
                                 <div className="career-divider"></div>
                             </div>
                         </div>
-
-                        {/* Right Gray Box (Google Map Placeholder) */}
                         <div className="career-map-placeholder">
                             GOOGLE MAP
                         </div>
