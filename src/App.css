@@ -1,42 +1,105 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+  
 
-.App {
-  text-align: center;
+/* Next Slide Animations */
+.slide-animation-out-next {
+  animation: slideAnimationOutNext 0.7s ease-in-out forwards;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
+@keyframes slideAnimationOutNext {
   from {
-    transform: rotate(0deg);
+    transform: translateX(0%);
   }
   to {
-    transform: rotate(360deg);
+    transform: translateX(-100%);
   }
 }
+
+.slide-animation-in-next {
+  animation: slideAnimationInNext 0.7s ease-in-out forwards;
+}
+
+@keyframes slideAnimationInNext {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+/* Previous Slide Animations */
+.slide-animation-in-prev {
+  animation: slideAnimationInPrev 0.7s ease-in-out forwards;
+}
+
+@keyframes slideAnimationInPrev {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+.slide-animation-out-prev {
+  animation: slideAnimationOutPrev 0.7s ease-in-out forwards;
+}
+
+@keyframes slideAnimationOutPrev {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.font-size-nav-bar {
+  font-size: 20px;
+}
+
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 5px;
+}
+
+
+::-webkit-scrollbar-thumb {
+  background: #FFFFFF;
+  border-radius: 5px;
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
