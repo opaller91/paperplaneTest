@@ -2,11 +2,11 @@ import React from 'react';
 import { BrowserRouter as Router,Route, Routes} from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Studio from './features/Studio/Studio';
-import Career from './features/Career/Career';
-import ContactUs from './features/ContactUs/ContactUs';
-import Home from './features/Home/Home';
-import ProjectDetail from './features/ProjectDetail/ProjectDetail';
+import Studio from './features/Studio/StudioComponent';
+import Career from './features/Career/CareerComponent';
+import ContactUs from './features/ContactUs/ContactUsComponent';
+import Home from './features/Home/HomeComponent';
+import ProjectDetail from './features/ProjectDetail/ProjectDetailComponent';
 import Project from './features/Project/Project';
 import Projects from './axiosApi';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap CSS is imported first
@@ -19,7 +19,7 @@ function App() {
     <Router>
     {/* <div className="App"> */}
       <ScrollToTop />
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/project" element={<Project/>} />
@@ -28,7 +28,7 @@ function App() {
         <Route path="/career" element={<Career />} />
         <Route path="/contact-us" element={<ContactUs />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
       {/* Conditional rendering of Navbar based on route */}
      
       {/* <Navbar />
