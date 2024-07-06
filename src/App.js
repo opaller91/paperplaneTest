@@ -2,12 +2,12 @@
 import './App.css';
 import { Route, Routes } from "react-router-dom";
 import $ from 'jquery';
-import Home from './pages/home/Home';
-import Work from './pages/work/Space';
-import Studio from './features/Studio/StudioComponent';
-import Career from './features/Career/CareerComponent';
-import ContactUs from './features/ContactUs/ContactUsComponent';
-import ProjectDetail from './features/ProjectDetail/ProjectDetailComponent';
+import Home from './pages/Home/Home';
+import Work from './pages/Work/Space';
+import Studio from './pages/Studio/StudioComponent';
+import Career from './pages/Career/CareerComponent';
+import ContactUs from './pages/ContactUs/ContactUsComponent';
+import ProjectDetail from './pages/ProjectDetail/ProjectDetailComponent';
 import { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/Navbar';

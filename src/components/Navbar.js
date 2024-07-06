@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Squash as Hamburger } from 'hamburger-react';
-import Space from '../pages/work/Space';
-import Studio from '../features/Studio/StudioComponent';
-import Career from '../features/Career/CareerComponent';
-import ContactUs from '../features/ContactUs/ContactUsComponent';
+import Space from '../pages/Work/Space';
+import Studio from '../pages/Studio/StudioComponent';
+import Career from '../pages/Career/CareerComponent';
+import ContactUs from '../pages/ContactUs/ContactUsComponent';
 import { motion, AnimatePresence } from "framer-motion";
 
 
