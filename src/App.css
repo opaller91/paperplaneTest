@@ -3,265 +3,64 @@
 @import 'tailwindcss/utilities';
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-/* Next Slide Animations */
-.slide-animation-out-next {
-  animation: slideAnimationOutNext 0.7s ease-in-out forwards;
+.App {
+  text-align: center;
 }
 
-@keyframes slideAnimationOutNext {
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
   from {
-    transform: translateX(0%);
+    transform: rotate(0deg);
   }
   to {
-    transform: translateX(-100%);
+    transform: rotate(360deg);
   }
 }
 
-.slide-animation-in-next {
-  animation: slideAnimationInNext 0.7s ease-in-out forwards;
-}
-
-@keyframes slideAnimationInNext {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0%);
-  }
-}
-
-/* Previous Slide Animations */
-.slide-animation-in-prev {
-  animation: slideAnimationInPrev 0.7s ease-in-out forwards;
-}
-
-@keyframes slideAnimationInPrev {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(0%);
-  }
-}
-
-.slide-animation-out-prev {
-  animation: slideAnimationOutPrev 0.7s ease-in-out forwards;
-}
-
-@keyframes slideAnimationOutPrev {
-  from {
-    transform: translateX(0%);
-  }
-  to {
-    transform: translateX(100%);
-  }
-}
-
-
-.font-size-nav-bar {
-  font-size: 20px;
-}
-
-
-::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-}
-
-
-::-webkit-scrollbar-track {
-  background: transparent;
-  border-radius: 5px;
-}
-
-
-::-webkit-scrollbar-thumb {
-  background: #FFFFFF;
-  border-radius: 5px;
-} 
-    
-  
-/* Custom margin for specific screen sizes */
-@media (min-width: 1920px) {
-  .custom-margin-left {
-    margin-left: 0px;
-  }
-  .custom-margin-left-large {
-    margin-left: 0px;
-  }
-  .paragraph-text p {
-    font-family: Montserrat;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 19.5px;
-    text-align: left;
-  }
-  .paragraph-info p {
-    font-family: Montserrat;
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 24.38px;
-    text-align: left;
-  }
-  .border-item {
-    width: 100%;
-    border-bottom: 1px solid #000;
-  }
-  .border-head {
-    width: calc(100% + 40px);
-    border-bottom: 1px solid #000;
-  }
-}
-
-@media (max-width: 1919px) and (min-width: 1200px) {
-  .custom-margin-left {
-    margin-left: 0;
-  }
-  .custom-margin-left-large {
-    margin-left: 0px;
-  }
-  .paragraph-text p {
-    font-family: Montserrat;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 19.5px;
-    text-align: left;
-  }
-  .paragraph-info p {
-    font-family: Montserrat;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24.38px;
-    text-align: left;
-  }
-  .border-item {
-    width: 100%;
-    border-bottom: 1px solid #000;
-  }
-  .border-head {
-    width: calc(100% + 25px);
-    border-bottom: 1px solid #000;
-  }
-}
-
-@media (max-width: 1199px) and (min-width: 1090px) {
-  .custom-margin-left {
-    margin-left: -20px;
-  }
-  .custom-margin-left-large {
-    margin-left: 0;
-  }
-  .paragraph-text p {
-    font-family: Montserrat;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 19.5px;
-    text-align: left;
-  }
-  .paragraph-info p {
-    font-family: Montserrat;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 24.38px;
-    text-align: left;
-  }
-  .border-item {
-    width: 100%;
-    border-bottom: 1px solid #000;
-  }
-  .border-head {
-    width: calc(100% + 25px);
-    border-bottom: 1px solid #000;
-  }
-}
-
-@media (max-width: 1090px) and (min-width: 953px) {
-  .custom-margin-left {
-    margin-left: -24px;
-  }
-  .custom-margin-left-large {
-    margin-left: 0;
-  }
-  .paragraph-text p {
-    font-family: Montserrat;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 19.5px;
-    text-align: left;
-  }
-  .paragraph-info p {
-    font-family: Montserrat;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 24.38px;
-    text-align: left;
-  }
-  .border-item {
-    width: 100%;
-    border-bottom: 1px solid #000;
-  }
-  .border-head {
-    width: calc(100% + 25px);
-    border-bottom: 1px solid #000;
-  }
-}
-
-@media (max-width: 952px) {
-  .custom-margin-left {
-    margin-left: -24px;
-  }
-  .custom-margin-left-large {
-    margin-left: 0;
-  }
-  .paragraph-text p {
-    font-family: Montserrat;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 19.5px;
-    text-align: left;
-  }
-  .paragraph-info p {
-    font-family: Montserrat;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24.38px;
-    text-align: left;
-  }
-  .border-item {
-    width: 100%;
-    border-bottom: 1px solid #000;
-  }
-  .border-head {
-    width: calc(100% + 25px);
-    border-bottom: 1px solid #000;
-  }
+.ProjectDetail {
+  display: flex; /* Establishes a flex container */
+  flex-wrap: nowrap; /* Prevents items from wrapping */
+  overflow-x: auto; /* Enables horizontal scrolling */
+  align-items: center; /* Centers items vertically */
+  padding: 20px; /* Adds padding around the content */
 }
 
 .project-item {
   min-width: 600px; /* Ensures a minimum width for each item */
-  margin-right: 30px; /* Adds space between items */
-}
-
-.scroll-indicator .dot {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: gray;
-  margin: 0 5px;
-  transition: background 0.3s ease;
-}
-
-.scroll-indicator .dot.active {
-  background: black;
+  margin-right: 10px; /* Adds space between items */
 }
 
 @keyframes fadeIn {
   from {
-    opacity: 0;
+      opacity: 0;
   }
   to {
-    opacity: 1;
+      opacity: 1;
   }
 }
 
@@ -279,242 +78,3 @@
   transform: translateX(0%);
   opacity: 1;
 }
-
-.image-slider::-webkit-scrollbar {
-  display: none;
-}
-
-.scroll-indicator {
-  position: relative;
-  height: 20px;
-  width: 50%;
-}
-
-.indicator-dot.active {
-  position: relative;
-  transform: translateX(-5px) !important;
-}
-
-/* Custom styles for ContactUsComponent */
-.contact-us-container {
-  display: flex;
-  min-height: 100vh;
-  background-color: black;
-  color: white;
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 85vw;
-  box-sizing: border-box;
-  z-index: 20;
-  margin-top: 82px;
-  overflow-y: auto; /* Ensure content is scrollable if it overflows */
-}
-
-.contact-us-content {
-  flex-grow: 1;
-  margin-top: 30px;
-}
-
-.contact-us-header h2 {
-  font-family: Montserrat;
-  font-size: 24px;
-  font-weight: 400;
-  text-align: center;
-  flex: 1;
-}
-
-.contact-us-main-content {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.contact-us-left {
-  flex: 1 1 0;
-  margin-right: 30px;
-  margin-bottom: 20px;
-}
-
-.contact-us-left-content {
-  font-family: Montserrat;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 19.5px;
-  text-align: left;
-}
-
-.contact-us-left-content p {
-  font-family: Montserrat;
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 24.38px;
-  text-align: left;
-  margin-bottom: 20px;
-}
-
-.contact-us-detail {
-  margin-bottom: 20px;
-}
-
-.contact-us-detail div {
-  display: flex;
-  justify-content: space-between;
-  align-items: top;
-}
-
-.contact-us-detail span {
-  font-family: Montserrat;
-  font-size: 16px;
-  line-height: 19.5px;
-  text-align: left;
-}
-
-.contact-us-detail span:first-child {
-  font-weight: 500;
-  flex: 1;
-}
-
-.contact-us-detail span:last-child {
-  flex: 2;
-  font-weight: 400;
-}
-
-.contact-us-divider {
-  border-bottom: 1px solid white;
-  margin-top: 10px;
-}
-
-.google-map-placeholder {
-  width: 913px;
-  height: 885px;
-  background-color: #d3d3d3;
-  margin-right: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: Montserrat;
-  font-size: 24px;
-  color: black;
-}
-
-@media (max-width: 1200px) {
-  .contact-us-main-content {
-    flex-direction: column;
-  }
-  .google-map-placeholder {
-    width: 100%;
-    height: 400px;
-    margin-right: 0;
-    margin-top: 20px;
-  }
-}
-
-
-/* Custom styles for CareerComponent */
-.career-container {
-  display: flex;
-  min-height: 100vh;
-  background-color: black;
-  color: white;
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 85vw;
-  box-sizing: border-box;
-  z-index: 20;
-  margin-top: 41px;
-  overflow-y: auto; /* Ensure content is scrollable if it overflows */
-}
-
-.career-content {
-  flex-grow: 1;
-  margin-top: 30px;
-}
-
-.career-header h2 {
-  font-family: Montserrat;
-  font-size: 24px;
-  font-weight: 400;
-  text-align: center;
-  flex: 1;
-}
-
-.career-main-content {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 41px;
-}
-
-.career-left {
-  flex: 1 1 0;
-  margin-bottom: 20px;
-}
-
-.career-left-content {
-  font-family: Montserrat;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 19.5px;
-  text-align: left;
-}
-
-.career-left-content p.title {
-  font-family: Montserrat;
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 24.38px;
-  text-align: left;
-  margin-bottom: 20px;
-}
-
-.career-detail {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.career-detail span:first-child {
-  font-weight: 500;
-  margin-right: 10px;
-}
-
-.career-detail span:last-child {
-  flex: 2;
-  font-weight: 400;
-  white-space: pre-line; /* This property will preserve the line breaks */
-}
-
-.career-divider {
-  border-bottom: 1px solid white;
-  margin-top: 10px;
-  margin-left: 10px;
-  width: 90%;
-}
-
-.career-map-placeholder {
-  width: 913px;
-  height: 885px;
-  background-color: #d3d3d3;
-  margin-right: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: Montserrat;
-  font-size: 24px;
-  color: black;
-}
-
-@media (max-width: 1200px) {
-  .career-main-content {
-    flex-direction: column;
-  }
-  .career-map-placeholder {
-    width: 100%;
-    height: 400px;
-    margin-right: 0;
-    margin-top: 20px;
-  }
-}
-
-
-

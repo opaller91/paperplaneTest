@@ -125,12 +125,7 @@ class Home extends Component {
   render() {
     const { slides, projects, currentIndex, animationDirection } = this.state;
     return (
-      <div className="home-container">
-        {/* Filter Icon */}
-        <div className="filter-icon">
-          <FaFilter onClick={this.props.toggleNavBar} />
-        </div>
-
+    <div className="Home bg-white min-h-screen relative">
         <section id="image-carousel">
           <div className="relative z-50 group h-screen">
             {slides.map((slide, index) => (
@@ -173,46 +168,46 @@ class Home extends Component {
           <p>successful hospitality business projects.</p>
         </div>
         <section id="projects">
-          <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {projects.map((project, index) => (
-              <a href='/project-detail' key={index}>
-                <div className="relative overflow-hidden group cursor-pointer"
-                    onMouseEnter={() => this.setState({ hovered: true })}
-                    onMouseLeave={() => this.setState({ hovered: false })}>
-                  <div className="block relative w-full h-full">
-                    <img
-                      src={project.url}
-                      alt={`Project ${index + 1}`}
-                      className="object-cover w-full h-full transition duration-700 transform scale-100 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 hidden bg-black bg-opacity-50 group-hover:flex">
-                      <div className="my-12 mx-7 text-left text-white font-montserrat transform transition duration-300 translate-x-full group-hover:translate-x-0">
-                        <p className="text-lg font-light">Project</p>
-                        <h3 className="text-4xl font-bold group-hover:break-all mb-24">{project.name}</h3>
-                        <span 
-                          className={`block absolute left-0 bg-white h-1 transition-transform duration-1000 ${this.state.hovered ? 'w-full scale-100' : 'w-0 scale-0'}`}
-                          style={{ transformOrigin: this.state.hovered ? 'left' : 'right' }}
-                        ></span>
-                        <div className="pt-4 flex">
-                          <div className='text-lg font-light'>Categories</div>
-                          <div className='ml-5 text-lg font-semibold group-hover:break-all'>{project.category}</div>
-                        </div>
-                        <div className="flex">
-                          <div className='text-lg font-light'>Location</div>
-                          <div className='ml-10 text-lg font-semibold group-hover:break-all'>{project.location}</div>
-                        </div>
-                        <div className="flex">
-                          <div className='text-lg font-light'>Year</div>
-                          <div className='ml-20 text-lg font-semibold'>{project.year}</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+  <div className="container grid grid-cols-3 gap-4">
+    {projects.map((project, index) => (
+        <a href='/project-detail'>
+      <div key={index} className="relative overflow-hidden group cursor-pointer"
+          onMouseEnter={() => this.setState({ hovered: true })}
+          onMouseLeave={() => this.setState({ hovered: false })}>
+        <div className="block relative w-full h-full">
+          <img
+            src={project.url}
+            alt={`Project ${index + 1}`}
+            className="object-cover w-447 h-723 transition duration-700 transform scale-100 group-hover:scale-105 "
+          />
+          <div className="absolute inset-0 hidden bg-black bg-opacity-50 group-hover:flex">
+            <div className="my-12 mx-7 text-left text-white font-montserrat transform transition duration-300 translate-x-full group-hover:translate-x-0">
+              <p className="text-lg font-light">Project</p>
+                <h3 className="text-4xl font-bold group-hover:break-all mb-24">{project.name}</h3>
+                <span 
+                className={`block absolute left-0 bg-white h-1 transition-transform duration-1000 ${this.state.hovered ? 'w-full scale-100' : 'w-0 scale-0'}`}
+                style={{ transformOrigin: this.state.hovered ? 'left' : 'right' }}
+                ></span>
+                <div className="pt-4 flex flex-cols-2">
+                  <div className='text-lg font-light'>Categories</div>
+                  <div className='ml-5 text-lg font-semibold group-hover:break-all'>{project.category}</div>
                 </div>
-              </a>
-            ))}
+                <div className="flex flex-cols-2">
+                  <div className='text-lg font-light'>Location</div>
+                  <div className='ml-10 text-lg font-semibold group-hover:break-all'>{project.location}</div>
+                </div>
+                <div className="flex flex-cols-2">
+                  <div className='text-lg font-light'>Year</div>
+                  <div className='ml-20 text-lg font-semibold'>{project.year}</div>
+                </div>
+              </div>
+            </div>
           </div>
-        </section>
+        </div>
+        </a> 
+    ))}
+  </div>
+</section>
       </div>
     );
   }

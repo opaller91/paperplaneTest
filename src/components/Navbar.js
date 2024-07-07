@@ -1,237 +1,52 @@
-import React, { Component } from 'react';
-import { Squash as Hamburger } from 'hamburger-react';
-import Space from '../pages/Work/Space';
-import Studio from '../pages/Studio/StudioComponent';
-import Career from '../pages/Career/CareerComponent';
-import ContactUs from '../pages/ContactUs/ContactUsComponent';
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
+function Navbar() {
+    const location = useLocation();
 
-class NavBar extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isOpen: false,
-            whiteLogo: '/images/navbar/logo/logo-white.png',
-            blackLogo: '/images/navbar/logo/logo-home.png',
-            buttons: [
-                'About',
-                'Selected Works',
-                'Careers',
-                'Contact'
-            ],
-            selectedWorks: [
-                'Space',
-                'Object'
-            ],
-            selectedIndex: null,
-            selectedWorksIndex: null,
-            underlineY: 0,
-            prevSelectedIndex: null,
-            modalVariants: {
-                hidden: {
-                    y: '-100vh',
-                },
-                visible: {
-                    y: 0,
-                    transition: {
-                        type: 'tween',
-                        duration: 1,
-                    },
-                },
-                exit: {
-                    y: '-100vh',
-                    transition: {
-                        type: 'tween',
-                        duration: 1,
-                        delay: 0,
-                    },
-                },
-            }
-        };
-        this.buttonRefs = [];
-    }
+    const [isSticky, setIsSticky] = useState(false);
+    // Adjust the state to also track the text color
+    const [navbarStyle, setNavbarStyle] = useState({
+        backgroundColor: 'bg-white',
+        textColor: 'text-black', // Default text color
+    });
 
-    componentDidMount() {
-        window.addEventListener('resize', this.handleResize);
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('resize', this.handleResize);
-    }
-
-    handleResize = () => {
-        const { selectedIndex } = this.state;
-        if (selectedIndex !== null) {
-            this.updateUnderlinePosition(selectedIndex);
-        }
-    };
-
-    toggleOpen = () => {
-        this.setState(prevState => ({
-            isOpen: !prevState.isOpen,
-            selectedIndex: null,
-            underlineY: 0,
-            prevSelectedIndex: null
-        }));
-    };
-
-    handleButtonClick = (index) => {
-        if (this.state.selectedIndex === index) {
-            return;
-        }
-
-        this.setState(prevState => ({
-            selectedIndex: index,
-            prevSelectedIndex: prevState.selectedIndex,
-            selectedWorksIndex: index === 1 ? 0 : null
-        }), () => {
-            if (index === 1) {
-                this.updateUnderlinePosition(0, true);
+    useEffect(() => {
+        const handleScroll = () => {
+            const offset = window.scrollY;
+            console.log(offset);
+            if (location.pathname === "/home" && offset <  1000) {
+                // Set both background and text color when transparent
+                setNavbarStyle({ backgroundColor: 'bg-transparent', textColor: 'text-white' });
             } else {
-                this.updateUnderlinePosition(index);
+                // Set both background and text color when not transparent
+                setNavbarStyle({ backgroundColor: 'bg-white', textColor: 'text-black' });
             }
-        });
-    };
 
-    handleSelectedWorksClick = (index) => {
-        if (this.state.selectedWorksIndex === index) {
-            return;
-        }
+            setIsSticky(offset > 0);
+        };
 
-        this.setState(prevState => ({
-            selectedWorksIndex: index,
-            prevSelectedIndex: prevState.selectedIndex,
-        }), () => {
-            this.updateUnderlinePosition(index, true);
-        });
-    };
+        window.addEventListener('scroll', handleScroll);
+        handleScroll();
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [location.pathname]);
 
-    updateUnderlinePosition = (index, isSubItem = false) => {
-        const button = isSubItem ? this.buttonRefs['works-' + index] : this.buttonRefs[index];
-        if (button) {
-            const underlineY = button.offsetTop + button.clientHeight - 2;
-            this.setState({ underlineY });
-        }
-    };
-
-    closeToggle = () => {
-        this.setState({ isOpen: false });
-    };
-
-
-    render() {
-        const { isOpen, whiteLogo, blackLogo, buttons, selectedIndex, underlineY, selectedWorks, selectedWorksIndex, modalVariants } = this.state;
-        return (
-            <div>
-                <section id='nav-home'>
-                    <div className='h-28'>
-                        <nav className='fixed flex flex-wrap justify-between items-center z-20 w-full ml-6 my-4 pr-9'>
-                            <a href='http://localhost:3000/' className='inline-block'>
-                                <img src={isOpen ? whiteLogo : blackLogo} alt='Home Logo' className='max-w-58px max-h-80px' />
-                            </a>
-                            <p className={`font-montserrat font-size-nav-bar font-normal m-0 ${isOpen ? 'text-white' : 'text-black'}`}>PAPER PLANE PROJECT STUDIO</p>
-                            <div className='z-10'><Hamburger toggled={isOpen} size={20} toggle={this.toggleOpen} color={isOpen ? 'white' : 'black'} /></div>
-                        </nav>
-                    </div>
-                    <div style={{ color: isOpen ? 'white' : 'black' }}>
-                        <AnimatePresence>
-                            {isOpen && (
-                                <motion.div variants={modalVariants}
-                                    initial="hidden"
-                                    animate="visible"
-                                    exit="exit" className='fixed flex top-0 w-full h-full bg-black z-10'>
-                                    <ul className={`relative flex flex-col space-y-4 font-montserrat font-size-nav-bar font-normal pl-6 pt-36 `}>
-                                        {buttons.map((buttonLabel, index) => (
-                                            <li key={index} className="relative">
-                                                {selectedIndex === index && (
-                                                    <span
-                                                        className="block absolute h-[2px] bg-white ease transition-all w-52 duration-700"
-                                                        style={{
-                                                            transform: `translateY(${underlineY}px)`,
-                                                        }}
-                                                    ></span>
-                                                )}
-                                                <button
-                                                    ref={el => this.buttonRefs[index] = el}
-                                                    onClick={() => this.handleButtonClick(index)}
-                                                    className={`relative cursor-pointer transition-all ease-in-out 
-                                                    before:transition-[width] before:ease-in-out before:duration-700 
-                                                    before:absolute before:bg-white before:origin-left before:h-[2px] 
-                                                    before:w-0 hover:before:w-52 before:bottom-0 before:left-0
-                                                    `}
-                                                >
-                                                    {buttonLabel}
-                                                </button>
-                                                {selectedIndex === 1 && index === 1 && (
-                                                    <div className="flex flex-col mt-3 ml-12 space-y-4">
-                                                        {selectedWorks.map((workLabel, workIndex) => (
-                                                            <div key={workIndex} className="relative">
-                                                                {(selectedWorksIndex === workIndex) && (
-                                                                    <span
-                                                                        className="block absolute h-[2px] bg-white ease transition-all w-52 duration-700"
-                                                                        style={{
-                                                                            transform: `translateY(${underlineY}px)`,
-                                                                        }}
-                                                                    ></span>
-                                                                )}
-                                                                <button
-                                                                    ref={el => this.buttonRefs['works-' + workIndex] = el}
-                                                                    onClick={() => this.handleSelectedWorksClick(workIndex)}
-                                                                    className={`relative cursor-pointer transition-all ease-in-out 
-                                                                    before:transition-[width] before:ease-in-out before:duration-700 
-                                                                    before:absolute before:bg-white before:origin-left before:h-[2px] 
-                                                                    before:w-0 hover:before:w-52 before:bottom-0 before:left-0
-                                                                    `}
-                                                                    
-                                                                >
-                                                                    {workLabel}
-                                                                </button>
-                                                            </div>
-                                                        ))}
-                                                    </div>
-                                                )}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                    <div>
-                                        {selectedWorksIndex === 0 && (
-                                          
-                                                <div className='absolute left-80 top-36'>
-                                                    <Space closeToggle={this.closeToggle} />
-                                                </div>
-  
-                                        )}
-                                        {selectedIndex === 0 && (
-                                            
-                                                <div className='absolute left-80 top-36'>
-                                                    <Studio />
-                                                </div>
-                                           
-                                        )}
-                                        {selectedIndex === 2 && (
-                                            
-                                                <div className='absolute left-80 top-36'>
-                                                    <Career />
-                                                </div>
-                                           
-                                        )}
-                                        {selectedIndex === 3 && (
-                                          
-                                                <div className='absolute left-80 top-36'>
-                                                    <ContactUs />
-                                                </div>
-                                            
-                                        )}
-                                    </div>
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-                    </div>
-                </section>
+    return (
+        <nav className={`p-3 ${isSticky ? 'sticky top-0 z-50' : 'fixed w-full'} ${navbarStyle.backgroundColor}`} style={{ zIndex: 1000 }}>
+            <div className="container mx-auto flex justify-between items-center">
+                <img src="/assets/images/PaperPlaneLogo.png" alt="Paper Plane Logo" className="h-12" />
+                <ul className={`flex space-x-6  ${navbarStyle.textColor} `}>
+                    <li><Link to="/home" className={`no-underline hover:underline ${navbarStyle.textColor}`}>HOME</Link></li>
+                    <li><Link to="/project" className={`no-underline hover:underline ${navbarStyle.textColor}`}>PROJECT</Link></li>
+                    <li><Link to="/studio" className={`no-underline hover:underline ${navbarStyle.textColor}`}>STUDIO</Link></li>
+                    <li><Link to="/career" className={`no-underline hover:underline ${navbarStyle.textColor}`}>CAREER</Link></li>
+                    <li><Link to="/contact-us" className={`no-underline hover:underline ${navbarStyle.textColor}`}>CONTACT</Link></li>
+                </ul>
             </div>
-        );
-    }
+        </nav>
+    );
 }
 
-export default NavBar;
+export default Navbar;
