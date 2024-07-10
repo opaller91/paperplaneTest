@@ -14,6 +14,7 @@ class Career extends Component {
             name: '',
             tel: '',
             mail: '',
+            tellUs: '',
             portfolio: ''
         };
 
@@ -53,7 +54,13 @@ class Career extends Component {
                                 <label htmlFor="mail" className="form-label me-12">Email</label>
                                 <input type="email" className="form-control" id="mail" name="mail" value={this.state.mail} onChange={this.handleChange} />
                             </div>
-                            <div className="mb-3 d-flex align-items-center">
+                            <div className="mb-3">
+                                <label htmlFor="tellUs" className="form-label me-12">Anything to tell us?</label>
+                                <input type="text" className="form-control" id="tellUs" name="tellUs" value={this.state.tellUs} onChange={this.handleChange} />
+                            </div>
+                        </Col>
+                        <Col>
+                            <div className="mb-3">
                                 <label htmlFor="portfolio" className="form-label me-2">Portfolio (URL)</label>
                                 <div className="input-group">
                                     <input type="text" className="form-control" id="portfolio" name="portfolio" value={this.state.portfolio} onChange={this.handleChange} />
@@ -61,12 +68,6 @@ class Career extends Component {
                                         <MdOutlineCloudUpload />
                                     </button>
                                 </div>
-                            </div>
-                        </Col>
-                        <br></br>
-                        <Col>
-                            <div>
-                                opaller
                             </div>
                         </Col>
                     </Row>
