@@ -1,0 +1,10 @@
+.vertical-divider {
+    padding-right: 20px;
+}
+
+@media (min-width: 768px) {
+    .vertical-divider {
+        border-right: 1px solid #030000;
+        margin-right: 20px;
+    }
+}

@@ -19,7 +19,7 @@ function App() {
     <Router>
     {/* <div className="App"> */}
       <ScrollToTop />
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/project" element={<Project/>} />
