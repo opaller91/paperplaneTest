@@ -13,33 +13,51 @@ function Career() {
         tel: '',
         mail: '',
         tellUs: '',
-        portfolio: ''
+        portfolio: null
     });
 
-    // Handle change for form inputs
+    const [file, setFile] = useState(null); // This is correct
+
     const handleChange = (event) => {
         const { name, value } = event.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
+        setFormData({ ...formData, [name]: value });
     };
-
-    // Handle form submission
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        console.log(formData);
-        // Add form submission logic here
-    };
-
-    const [file, setFile] = useState(null);
 
     const handleFileChange = (event) => {
-        setFile(event.target.files[0]); // Assuming single file upload
+        if (event.target.files[0]) { // Ensure there's at least one file
+            setFile(event.target.files[0]);
+        }
     };
 
     const handleFileClick = () => {
-        document.getElementById('fileInput').click(); // Programmatically clicks the file input
+        document.getElementById('fileInput').click();
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        // Create a form data object to send the file
+        const data = new FormData();
+        if (file) { // Make sure file is not null
+            data.append("file", file);
+        }
+
+        // Append other data
+        data.append("name", formData.name);
+        data.append("tel", formData.tel);
+        data.append("mail", formData.mail);
+        data.append("tellUs", formData.tellUs);
+
+
+        // Send email
+        // emailjs.sendForm('your_service_id', 'your_template_id', data, 'your_user_id')
+        //     .then((result) => {
+        //         console.log('Email successfully sent!', result.text);
+        //         // Handle success (e.g., notify the user)
+        //     }, (error) => {
+        //         console.log('Failed to send the email:', error.text);
+        //         // Handle errors (e.g., notify the user)
+        //     });
     };
 
     return (
