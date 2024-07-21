@@ -1,0 +1,57 @@
+/* Add this to your Career.css or a new stylesheet */
+body,
+html {
+    background-color: black;
+    /* Ensure the background is black for the entire page */
+    color: white;
+}
+
+input,
+textarea {
+    background-color: #333;
+    /* Dark grey background for inputs */
+    border: 1px solid #444;
+    /* Slightly lighter grey border */
+    color: white;
+    /* White text inside inputs */
+}
+
+button {
+    background-color: #444;
+    /* Dark grey background for button */
+    color: white;
+    /* White text for button */
+    border: none;
+    /* No border for a flat design */
+}
+
+.form-with-divider {
+    position: relative;
+}
+
+.form-with-divider::after {
+    content: "";
+    position: absolute;
+    left: 50%;  /* Positions the line in the middle of the form */
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: #ccc; /* Adjust color as needed */
+}
+
+.info-column {
+    padding: 20px;
+}
+
+.text-sm-end {
+    text-align: end;
+}
+
+
+.additional-content .content-divider {
+    border-top: 1px solid #ccc; /* Adds a light grey top border to each row */
+    margin-top: 20px; /* Adds space above the border for clarity */
+    padding-top: 20px; /* Adds space below the border */
+}
+
+
