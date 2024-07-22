@@ -81,22 +81,13 @@ function ProjectDetail() {
                     </Col>
                 </Row>
                 <div style={{ height: '40px' }}></div>
-                <div className="image-container d-flex flex-nowrap overflow-auto">
+                <div className="image-container">
                 {images.map((src, index) => (
                     <img
                         key={index}
                         src={src}
-                        className={`image-part ${focusedImage === index ? 'focused' : ''}`}
+                        className={`image-part ${focusedImage === index ? 'focused' : focusedImage !== null ? 'dimmed' : ''}`}
                         alt={`Detail Image ${index + 1}`}
-                        style={{
-                            cursor: 'pointer',
-                            transition: 'transform 0.3s ease-in-out, opacity 0.3s ease',
-                            transform: focusedImage === index ? 'scale(1.5)' : 'scale(1)',
-                            opacity: focusedImage === index || focusedImage === null ? '1' : '0.5',
-                            marginRight: '4px', // Adds space between images
-                            width: '700px', // Set a fixed width for each image
-                            height: 'auto' // Maintain aspect ratio
-                        }}
                         onClick={() => handleImageClick(index)}
                     />
                 ))}

@@ -4,22 +4,27 @@
 }
 
 .image-container {
-    display: flex;                /* Align children images in a row */
-    overflow-x: auto;             /* Enable horizontal scrolling */
-    scroll-snap-type: x mandatory; /* Optional: Enhances the scrolling experience */
-    padding-left: 2px;            /* Optional: if you want padding inside the container */
-    padding-right: 2px;           /* Optional: if you want padding inside the container */
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 8px 0;
 }
 
 .image-part {
-    flex: 0 0 auto;               /* Do not grow, do not shrink, basis is auto */
-    margin-right: 14px;            /* Right margin of 4px between images */
-    scroll-snap-align: start;     /* Optional: Aligns images nicely when scrolling */
-    max-width: 100%;              /* Optional: Ensures images do not exceed their containers */
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease;
+    width: 700px;  /* Consistent width for all images */
+    height: auto;  /* Maintain aspect ratio */
+    margin-right: 4px;  /* Space between images */
 }
 
-.image-part:last-child {
-    margin-right: 0;              /* Removes the margin from the last image */
+.image-part.focused {
+    transform: scale(1.1);  /* Slightly enlarge the focused image */
+    z-index: 10;  /* Ensure it's above others */
+}
+
+.image-part.dimmed {
+    opacity: 0.5;  /* Dim non-focused images */
 }
 
 
