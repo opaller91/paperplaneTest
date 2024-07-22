@@ -1,0 +1,29 @@
+.studio-divider {
+    position: relative;
+    display: flex;  /* Ensuring that the divider works correctly within a flexbox context */
+}
+
+.studio-divider::after {
+    content: "";
+    position: absolute;
+    left: 42%;  /* Correcting to match the column split */
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: #ccc;
+}
+
+.text-header {
+    margin-bottom: 20px;
+}
+
+.content-divider {
+    border-top: 1px solid #ccc;
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+.custom-width {
+    flex: 0 0 42%;  /* Exact custom width if needed, matching the 'md={5}' setting */
+    max-width: 42%;
+}
