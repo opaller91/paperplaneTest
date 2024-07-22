@@ -1,0 +1,25 @@
+.custom-width {
+    flex: 0 0 23%;  /* Exact custom width if needed, matching the 'md={5}' setting */
+    max-width: 23%;
+}
+
+.image-container {
+    display: flex;                /* Align children images in a row */
+    overflow-x: auto;             /* Enable horizontal scrolling */
+    scroll-snap-type: x mandatory; /* Optional: Enhances the scrolling experience */
+    padding-left: 2px;            /* Optional: if you want padding inside the container */
+    padding-right: 2px;           /* Optional: if you want padding inside the container */
+}
+
+.image-part {
+    flex: 0 0 auto;               /* Do not grow, do not shrink, basis is auto */
+    margin-right: 14px;            /* Right margin of 4px between images */
+    scroll-snap-align: start;     /* Optional: Aligns images nicely when scrolling */
+    max-width: 100%;              /* Optional: Ensures images do not exceed their containers */
+}
+
+.image-part:last-child {
+    margin-right: 0;              /* Removes the margin from the last image */
+}
+
+
