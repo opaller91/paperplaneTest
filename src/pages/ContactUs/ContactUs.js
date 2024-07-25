@@ -11,11 +11,11 @@ function ContactUs() {
     return (
         <div className="bg-black text-white font-montserrat min-h-screen min-w-screen p-5">
             <div>
-                <div className="text-header mb-4 left-aligned ml-8">
-                    <label style={{ fontSize: '72px' }}>PAPER PLANE PROJECT STUDIO CO, LTD.</label>
+                <div className="text-header mb-4 left-aligned">
+                    <label>PAPER PLANE PROJECT STUDIO CO, LTD.</label>
                 </div>
-                <form onSubmit={handleSubmit} className="ml-6 form-with-divider">
-                    <Container className='left-aligned'>
+                <form onSubmit={handleSubmit} className="form-with-divider">
+                    
                         <hr />
                         <Row>
                             <Col md={6} className="info-column">
@@ -89,7 +89,7 @@ function ContactUs() {
                             </Col>
                         </Row>
                         <hr />
-                    </Container>
+                    
                 </form>
             </div>
         </div>

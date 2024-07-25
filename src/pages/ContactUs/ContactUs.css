@@ -47,6 +47,9 @@ button {
     text-align: end;
 }
 
+.text-header {
+    font-size: 72px; /* Reduce font size for smaller devices */
+}
 
 .additional-content .content-divider {
     border-top: 1px solid #ccc; /* Adds a light grey top border to each row */
@@ -54,4 +57,50 @@ button {
     padding-top: 20px; /* Adds space below the border */
 }
 
+/* Base styles already seem optimized for dark mode presentation */
+
+/* Enhanced Media Queries */
+@media (max-width: 992px) { /* For tablets and below */
+    .text-header {
+        font-size: 48px; /* Reduce font size for smaller devices */
+    }
+
+    .form-label, .btn-submit {
+        font-size: 14px; /* Smaller font for better readability on small devices */
+    }
+
+    .form-control, textarea {
+        font-size: 14px; /* Adjust input text size for better legibility */
+    }
+
+    .form-with-divider::after {
+        width: 100%; /* Full width horizontal divider */
+        height: 1px; /* Convert vertical divider to horizontal */
+        left: 0; /* Reset left positioning */
+        top: auto; /* Adjust top positioning */
+    }
+
+    .info-column, .additional-content {
+        padding: 10px; /* Reduce padding for compact look */
+    }
+}
+
+@media (max-width: 768px) { /* For mobile devices */
+    .text-header {
+        font-size: 30px; /* Further reduce font size */
+    }
+
+    .ml-6, .ml-4 {
+        margin-left: 15px; /* Adjust margins to fit small screens */
+    }
+
+    .btn-submit {
+        width: 100%; /* Button width to full to accommodate smaller screens */
+        margin-top: 20px; /* Add more space above the submit button */
+    }
+
+    .form-control, textarea {
+        padding: 10px; /* Enhance padding for touch targets */
+    }
+}
 
