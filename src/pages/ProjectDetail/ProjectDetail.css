@@ -3,6 +3,10 @@
     max-width: 23%;
 }
 
+.text-header {
+    font-size: 72px;
+}
+
 .image-container {
     display: flex;
     flex-wrap: nowrap;
@@ -26,5 +30,64 @@
 .image-part.dimmed {
     opacity: 0.5;  /* Dim non-focused images */
 }
+
+/* Responsive Media Queries */
+@media (max-width: 768px) { /* Adjustments for tablets and mobile phones */
+    .custom-width {
+        flex: 0 0 100%; /* Full width on small screens */
+        max-width: 100%;
+    }
+
+    .text-header {
+        font-size: 40px; /* Smaller font size for headers */
+        margin-left: 15px; /* Adjust alignment */
+    }
+
+    .form-label, .form-value {
+        font-size: 16px; /* Adjust font size for readability */
+    }
+
+    .image-part {
+        width: 100%; /* Full width within its container */
+    }
+
+    .form-with-divider::after {
+        width: 100%; /* Change divider to full width at the top */
+        height: 1px; /* Single pixel line */
+        top: 0; /* Align at the top */
+        left: 0; /* Start from the left */
+    }
+
+    .content-divider {
+        margin-top: 15px; /* Slightly less space on tablets */
+        padding-top: 15px;
+    }
+}
+
+@media (max-width: 576px) { /* Additional adjustments for very small devices */
+    .text-header {
+        font-size: 32px; /* Even smaller font size */
+    }
+    
+    .form-label {
+        font-size: 14px; /* Smaller labels */
+    }
+
+    .custom-width {
+        flex: 0 0 100%; /* Full width on small screens */
+        max-width: 100%;
+    }
+
+    .image-part {
+        width: 100%; /* Full width within its container */
+    }
+
+    .content-divider {
+        margin-top: 10px; /* Reduced spacing on small devices */
+        padding-top: 10px;
+        border-top: none; /* Optional: Remove border if it clutters the design */
+    }
+}
+
 
 

@@ -25,13 +25,17 @@ function ProjectDetail() {
 
     return (
         <div className="bg-black text-white font-montserrat" style={{ padding: '5px', width: '100vw' }}>
-            <img src='/assets/images/PaperPlaneProject.png' alt="Detail Image" style={{ width: '100%', height: '1282.35px', objectFit: 'cover' }} />
-            <h1 className="text-header mb-3 mt-20" style={{ fontSize: '72px' }}>
+            <img
+                src='/assets/images/PaperPlaneProject.png'
+                alt="Detail Image"
+                style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
+            />
+            <h1 className="text-header mb-3 mt-20 ml-10">
                 Paper Plane Project
             </h1>
             <dic>
                 <Row>
-                    <Col md={5} className="custom-width">  {/* Adjusted to md={5} for roughly 41.67% width */}
+                    <Col md={5} className="custom-width ml-10">  {/* Adjusted to md={5} for roughly 41.67% width */}
                         <Row>
                             <Col sm={9}>
                                 <label htmlFor="name" className="form-label mt-2 ml-4">Location</label>
@@ -46,11 +50,6 @@ function ProjectDetail() {
                             </Col>
                             <Col sm={4}>
                                 <label htmlFor="areaNumber" className="form-label ml-4">430 sq.m.</label>
-                            </Col>
-                        </Row>
-                        <Row className='content-divider'>
-                            <Col sm={9}>
-                                <label htmlFor="year" className="form-label ml-4">Year</label>
                             </Col>
                         </Row>
                         <Row className='content-divider'>
@@ -82,16 +81,16 @@ function ProjectDetail() {
                 </Row>
                 <div style={{ height: '40px' }}></div>
                 <div className="image-container">
-                {images.map((src, index) => (
-                    <img
-                        key={index}
-                        src={src}
-                        className={`image-part ${focusedImage === index ? 'focused' : focusedImage !== null ? 'dimmed' : ''}`}
-                        alt={`Detail Image ${index + 1}`}
-                        onClick={() => handleImageClick(index)}
-                    />
-                ))}
-            </div>
+                    {images.map((src, index) => (
+                        <img
+                            key={index}
+                            src={src}
+                            className={`image-part ${focusedImage === index ? 'focused' : focusedImage !== null ? 'dimmed' : ''}`}
+                            alt={`Detail Image ${index + 1}`}
+                            onClick={() => handleImageClick(index)}
+                        />
+                    ))}
+                </div>
             </dic>
         </div>
     );
