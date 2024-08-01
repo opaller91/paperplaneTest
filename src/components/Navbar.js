@@ -25,8 +25,8 @@ function Navbar() {
     };
 
     return (
-        <nav className={`p-3 fixed top-0 w-full ${navbarStyle.backgroundColor}`} >
-            <div className="container mx-auto flex justify-between items-center">
+        <nav className={`p-5 fixed top-0 w-full ${navbarStyle.backgroundColor}`} >
+            <div className="mx-auto flex justify-between items-center">
                 <img src="/images/navbar/logo/logo-white.png" alt="Paper Plane Logo" className="navbar-logo" />
                 {isMenuOpen && (
                     <ul className={`flex flex-row items-center justify-center mt-3 space-x-4 ${navbarStyle.textColor} ${animationClass}`}>
