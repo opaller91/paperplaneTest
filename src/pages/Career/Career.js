@@ -104,7 +104,7 @@ function Career() {
                             <Row className="mb-4">
                                 <Col sm={12}>
                                     <label htmlFor="tellUs" className="form-label mt-2">Anything to tell us?</label>
-                                    <textarea type="text" className="form-control" style={{ height: '176.61px' }} id="tellUs" name="tellUs" value={formData.tellUs} onChange={handleChange} />
+                                    <textarea type="text" className="form-control" style={{ height: '176.61px'}} id="tellUs" name="tellUs" value={formData.tellUs} onChange={handleChange} />
                                 </Col>
                             </Row>
                         </Col>
