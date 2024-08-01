@@ -1,214 +1,162 @@
-import React, { Component } from 'react';
-import { IoMdArrowBack, IoMdArrowForward } from "react-icons/io";
-import { GiPlainSquare } from "react-icons/gi";
+import React, { useEffect, useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './Home.css';
+import { Row, Col } from 'react-bootstrap';
+import { SlArrowRight } from "react-icons/sl";
+import Modal from 'react-modal';
 
-class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      slides: [
-        {
-          url: '/assets/images/ContactUsHead.jpeg',
-        },
-        {
-          url: '/assets/images/PaperPlaneProject.png',
-        },
-        {
-          url: '/assets/images/LoydClub.png',
-        },
-        {
-          url: '/assets/images/Gir.png',
-        },
-        {
-          url: '/assets/images/Tahona.png',
-        },
-        {
-           url: '/assets/images/Sanctuary.png',
-        },
-      ],
-      projects: [
-        {
-          url: '/assets/images/TichucaH.png',
-          name: 'Tichuca',
-          category: 'Cocktail Bar',
-          location: 'Bangkok',
-          year: '2020',
 
-        },
-        {
-          url: '/assets/images/PaperH.png',
-          name: 'Paper Plane Project',
-          category: 'Co-working Space / Live Music Bar / Night Club',
-          location: 'Bangkok',
-          year: '2020',
-        },
-        {
-          url: '/assets/images/LloyH.png',
-          name: 'Lloyd Club',
-          category: 'Cocktail Bar',
-          location: 'Bangkok',
-          year: '2020',
-    
-        },
-        {
-          url: '/assets/images/GirH.png',
-          name: 'Gir',
-          category: 'Cocktail Bar',
-          location: 'Location Detail',
-          year: '2020',
-        },
-        {
-          url: '/assets/images/TahonaH.png',
-          name: 'Tahona',
-          category: 'Cocktail Bar',
-          location: 'Bangkok',
-          year: '2020',
-        },
-        {
-          url: '/assets/images/SanctuaryH.png',
-          name: 'Sanctuary',
-          category: 'Cocktail Bar',
-          location: 'Bangkok',
-          year: '2020',
-        },
-      ],
-      currentIndex: 0,
-      hovered: false,
-      animationDirection: 'left'
-    };
-    this.intervalDuration = 4000;
-  }
+function Home() {
+  const [focusedImage, setFocusedImage] = useState(null); // State to track focused image
 
-  componentDidMount() {
-    this.startAutoSlide();
-  }
+  // Array of image sources
+  const images = [
+    '/assets/images/PaperPlaneProject.png',
+    '/assets/images/PaperPlaneProject.png',
+    '/assets/images/PaperPlaneProject.png'
+  ];
 
-  componentWillUnmount() {
-    this.stopAutoSlide();
-  }
-
-  startAutoSlide = () => {
-    this.slideInterval = setInterval(this.nextSlide, this.intervalDuration);
-  }
-
-  stopAutoSlide = () => {
-    clearInterval(this.slideInterval);
-  }
-
-  resetAutoSlide = () => {
-    this.stopAutoSlide();
-    this.startAutoSlide();
-  }
-
-  nextSlide = () => {
-    this.setState(prevState => ({
-      currentIndex: prevState.currentIndex === prevState.slides.length - 1 ? 0 : prevState.currentIndex + 1,
-      animationDirection: 'left'
-    }));
-    this.resetAutoSlide();
+  // Function to handle image click
+  const handleImageClick = (index) => {
+    // Toggle focus on and off
+    if (focusedImage === index) {
+      setFocusedImage(null); // Clicking the same image will remove focus
+    } else {
+      setFocusedImage(index); // Focus on clicked image
+    }
   };
 
-  prevSlide = () => {
-    this.setState(prevState => ({
-      currentIndex: prevState.currentIndex === 0 ? prevState.slides.length - 1 : prevState.currentIndex - 1,
-      animationDirection: 'right'
-    }));
-    this.resetAutoSlide();
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [selectedPost, setSelectedPost] = useState(null);
+
+  // Mock data for Instagram posts
+  const instagramPosts = [
+    {
+      url: '/assets/images/InstagramImage1.jpg',
+      caption: 'This is the caption for Instagram Image 1',
+    },
+    {
+      url: '/assets/images/InstagramImage2.jpg',
+      caption: 'This is the caption for Instagram Image 2',
+    },
+    {
+      url: '/assets/images/InstagramImage3.jpg',
+      caption: 'This is the caption for Instagram Image 3',
+    },
+  ];
+
+  const openModal = (post) => {
+    setSelectedPost(post);
+    setModalIsOpen(true);
   };
 
-  goToSlide = (slideIndex) => {
-    this.setState({
-      currentIndex: slideIndex,
-      animationDirection: slideIndex > this.state.currentIndex ? 'left' : 'right'
-    });
-    this.resetAutoSlide();
+  const closeModal = () => {
+    setModalIsOpen(false);
+    setSelectedPost(null);
   };
 
-
-
-  render() {
-    const { slides, projects, currentIndex, animationDirection } = this.state;
-    return (
-      <div>
-        <section id="image-carousel">
-          <div className="relative z-50 group h-screen">
-            {slides.map((slide, index) => (
-              <div
-                style={{ backgroundImage: `url(${slide.url})` }}
-                className={`absolute inset-0 bg-center bg-cover transition-transform duration-700 ${currentIndex === index ? (animationDirection === 'left' ? 'slide-in-left' : 'slide-in-right') : 'hidden'}`}
-              ></div>
-            ))}
-            <div className="hidden group-hover:block absolute top-1/2 -translate-x-0 -translate-y-1/2 left-5 text-base p-2 text-white cursor-pointer">
-              <IoMdArrowBack onClick={this.prevSlide} size={35} />
-            </div>
-            <div className="hidden group-hover:block absolute top-1/2 -translate-x-0 -translate-y-1/2 right-5 text-base p-2 text-white cursor-pointer">
-              <IoMdArrowForward onClick={this.nextSlide} size={35} />
-            </div>
-            <div className="absolute bottom-6 w-full flex justify-center space-x-4">
-              {slides.map((slide, index) => (
-                <div
-                  key={index}
-                  onClick={() => this.goToSlide(index)}
-                  className={`text-xl cursor-pointer ${currentIndex === index ? 'text-black' : 'text-white'}`}
-                >
-                  <GiPlainSquare />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-        <div className="container justify-center text-center p-32 font-montserrat leading-3 text-lg font-normal">
-          <p><span className='font-semibold'>Paper Plane Studio</span> is a Bangkok based design studio working</p>
-          <p>across architecture, interior, furniture, and product design.</p>
-          <br></br>
-          <p>Our mission is to bring client vision into being resulting in</p>
-          <p>successful hospitality business projects.</p>
-          
+  return (
+    <div className="bg-black text-white font-montserrat" style={{ padding: '5px', width: '100vw' }}>
+      <img
+        src='/assets/images/PaperPlaneProject.png'
+        alt="Detail Image"
+        className='home-header-image'
+        style={{ width: '100%', objectFit: 'cover' }}
+      />
+      <div className='ml-10 mt-10'>
+        <h1 className='home-header'>PAPER PLANE PROJECT STUDIO</h1>
+        <div style={{ height: "300px" }}></div>
+        <hr></hr>
+        <p className="text-xl font-light mt-10">
+          Paper Plane Project Studio is a renowned design firm headquartered in Bangkok,<br />
+          specialising in architecture, interior, furniture, and product design for the hospitality<br />
+          industry. At Paper Plane Project Studio, our commitment lies in translating vision<br />
+          into reality with seamless execution.
+        </p>
+        <button type="submit" className="btn-submit mt-8" variant="none">
+          <span>STUDIO</span><SlArrowRight className="icon-right" />
+        </button>
+      </div>
+      <div className="scrolling-logos mt-10">
+        <div className="horizontal-logos logos-container">
+          {['/assets/images/Tichuca.png', '/assets/images/PaperPlaneProject.png', '/assets/images/CR.png', '/assets/images/LoydsClub.png', '/assets/images/Tahona.png', '/assets/images/logo1.png', '/assets/images/logo2.png', '/assets/images/Fico.png'].map((logo, index) => (
+            <img key={index} src={logo} alt={`Logo ${index}`} className="logo-image" />
+          ))}
         </div>
-        <section id="projects">
-  <div className="container grid grid-cols-3 gap-4">
-    {projects.map((project, index) => (
-        <a href='/project-detail'>
-      <div key={index} className="relative overflow-hidden group cursor-pointer"
-          onMouseEnter={() => this.setState({ hovered: true })}
-          onMouseLeave={() => this.setState({ hovered: false })}>
-        <div className="block relative w-full h-full">
-          <img
-            src={project.url}
-            alt={`Project ${index + 1}`}
-            className="object-cover w-447 h-723 transition duration-700 transform scale-100 group-hover:scale-105 "
-          />
-          <div className="absolute inset-0 hidden bg-black bg-opacity-50 group-hover:flex">
-            <div className="my-12 mx-7 text-left text-white font-montserrat transform transition duration-300 translate-x-full group-hover:translate-x-0">
-              <p className="text-lg font-light">Project</p>
-                <h3 className="text-4xl font-bold group-hover:break-all mb-24">{project.name}</h3>
-                <span 
-                className={`block absolute left-0 bg-white h-1 transition-transform duration-1000 ${this.state.hovered ? 'w-full scale-100' : 'w-0 scale-0'}`}
-                style={{ transformOrigin: this.state.hovered ? 'left' : 'right' }}
-                ></span>
-                <div className="pt-4 flex flex-cols-2">
-                  <div className='text-lg font-light'>Categories</div>
-                  <div className='ml-5 text-lg font-semibold group-hover:break-all'>{project.category}</div>
+      </div>
+      <div style={{ height: "100px" }}></div>
+      <div className="bg-white text-black font-montserrat">
+        <div className='home-divider'>
+          <div className="custom-width-left">
+            <h1 className="text-header ml-10 mt-10" style={{ fontSize: '72px' }}>
+              FOCUS AREA
+            </h1>
+            <div style={{ height: '226px' }}></div>
+            <div className="content-divider ml-10">
+              <p>Our team comprises specialized designers with profound expertise in architecture, interior</p>
+              <p>design, and industrial design. We harness our extensive expertise to curate exceptional</p>
+              <p>experiences, employing meticulous and detail-oriented approach to design.</p>
+            </div>
+            <div style={{ height: "200px" }}></div>
+          </div>
+          <div className="custom-width-right focus-images">
+            <div className="row content-right">
+              <div className="col-md-6 mb-3">
+                <div className="focus-image">
+                  <img src="/assets/images/LloyH.png" alt="Architectural Design" />
                 </div>
-                <div className="flex flex-cols-2">
-                  <div className='text-lg font-light'>Location</div>
-                  <div className='ml-10 text-lg font-semibold group-hover:break-all'>{project.location}</div>
+                <p>ARCHITECTURAL DESIGN ></p>
+              </div>
+              <div className="col-md-6 mb-3">
+                <div className="focus-image">
+                  <img src="/assets/images/LloyH.png" alt="Interior Design" />
                 </div>
-                <div className="flex flex-cols-2">
-                  <div className='text-lg font-light'>Year</div>
-                  <div className='ml-20 text-lg font-semibold'>{project.year}</div>
+                <p>INTERIOR DESIGN ></p>
+              </div>
+              <div className="col-md-12">
+                <div className="focus-image">
+                  <img src="/assets/images/LloyH.png" alt="Product Design" />
                 </div>
+                <p>PRODUCT DESIGN ></p>
               </div>
             </div>
           </div>
         </div>
-        </a> 
-    ))}
-  </div>
-</section>
-</div>
-    );
-  }
+      </div>
+      <div className="bg-black text-white font-montserrat">
+        <div className='update-section ml-10 '>
+          <h1 className="text-header mt-10" style={{ fontSize: '72px' }}>
+            OUR LASTEST UPDATE
+          </h1>
+          <a href="https://www.instagram.com/paperplaneproject.studio" target="_blank" rel="noopener noreferrer" className="instagram-handle">@paperplaneproject.studio ></a>
+          <div className="row mt-10">
+            {instagramPosts.map((post, index) => (
+              <div className="col-md-4 mb-3" key={index} onClick={() => openModal(post)}>
+                <div className="focus-image">
+                  <img src={post.url} alt={`Instagram Post ${index + 1}`} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      {selectedPost && (
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          contentLabel="Instagram Post"
+          className="instagram-modal"
+          overlayClassName="instagram-modal-overlay"
+        >
+          <div className="instagram-modal-content">
+            <img src={selectedPost.url} alt="Instagram Post" className="instagram-modal-image" />
+            <p>{selectedPost.caption}</p>
+            <button onClick={closeModal}>Close</button>
+          </div>
+        </Modal>
+      )}
+    </div>
+  );
 }
 
 export default Home;
