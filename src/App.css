@@ -1,3 +1,4 @@
+/* App.css */
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
@@ -77,4 +78,13 @@
 .fade-in-right.visible {
   transform: translateX(0%);
   opacity: 1;
+}
+
+/* Ensure content starts below the navbar on non-home pages */
+.content-below-navbar {
+  margin-top: 64px; /* Adjust this value to match the height of your navbar */
+}
+
+.main-content {
+  padding: 20px; /* Add padding around the main content */
 }

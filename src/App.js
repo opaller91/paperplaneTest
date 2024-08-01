@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router,Route, Routes} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Studio from './pages/Studio/Studio';
@@ -8,60 +8,37 @@ import ContactUs from './pages/ContactUs/ContactUs';
 import Home from './pages/Home/Home';
 import ProjectDetail from './pages/ProjectDetail/ProjectDetail';
 import Project from './pages/Project/Project';
-import Projects from './axiosApi';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap CSS is imported first
 import ScrollToTop from './components/ScrollToTop';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap CSS is imported first
 import './App.css';
 
-function App() {
+function AppContent() {
+  const location = useLocation();
+  const isHome = location.pathname === '/home';
 
   return (
-    <Router>
-    {/* <div className="App"> */}
-      <ScrollToTop />
-      {/* <Navbar /> */}
-      <Routes>
-        <Route path="/home" element={<Home />} />
-        <Route path="/project" element={<Project/>} />
-        <Route path="/project-detail" element={<ProjectDetail />} />
-        <Route path="/studio" element={<Studio />} />
-        <Route path="/career" element={<Career />} />
-        <Route path="/contact-us" element={<ContactUs />} />
-      </Routes>
+    <div className={isHome ? '' : 'content-below-navbar'}>
+      <Navbar />
+      <div className="main-content">
+        <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route path="/project" element={<Project />} />
+          <Route path="/project-detail" element={<ProjectDetail />} />
+          <Route path="/studio" element={<Studio />} />
+          <Route path="/career" element={<Career />} />
+          <Route path="/contact-us" element={<ContactUs />} />
+        </Routes>
+      </div>
       <Footer />
-      {/* Conditional rendering of Navbar based on route */}
-     
-      {/* <Navbar />
-      <Routes>
-        <Route path="/studio" element={<Studio />} />
-        <Route path="/career" element={<Career />} />
-        <Route path="/contact-us" element={<ContactUs />} />
-      </Routes> */}
+    </div>
+  );
+}
 
-      {/* <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        {/* <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <div>
-        <h1>My Projects</h1>
-        <Projects />
-      </div>
-      
-      <div>
-        <button className="btn btn-primary">My Bootstrap Button</button>
-        <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Default tail</button>
-      </div>
-    </div> */}
+function App() {
+  return (
+    <Router>
+      <ScrollToTop />
+      <AppContent />
     </Router>
   );
 }

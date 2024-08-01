@@ -1,49 +1,45 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Sling as Hamburger } from 'hamburger-react';
+import './Navbar.css';
 
 function Navbar() {
-    const location = useLocation();
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [animationClass, setAnimationClass] = useState('');
 
-    const [isSticky, setIsSticky] = useState(false);
-    // Adjust the state to also track the text color
-    const [navbarStyle, setNavbarStyle] = useState({
-        backgroundColor: 'bg-white',
-        textColor: 'text-black', // Default text color
-    });
+    const navbarStyle = {
+        backgroundColor: 'bg-transparent',
+        textColor: 'text-white',
+    };
 
-    useEffect(() => {
-        const handleScroll = () => {
-            const offset = window.scrollY;
-            console.log(offset);
-            if (location.pathname === "/home" && offset <  1000) {
-                // Set both background and text color when transparent
-                setNavbarStyle({ backgroundColor: 'bg-transparent', textColor: 'text-white' });
-            } else {
-                // Set both background and text color when not transparent
-                setNavbarStyle({ backgroundColor: 'bg-white', textColor: 'text-black' });
-            }
-
-            setIsSticky(offset > 0);
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        handleScroll();
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, [location.pathname]);
+    const toggleMenu = () => {
+        if (isMenuOpen) {
+            setAnimationClass('slide-up');
+            setTimeout(() => {
+                setIsMenuOpen(false);
+            }, 300); // Duration of slide-up animation
+        } else {
+            setIsMenuOpen(true);
+            setAnimationClass('slide-down');
+        }
+    };
 
     return (
-        <nav className={`p-3 ${isSticky ? 'sticky top-0 z-50' : 'fixed w-full'} ${navbarStyle.backgroundColor}`} style={{ zIndex: 1000 }}>
+        <nav className={`p-3 fixed top-0 w-full ${navbarStyle.backgroundColor}`} >
             <div className="container mx-auto flex justify-between items-center">
-                <img src="/assets/images/PaperPlaneLogo.png" alt="Paper Plane Logo" className="h-12" />
-                <ul className={`flex space-x-6  ${navbarStyle.textColor} `}>
-                    <li><Link to="/home" className={`no-underline hover:underline ${navbarStyle.textColor}`}>HOME</Link></li>
-                    <li><Link to="/project" className={`no-underline hover:underline ${navbarStyle.textColor}`}>PROJECT</Link></li>
-                    <li><Link to="/studio" className={`no-underline hover:underline ${navbarStyle.textColor}`}>STUDIO</Link></li>
-                    <li><Link to="/career" className={`no-underline hover:underline ${navbarStyle.textColor}`}>CAREER</Link></li>
-                    <li><Link to="/contact-us" className={`no-underline hover:underline ${navbarStyle.textColor}`}>CONTACT</Link></li>
-                </ul>
+                <img src="/images/navbar/logo/logo-white.png" alt="Paper Plane Logo" className="navbar-logo" />
+                {isMenuOpen && (
+                    <ul className={`flex flex-row items-center justify-center mt-3 space-x-4 ${navbarStyle.textColor} ${animationClass}`}>
+                        <li><Link to="/home" className={`no-underline hover:underline ${navbarStyle.textColor}`}>HOME</Link></li>
+                        <li><Link to="/project" className={`no-underline hover:underline ${navbarStyle.textColor}`}>PROJECT</Link></li>
+                        <li><Link to="/studio" className={`no-underline hover:underline ${navbarStyle.textColor}`}>STUDIO</Link></li>
+                        <li><Link to="/career" className={`no-underline hover:underline ${navbarStyle.textColor}`}>CAREER</Link></li>
+                        <li><Link to="/contact-us" className={`no-underline hover:underline ${navbarStyle.textColor}`}>CONTACT</Link></li>
+                    </ul>
+                )}
+                <div className="navbar-hamburger">
+                    <Hamburger toggled={isMenuOpen} toggle={toggleMenu} />
+                </div>
             </div>
         </nav>
     );
