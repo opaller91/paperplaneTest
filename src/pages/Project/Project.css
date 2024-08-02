@@ -1,0 +1,49 @@
+/* Work.css */
+.container {
+    margin-top: 20px;
+  }
+  
+  .relative {
+    position: relative;
+  }
+  
+  .group {
+    position: relative;
+  }
+  
+  .group-hover\\:flex {
+    display: none;
+  }
+  
+  .group:hover .group-hover\\:flex {
+    display: flex;
+  }
+  
+  .group-hover\\:break-all {
+    word-break: break-all;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .text-2xl {
+    font-size: 1.5rem;
+  }
+  
+  .font-bold {
+    font-weight: bold;
+  }
+  
+  .text-lg {
+    font-size: 1.125rem;
+  }
+  
+  .w-447 {
+    width: 447px;
+  }
+  
+  .h-723 {
+    height: 723px;
+  }
+  

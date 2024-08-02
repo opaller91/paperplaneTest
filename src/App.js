@@ -14,7 +14,7 @@ import './App.css';
 
 function AppContent() {
   const location = useLocation();
-  const isHome = location.pathname === '/home';
+  const isHome = (location.pathname === '/home' || location.pathname === '/project-detail') ;
 
   return (
     <div className={isHome ? '' : 'content-below-navbar'}>

@@ -1,0 +1,47 @@
+.footer {
+    background-color: #000000; /* Black background */
+    color: #ffffff; /* White text */
+    padding: 2rem 0; /* Padding for top and bottom */
+    font-family: 'Montserrat', sans-serif; /* Font family */
+}
+
+.footer-logo img {
+    height: 50px; /* Height of the logo */
+}
+
+.footer-logo p {
+    margin-top: 10px; /* Margin above the text */
+}
+
+.footer-links {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+}
+
+.footer-column {
+    flex: 1;
+}
+
+.footer-column h4 {
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-column ul li a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.footer-column ul li a:hover {
+    text-decoration: underline;
+}
