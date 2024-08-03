@@ -26,7 +26,7 @@ function AppContent() {
       <Navbar handleFilterClick={handleFilterClick} />
       <div className="main-content">
         <Routes>
-          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/project" element={<Project activeFilter={activeFilter} />} />
           <Route path="/project-detail" element={<ProjectDetail />} />
           <Route path="/studio" element={<Studio />} />
