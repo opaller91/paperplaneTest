@@ -3,8 +3,8 @@ import './Footer.css';
 
 function Footer() {
     return (
-        <footer className="footer bg-black text-white font-montserrat">
-            <div className="container mx-auto flex justify-between items-center py-8">
+        <footer className="p-5 footer bg-black text-white font-montserrat">
+            <div className="mx-auto flex justify-between items-center py-8">
                 <div className="footer-logo">
                     <img src="/images/navbar/logo/logo-white.png" alt="Paper Plane Logo" className="h-12" />
                     <p className="mt-2">PAPER PLANE PROJECT STUDIO</p>

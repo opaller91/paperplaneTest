@@ -16,14 +16,41 @@ textarea {
     /* White text inside inputs */
 }
 
-button {
-    background-color: #444;
-    /* Dark grey background for button */
-    color: white;
-    /* White text for button */
+.btn-submit {
+    background-color: transparent;
     border: none;
-    /* No border for a flat design */
+    color: white;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
 }
+
+.btn-submit span {
+    position: relative;
+}
+
+.btn-submit span::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    transform-origin: bottom right;
+    transition: transform 0.27s ease-out;
+}
+
+.btn-submit:hover span::after,
+.btn-submit:focus span::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
 
 .form-with-divider {
     position: relative;
@@ -32,11 +59,13 @@ button {
 .form-with-divider::after {
     content: "";
     position: absolute;
-    left: 50%;  /* Positions the line in the middle of the form */
+    left: 50%;
+    /* Positions the line in the middle of the form */
     top: 0;
     bottom: 0;
     width: 1px;
-    background-color: #ccc; /* Adjust color as needed */
+    background-color: #ccc;
+    /* Adjust color as needed */
 }
 
 .info-column {
@@ -48,59 +77,84 @@ button {
 }
 
 .text-header {
-    font-size: 72px; /* Reduce font size for smaller devices */
+    font-size: 72px;
+    /* Reduce font size for smaller devices */
 }
 
 .additional-content .content-divider {
-    border-top: 1px solid #ccc; /* Adds a light grey top border to each row */
-    margin-top: 20px; /* Adds space above the border for clarity */
-    padding-top: 20px; /* Adds space below the border */
+    border-top: 1px solid #ccc;
+    /* Adds a light grey top border to each row */
+    margin-top: 20px;
+    /* Adds space above the border for clarity */
+    padding-top: 20px;
+    /* Adds space below the border */
 }
 
 /* Base styles already seem optimized for dark mode presentation */
 
 /* Enhanced Media Queries */
-@media (max-width: 992px) { /* For tablets and below */
+@media (max-width: 992px) {
+
+    /* For tablets and below */
     .text-header {
-        font-size: 48px; /* Reduce font size for smaller devices */
+        font-size: 48px;
+        /* Reduce font size for smaller devices */
     }
 
-    .form-label, .btn-submit {
-        font-size: 14px; /* Smaller font for better readability on small devices */
+    .form-label,
+    .btn-submit {
+        font-size: 14px;
+        /* Smaller font for better readability on small devices */
     }
 
-    .form-control, textarea {
-        font-size: 14px; /* Adjust input text size for better legibility */
+    .form-control,
+    textarea {
+        font-size: 14px;
+        /* Adjust input text size for better legibility */
     }
 
     .form-with-divider::after {
-        width: 100%; /* Full width horizontal divider */
-        height: 1px; /* Convert vertical divider to horizontal */
-        left: 0; /* Reset left positioning */
-        top: auto; /* Adjust top positioning */
+        width: 100%;
+        /* Full width horizontal divider */
+        height: 1px;
+        /* Convert vertical divider to horizontal */
+        left: 0;
+        /* Reset left positioning */
+        top: auto;
+        /* Adjust top positioning */
     }
 
-    .info-column, .additional-content {
-        padding: 10px; /* Reduce padding for compact look */
+    .info-column,
+    .additional-content {
+        padding: 10px;
+        /* Reduce padding for compact look */
     }
 }
 
-@media (max-width: 768px) { /* For mobile devices */
+@media (max-width: 768px) {
+
+    /* For mobile devices */
     .text-header {
-        font-size: 30px; /* Further reduce font size */
+        font-size: 30px;
+        /* Further reduce font size */
     }
 
-    .ml-6, .ml-4 {
-        margin-left: 15px; /* Adjust margins to fit small screens */
+    .ml-6,
+    .ml-4 {
+        margin-left: 15px;
+        /* Adjust margins to fit small screens */
     }
 
     .btn-submit {
-        width: 100%; /* Button width to full to accommodate smaller screens */
-        margin-top: 20px; /* Add more space above the submit button */
+        width: 100%;
+        /* Button width to full to accommodate smaller screens */
+        margin-top: 20px;
+        /* Add more space above the submit button */
     }
 
-    .form-control, textarea {
-        padding: 10px; /* Enhance padding for touch targets */
+    .form-control,
+    textarea {
+        padding: 10px;
+        /* Enhance padding for touch targets */
     }
 }
-

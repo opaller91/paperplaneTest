@@ -15,7 +15,7 @@ import './App.css';
 function AppContent() {
   const [activeFilter, setActiveFilter] = useState('All');
   const location = useLocation();
-  const isHome = (location.pathname === '/home' || location.pathname === '/project-detail') ;
+  const isHome = (location.pathname === '/' || location.pathname === '/project-detail') ;
 
   const handleFilterClick = (filter) => {
     setActiveFilter(filter);

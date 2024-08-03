@@ -11,10 +11,10 @@ function Home() {
 
   // Array of image sources
   const images = [
-    '/assets/images/PaperPlaneProject.png',
     '/assets/images/HomeHeaderPic1.png',
     '/assets/images/HomeHeaderPic2.png',
-    '/assets/images/HomeHeaderPic3.png'
+    '/assets/images/HomeHeaderPic3.png',
+    '/assets/images/PaperPlaneProject.png'
   ];
 
   // Function to handle image click
@@ -116,9 +116,11 @@ function Home() {
             </h1>
             <div style={{ height: '226px' }}></div>
             <div className="content-divider ml-10">
-              <p>Our team comprises specialized designers with profound expertise in architecture, interior</p>
-              <p>design, and industrial design. We harness our extensive expertise to curate exceptional</p>
-              <p>experiences, employing meticulous and detail-oriented approach to design.</p>
+              <div className="mt-10">
+                <p>Our team comprises specialized designers with profound expertise in architecture, interior</p>
+                <p>design, and industrial design. We harness our extensive expertise to curate exceptional</p>
+                <p>experiences, employing meticulous and detail-oriented approach to design.</p>
+              </div>
             </div>
             <div style={{ height: "200px" }}></div>
           </div>
@@ -127,7 +129,7 @@ function Home() {
               <div className="col-md-6 mb-3">
                 <div className="focus-image">
                   <Link to="/project?category=Architecture" className="focus-link">
-                    <img src="/assets/images/LloyH.png" alt="Architectural Design" />
+                    <img src="/assets/images/TichucaH.png" alt="Architectural Design" />
                     <p>ARCHITECTURAL DESIGN ></p>
                   </Link>
                 </div>
@@ -135,7 +137,7 @@ function Home() {
               <div className="col-md-6 mb-3">
                 <div className="focus-image">
                   <Link to="/project?category=Interior" className="focus-link">
-                    <img src="/assets/images/LloyH.png" alt="Interior Design" />
+                    <img src="/assets/images/PaperH.png" alt="Interior Design" />
                     <p>INTERIOR DESIGN ></p>
                   </Link>
                 </div>
@@ -143,7 +145,7 @@ function Home() {
               <div className="col-md-12">
                 <div className="focus-image">
                   <Link to="/project?category=Object" className="focus-link">
-                    <img src="/assets/images/LloyH.png" alt="Product Design" />
+                    <img src="/assets/images/SanctuaryH.png" alt="Product Design" />
                     <p>PRODUCT DESIGN ></p>
                   </Link>
                 </div>

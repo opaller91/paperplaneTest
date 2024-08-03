@@ -127,8 +127,8 @@ function Career() {
                         </Col>
                     </Row>
                     <hr />
-                    <button type="submit" className="btn-submit float-end mt-4" variant="none">
-                        <span className="ml-6">SUBMIT</span><SlArrowRight className="icon-right" />
+                    <button type="submit" className=" float-end mt-4" variant="none">
+                        <span className="ml-6 btn-submit">SUBMIT ></span>
                     </button>
                 </form>
             </div>
