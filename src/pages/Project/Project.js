@@ -63,7 +63,7 @@ const Work = ({ activeFilter }) => {
 
   return (
     <section id="projects">
-      <div className="mt-20 container grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="mt-20 font-montserrat container grid grid-cols-1 md:grid-cols-2 gap-4">
         {filteredProjects.map((project, index) => (
           <a href="/project-detail" key={index}>
             <div

@@ -33,7 +33,7 @@ function Navbar({ handleFilterClick }) {
 
     return (
         <nav className={`p-5 fixed top-0 w-full ${navbarStyle.backgroundColor}`} >
-            <div className="mx-auto flex justify-between items-center">
+            <div className="mx-auto flex justify-between font-montserrat items-center">
                 <img src="/images/navbar/logo/logo-white.png" alt="Paper Plane Logo" className="navbar-logo" />
                 {(isMenuOpen && location.pathname != '/project') && (
                     <ul className={`flex flex-row items-center justify-center mt-3 space-x-4 ${navbarStyle.textColor} ${animationClass}`}>
