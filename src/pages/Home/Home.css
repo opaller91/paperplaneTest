@@ -1,3 +1,37 @@
+.carousel .carousel-control-prev,
+.carousel .carousel-control-next {
+    display: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    height: auto;
+    z-index: 1;
+    color: #fff;
+    text-align: center;
+    background: transparent;
+    border: none;
+}
+
+.carousel .carousel-control-prev {
+    left: 20px;
+}
+
+.carousel .carousel-control-next {
+    right: 20px;
+}
+
+.carousel:hover .carousel-control-prev,
+.carousel:hover .carousel-control-next {
+    display: block;
+}
+
+.carousel .carousel-control-prev-icon,
+.carousel .carousel-control-next-icon {
+    background-color: transparent; /* Transparent background */
+}
+
+
 .home-header-image {
     height: 1079px;
 }
@@ -22,13 +56,27 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-.btn-submit {
+.button-container-home {
+    text-align: left;
+    /* Align the button to the left */
+}
+
+.btn-submit-home {
     background-color: transparent;
     border: none;
     color: white;
     font-size: 1rem;
     display: flex;
     align-items: center;
+}
+
+.btn-submit-home .btn-text-home {
+    text-decoration: none;
+}
+
+.btn-submit-home .btn-text-home:hover,
+.btn-submit-home .btn-text-home:focus {
+    text-decoration: underline;
 }
 
 .icon-right {
@@ -48,15 +96,25 @@
 .logo-image {
     height: 100px;
     margin: 0 15px;
+    /* Standard margin for logos */
     vertical-align: middle;
+}
+
+.logo-image-extra-space {
+    margin: 0 90px;
+    /* Extra margin for specific logos */
 }
 
 .horizontal-logos {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    /* Align items at the start of the container */
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    /* Prevent wrapping */
     padding: 20px 0;
+    overflow-x: auto;
+    /* Enable horizontal scrolling */
 }
 
 .home-divider {

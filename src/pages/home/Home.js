@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link, useLocation } from 'react-router-dom';
 import './Home.css';
-import { Row, Col } from 'react-bootstrap';
+import { Carousel } from 'react-bootstrap';
 import { SlArrowRight } from "react-icons/sl";
 import Modal from 'react-modal';
-
 
 function Home() {
   const [focusedImage, setFocusedImage] = useState(null); // State to track focused image
@@ -12,8 +12,9 @@ function Home() {
   // Array of image sources
   const images = [
     '/assets/images/PaperPlaneProject.png',
-    '/assets/images/PaperPlaneProject.png',
-    '/assets/images/PaperPlaneProject.png'
+    '/assets/images/HomeHeaderPic1.png',
+    '/assets/images/HomeHeaderPic2.png',
+    '/assets/images/HomeHeaderPic3.png'
   ];
 
   // Function to handle image click
@@ -57,12 +58,18 @@ function Home() {
 
   return (
     <div className="bg-black text-white font-montserrat" style={{ padding: '5px', width: '100vw' }}>
-      <img
-        src='/assets/images/PaperPlaneProject.png'
-        alt="Detail Image"
-        className='home-header-image'
-        style={{ width: '100%', objectFit: 'cover' }}
-      />
+     <Carousel className="custom-carousel">
+        {images.map((image, index) => (
+          <Carousel.Item key={index}>
+            <img
+              src={image}
+              alt={`Slide ${index + 1}`}
+              className='home-header-image'
+              style={{ width: '100%', objectFit: 'cover' }}
+            />
+          </Carousel.Item>
+        ))}
+      </Carousel>
       <div className='ml-10 mt-10'>
         <h1 className='home-header'>PAPER PLANE PROJECT STUDIO</h1>
         <div style={{ height: "300px" }}></div>
@@ -73,14 +80,30 @@ function Home() {
           industry. At Paper Plane Project Studio, our commitment lies in translating vision<br />
           into reality with seamless execution.
         </p>
-        <button type="submit" className="btn-submit mt-8" variant="none">
-          <span>STUDIO</span><SlArrowRight className="icon-right" />
-        </button>
+        <div className="button-container-home">
+          <Link to="/studio" className="btn-submit-home mt-8">
+            <span className="btn-text-home">STUDIO</span><SlArrowRight className="icon-right" />
+          </Link>
+        </div>
       </div>
       <div className="scrolling-logos mt-10">
         <div className="horizontal-logos logos-container">
-          {['/assets/images/Tichuca.png', '/assets/images/PaperPlaneProject.png', '/assets/images/CR.png', '/assets/images/LoydsClub.png', '/assets/images/Tahona.png', '/assets/images/logo1.png', '/assets/images/logo2.png', '/assets/images/Fico.png'].map((logo, index) => (
-            <img key={index} src={logo} alt={`Logo ${index}`} className="logo-image" />
+          {[
+            { src: '/images/LogoCompany/TichucaLogo.png', extraSpace: true },
+            { src: '/images/LogoCompany/PaperPlaneProjectLogo.png', extraSpace: true },
+            { src: '/images/LogoCompany/GirLogo.png' },
+            { src: '/images/LogoCompany/LloydClubLogo.png' },
+            { src: '/images/LogoCompany/TahonaLogo.png' },
+            { src: '/images/LogoCompany/UnknownLogo.png' },
+            { src: '/images/LogoCompany/PeaPalLogo.png' },
+            { src: '/images/LogoCompany/FicoLogo.png' }
+          ].map((logo, index) => (
+            <img
+              key={index}
+              src={logo.src}
+              alt={`Logo ${index}`}
+              className={`logo-image ${logo.extraSpace ? 'logo-image-extra-space' : ''}`}
+            />
           ))}
         </div>
       </div>
