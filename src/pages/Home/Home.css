@@ -28,7 +28,8 @@
 
 .carousel .carousel-control-prev-icon,
 .carousel .carousel-control-next-icon {
-    background-color: transparent; /* Transparent background */
+    background-color: transparent;
+    /* Transparent background */
 }
 
 
@@ -183,6 +184,45 @@
     width: 100%;
     height: auto;
     display: block;
+}
+
+.focus-image a {
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+}
+
+
+.focus-link {
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+}
+
+.focus-link p {
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+}
+
+.focus-link p::after {
+    content: '';
+    position: absolute;
+    width: calc(100% - 20px);
+    /* Adjust the width to end at the ">" */
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: currentColor;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.focus-link:hover p::after,
+.focus-link:active p::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
 
 .update-section {

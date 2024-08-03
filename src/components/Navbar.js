@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, {  useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Sling as Hamburger } from 'hamburger-react';
 import './Navbar.css';
 
-function Navbar() {
+function Navbar({ handleFilterClick }) {
     const location = useLocation();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [animationClass, setAnimationClass] = useState('');
@@ -26,9 +26,9 @@ function Navbar() {
         }
     };
 
-    const handleFilterClick = (filter) => {
+    const handleFilterClickLocal = (filter) => {
         setActiveFilter(filter);
-        // Handle the project filtering logic here
+        handleFilterClick(filter);
     };
 
     return (
@@ -54,10 +54,10 @@ function Navbar() {
                             <li><Link to="/contact-us" className={`no-underline hover:underline ${navbarStyle.textColor}`}>CONTACT</Link></li>
                         </ul>
                         <ul className={`flex space-x-6 mt-2  ${animationClass}`}>
-                            <li><button onClick={() => handleFilterClick('All')} className={`no-underline hover:underline ${activeFilter === 'All' ? 'text-white' : 'text-white'}`}>All</button></li>
-                            <li><button onClick={() => handleFilterClick('Architecture')} className={`no-underline hover:underline ${activeFilter === 'Architecture' ? 'text-white' : 'text-white'}`}>Architecture</button></li>
-                            <li><button onClick={() => handleFilterClick('Interior')} className={`no-underline hover:underline ${activeFilter === 'Interior' ? 'text-white' : 'text-white'}`}>Interior</button></li>
-                            <li><button onClick={() => handleFilterClick('Object')} className={`no-underline hover:underline ${activeFilter === 'Object' ? 'text-white' : 'text-white'}`}>Object</button></li>
+                            <li><button onClick={() => handleFilterClickLocal('All')} className={`no-underline hover:underline ${activeFilter === 'All' ? 'text-white' : 'text-white'}`}>All</button></li>
+                            <li><button onClick={() => handleFilterClickLocal('Architecture')} className={`no-underline hover:underline ${activeFilter === 'Architecture' ? 'text-white' : 'text-white'}`}>Architecture</button></li>
+                            <li><button onClick={() => handleFilterClickLocal('Interior')} className={`no-underline hover:underline ${activeFilter === 'Interior' ? 'text-white' : 'text-white'}`}>Interior</button></li>
+                            <li><button onClick={() => handleFilterClickLocal('Object')} className={`no-underline hover:underline ${activeFilter === 'Object' ? 'text-white' : 'text-white'}`}>Object</button></li>
                         </ul>
                     </div>
                 )}

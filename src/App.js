@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -13,16 +13,21 @@ import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap CSS is import
 import './App.css';
 
 function AppContent() {
+  const [activeFilter, setActiveFilter] = useState('All');
   const location = useLocation();
   const isHome = (location.pathname === '/home' || location.pathname === '/project-detail') ;
 
+  const handleFilterClick = (filter) => {
+    setActiveFilter(filter);
+  };
+
   return (
     <div className={isHome ? '' : 'content-below-navbar'}>
-      <Navbar />
+      <Navbar handleFilterClick={handleFilterClick} />
       <div className="main-content">
         <Routes>
           <Route path="/home" element={<Home />} />
-          <Route path="/project" element={<Project />} />
+          <Route path="/project" element={<Project activeFilter={activeFilter} />} />
           <Route path="/project-detail" element={<ProjectDetail />} />
           <Route path="/studio" element={<Studio />} />
           <Route path="/career" element={<Career />} />

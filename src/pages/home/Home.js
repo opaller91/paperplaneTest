@@ -58,7 +58,7 @@ function Home() {
 
   return (
     <div className="bg-black text-white font-montserrat" style={{ padding: '5px', width: '100vw' }}>
-     <Carousel className="custom-carousel">
+      <Carousel className="custom-carousel">
         {images.map((image, index) => (
           <Carousel.Item key={index}>
             <img
@@ -89,8 +89,8 @@ function Home() {
       <div className="scrolling-logos mt-10">
         <div className="horizontal-logos logos-container">
           {[
-            { src: '/images/LogoCompany/TichucaLogo.png', extraSpace: true },
-            { src: '/images/LogoCompany/PaperPlaneProjectLogo.png', extraSpace: true },
+            { src: '/images/LogoCompany/TichucaLogo.png' },
+            { src: '/images/LogoCompany/PaperPlaneProjectLogo.png' },
             { src: '/images/LogoCompany/GirLogo.png' },
             { src: '/images/LogoCompany/LloydClubLogo.png' },
             { src: '/images/LogoCompany/TahonaLogo.png' },
@@ -126,21 +126,27 @@ function Home() {
             <div className="row content-right">
               <div className="col-md-6 mb-3">
                 <div className="focus-image">
-                  <img src="/assets/images/LloyH.png" alt="Architectural Design" />
+                  <Link to="/project?category=Architecture" className="focus-link">
+                    <img src="/assets/images/LloyH.png" alt="Architectural Design" />
+                    <p>ARCHITECTURAL DESIGN ></p>
+                  </Link>
                 </div>
-                <p>ARCHITECTURAL DESIGN ></p>
               </div>
               <div className="col-md-6 mb-3">
                 <div className="focus-image">
-                  <img src="/assets/images/LloyH.png" alt="Interior Design" />
+                  <Link to="/project?category=Interior" className="focus-link">
+                    <img src="/assets/images/LloyH.png" alt="Interior Design" />
+                    <p>INTERIOR DESIGN ></p>
+                  </Link>
                 </div>
-                <p>INTERIOR DESIGN ></p>
               </div>
               <div className="col-md-12">
                 <div className="focus-image">
-                  <img src="/assets/images/LloyH.png" alt="Product Design" />
+                  <Link to="/project?category=Object" className="focus-link">
+                    <img src="/assets/images/LloyH.png" alt="Product Design" />
+                    <p>PRODUCT DESIGN ></p>
+                  </Link>
                 </div>
-                <p>PRODUCT DESIGN ></p>
               </div>
             </div>
           </div>
