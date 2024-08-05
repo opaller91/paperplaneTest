@@ -57,7 +57,7 @@ function Home() {
   };
 
   return (
-    <div className="bg-black text-white font-montserrat" style={{ padding: '5px', width: '100vw' }}>
+    <div className="bg-black text-white font-montserrat top-0" style={{ width: '1920px'}}>
       <Carousel className="custom-carousel">
         {images.map((image, index) => (
           <Carousel.Item key={index}>
@@ -65,7 +65,7 @@ function Home() {
               src={image}
               alt={`Slide ${index + 1}`}
               className='home-header-image'
-              style={{ width: '100%', objectFit: 'cover' }}
+              style={{ width: '1920px', height: '1079px', objectFit: 'cover' }}
             />
           </Carousel.Item>
         ))}

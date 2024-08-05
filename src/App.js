@@ -34,7 +34,7 @@ function AppContent() {
           <Route path="/contact-us" element={<ContactUs />} />
         </Routes>
       </div>
-      <Footer />
+      <Footer handleFilterClick={handleFilterClick}/>
     </div>
   );
 }

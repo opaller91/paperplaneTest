@@ -1,7 +1,15 @@
-import React from 'react';
+import React, {  useState, useEffect } from 'react';
+import { Link} from 'react-router-dom';
 import './Footer.css';
 
-function Footer() {
+function Footer({ handleFilterClick }) {
+    const [activeFilter, setActiveFilter] = useState('All');
+
+    const handleFilterClickLocal = (filter) => {
+        setActiveFilter(filter);
+        handleFilterClick(filter);
+    };
+
     return (
         <footer className="p-5 footer bg-black text-white font-montserrat">
             <div className="mx-auto flex justify-between items-center py-8">
@@ -14,16 +22,16 @@ function Footer() {
                     <div className="footer-column">
                         <h4 className="font-bold mb-2">PROJECT</h4>
                         <ul>
-                            <li><a href="/architecture" className="no-underline hover:underline">Architecture</a></li>
-                            <li><a href="/interior" className="no-underline hover:underline">Interior</a></li>
-                            <li><a href="/object" className="no-underline hover:underline">Object</a></li>
+                            <li><Link to="/project"><button onClick={() => handleFilterClickLocal('Architecture')}>Architecture</button></Link></li>
+                            <li><Link to="/project"><button onClick={() => handleFilterClickLocal('Interior')} >Interior</button></Link></li>
+                            <li><Link to="/project"><button onClick={() => handleFilterClickLocal('Object')} >Object</button></Link></li>
                         </ul>
                     </div>
                     <div className="footer-column">
                         <h4 className="font-bold mb-2">STUDIO</h4>
                         <ul>
-                            <li><a href="/studio" className="no-underline hover:underline">About</a></li>
-                            <li><a href="/contact-us" className="no-underline hover:underline">Contact</a></li>
+                            <li><Link to="/studio" className="no-underline hover:underline">About</Link></li>
+                            <li><Link to="/contact-us" className="no-underline hover:underline">Contact</Link></li>
                         </ul>
                     </div>
                     <div className="footer-column">
