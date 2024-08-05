@@ -57,7 +57,7 @@ function Home() {
   };
 
   return (
-    <div className="bg-black text-white font-montserrat top-0" style={{ width: '1920px'}}>
+    <div className="bg-black text-white font-montserrat top-0 " style={{overflowX: 'hidden'}}>
       <Carousel className="custom-carousel">
         {images.map((image, index) => (
           <Carousel.Item key={index}>
