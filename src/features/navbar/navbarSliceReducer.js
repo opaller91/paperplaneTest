@@ -9,6 +9,7 @@ const initialState = {
       title: 'PROJECT',
       link: '/projects',
       projects: [
+        { title: '', link: '', width: '116px' },
         { title: 'All', link: '/projects', width: '50px' },
         { title: 'Architecture', link: '/projects/architecture', width: '136px' },
         { title: 'Interior', link: '/projects/interior', width: '88px' },
