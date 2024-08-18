@@ -61,9 +61,9 @@ function Career() {
     };
 
     return (
-        <div className="bg-black text-white font-montserrat min-h-screen min-w-screen p-5">
+        <div className="bg-black text-white font-montserrat min-h-screen min-w-screen p-14 mt-14">
             <div>
-                <div className="text-header leading-normal mb-4 left-aligned">
+                <div className="text-[36px] leading-normal mb-4 left-aligned">
                     <p className='mb-[-1px]'>We are constantly seeking talented designers</p>
                     <p className='mb-[-1px]'>join our team of innovative, ambitious, and</p>
                     <p className='mb-[-1px]'>vibrant designers</p>
@@ -127,8 +127,8 @@ function Career() {
                         </Col>
                     </Row>
                     <hr />
-                    <button type="submit" className=" float-end mt-4" variant="none">
-                        <span className="ml-6 btn-submit">SUBMIT ></span>
+                    <button type="submit" className="btn-submit float-end mt-4" variant="none">
+                        <span className="ml-6">SUBMIT</span><SlArrowRight className="icon-right" />
                     </button>
                 </form>
             </div>

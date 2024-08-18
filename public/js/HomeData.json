@@ -1,0 +1,13 @@
+{
+    "imageSlider": [
+        {
+            "img1" : "/images/home/Home.png"
+        },
+        {
+            "img2" : "/images/home/Home.png"
+        },
+        {
+            "img3" : "/images/home/Home.png"
+        }
+    ]
+}

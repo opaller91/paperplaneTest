@@ -77,6 +77,13 @@ input.form-control {
     border-radius: 0;
     /* Removes rounded corners */
     background-color: rgba(24, 24, 24, 255);
+    background-color: rgba(24, 24, 24, 1);
+    /* Dark grey with full opacity */
+    border: 1px solid rgba(24, 24, 24, 1);
+    /* Same color border to keep style consistent */
+    color: #fff;
+    /* White text */
+    outline: none;
 }
 
 .btn-upload,

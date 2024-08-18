@@ -1,6 +1,6 @@
 .custom-width {
-    flex: 0 0 23%;  /* Exact custom width if needed, matching the 'md={5}' setting */
-    max-width: 23%;
+    flex: 0 0 25%;  /* Exact custom width if needed, matching the 'md={5}' setting */
+    max-width: 25%;
 }
 
 .text-header {
@@ -9,29 +9,84 @@
 
 .image-container {
     display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding: 8px 0;
+    overflow-x: scroll; /* Allows horizontal scrolling */
+    overflow-y: hidden; /* Prevents vertical scrolling */
+    height: 810px; /* Set the fixed height */
+    white-space: nowrap; /* Ensures images stay on the same line */
 }
 
 .image-part {
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out, opacity 0.3s ease;
-    width: 700px;  /* Consistent width for all images */
-    height: auto;  /* Maintain aspect ratio */
-    margin-right: 4px;  /* Space between images */
+    object-fit: cover; /* Ensures images cover their allocated space without stretching */
+    margin-right: 20px; /* Add spacing between images if needed */
 }
 
-.image-part.focused {
-    transform: scale(1.1);  /* Slightly enlarge the focused image */
-    z-index: 10;  /* Ensure it's above others */
+.image-part.first {
+    width: 1055px;
+    height: 791px;
 }
 
-.image-part.dimmed {
-    opacity: 0.5;  /* Dim non-focused images */
+.image-part:nth-child(2) {
+    width: 445px;
+    height: 791px;
+}
+
+.image-part.last {
+    width: 445px;
+    height: 791px;
+}
+
+.underline-full {
+    width: 95%;
+    height: 1px;
+    background-color: white;
+    margin-top: 5px; /* Adjust as needed */
+    margin-bottom: 10px; /* Adjust as needed */
+    margin-left: 5%; /* This will push the underline to the right, leaving 10% space on the left */
+}
+
+.project-col {
+    margin-left: 5rem;
 }
 
 /* Responsive Media Queries */
+@media (max-width: 992px) { /* Adjustments for tablets and mobile phones */
+    .custom-width {
+        flex: 0 0 100%; /* Full width on small screens */
+        max-width: 100%;
+    }
+
+    .text-header {
+        font-size: 50px; /* Smaller font size for headers */
+        margin-left: 15px; /* Adjust alignment */
+    }
+
+    .form-label, .form-value {
+        font-size: 16px; /* Adjust font size for readability */
+    }
+
+    .image-part {
+        width: 100%; /* Full width within its container */
+    }
+
+    .form-with-divider::after {
+        width: 100%; /* Change divider to full width at the top */
+        height: 1px; /* Single pixel line */
+        top: 0; /* Align at the top */
+        left: 0; /* Start from the left */
+    }
+
+    .content-divider {
+        margin-top: 15px; /* Slightly less space on tablets */
+        padding-top: 15px;
+    }
+
+    .project-col {
+        flex: 0 0 100%; /* Full width on small screens */
+        max-width: 100%;
+        margin-left: 0;
+    }
+}
+
 @media (max-width: 768px) { /* Adjustments for tablets and mobile phones */
     .custom-width {
         flex: 0 0 100%; /* Full width on small screens */
@@ -62,6 +117,12 @@
         margin-top: 15px; /* Slightly less space on tablets */
         padding-top: 15px;
     }
+
+    .project-col {
+        flex: 0 0 100%; /* Full width on small screens */
+        max-width: 100%;
+        margin-left: 0;
+    }
 }
 
 @media (max-width: 576px) { /* Additional adjustments for very small devices */
@@ -87,7 +148,9 @@
         padding-top: 10px;
         border-top: none; /* Optional: Remove border if it clutters the design */
     }
+
+    .project-col {
+        flex: 0 0 100%; /* Full width on small screens */
+        max-width: 100%;
+    }
 }
-
-
-

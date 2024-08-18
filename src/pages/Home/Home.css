@@ -1,406 +1,85 @@
-.carousel .carousel-control-prev,
-.carousel .carousel-control-next {
-    display: none;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-10%);
-    width: auto;
-    height: auto;
-    z-index: 1;
-    color: #fff;
-    text-align: center;
-    background: transparent;
-    border: none;
+.header-text-section {
+    font-size: 74px;
 }
 
-.carousel .carousel-control-prev {
-    left: 20px;
+.studio-content {
+    font-size: 16px;
 }
 
-.carousel .carousel-control-next {
-    right: 20px;
+.focus-space {
+    margin-top: 453.4122px;
 }
 
-.carousel:hover .carousel-control-prev,
-.carousel:hover .carousel-control-next {
-    display: block;
+.focus-border {
+    border-style: visible;
 }
 
-.carousel .carousel-control-prev-icon,
-.carousel .carousel-control-next-icon {
-    background-color: transparent;
-    /* Transparent background */
+.flex-col-direction {
+    flex-direction: column;
 }
 
-.home-header-image {
-    height: 1079px;
+.flex-row-direction {
+    flex-direction: row;
 }
 
-.home-header {
-    font-size: 72px;
-}
+@media (max-width: 1774px) {
 
-.text-center {
-    text-align: center;
-}
-
-.text-xl {
-    font-size: 1.25rem;
-}
-
-.font-light {
-    font-weight: 300;
-}
-
-.font-montserrat {
-    font-family: 'Montserrat', sans-serif;
-}
-
-.button-container-home {
-    text-align: left;
-    /* Align the button to the left */
-}
-
-.btn-submit-home {
-    background-color: transparent;
-    border: none;
-    color: white;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-}
-
-.btn-submit-home .btn-text-home {
-    text-decoration: none;
-}
-
-.btn-submit-home .btn-text-home:hover,
-.btn-submit-home .btn-text-home:focus {
-    text-decoration: underline;
-}
-
-.icon-right {
-    margin-left: 8px;
-}
-
-.scrolling-logos {
-    overflow: hidden;
-    white-space: nowrap;
-}
-
-.logos-container {
-    display: inline-block;
-    animation: scroll 40s linear infinite;
-}
-
-.logo-image {
-    height: 100px;
-    margin: 0 15px;
-    /* Standard margin for logos */
-    vertical-align: middle;
-}
-
-.logo-image-extra-space {
-    margin: 0 90px;
-    /* Extra margin for specific logos */
-}
-
-.horizontal-logos {
-    display: flex;
-    justify-content: flex-start;
-    /* Align items at the start of the container */
-    align-items: center;
-    flex-wrap: nowrap;
-    /* Prevent wrapping */
-    padding: 20px 0;
-    overflow-x: auto;
-    /* Enable horizontal scrolling */
-}
-
-.home-divider {
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    /* Ensure responsive wrapping */
-}
-
-.home-divider::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    /* Set the divider at 35% */
-    top: 30px;
-    /* Add top margin */
-    bottom: 10px;
-    /* Add bottom margin */
-    width: 1px;
-    background-color: black;
-    display: block;
-    /* Show divider */
-}
-
-.custom-width-left {
-    flex: 0 0 50%;
-    /* 35% width */
-    max-width: 50%;
-}
-
-.custom-width-right {
-    flex: 0 0 50%;
-    /* Remaining space */
-    max-width: 50%;
-}
-
-.content-divider {
-    border-top: 1px solid black;
-}
-
-.content-right {
-    margin-left: 10px;
-    margin-top: 10px;
-}
-
-@keyframes scroll {
-    0% {
-        transform: translateX(100%);
+    .header-text-section {
+        font-size: 50px;
     }
 
-    100% {
-        transform: translateX(-100%);
-    }
-}
-
-.focus-images .focus-image {
-    position: relative;
-    margin-bottom: 20px;
-}
-
-.focus-images .focus-image img {
-    max-width: 379.86px;
-    /* Set the width */
-    max-height: 379.86px;
-    /* Set the height */
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.focus-image a {
-    text-decoration: none;
-    color: inherit;
-    position: relative;
-}
-
-
-.focus-link {
-    text-decoration: none;
-    color: inherit;
-    position: relative;
-}
-
-.focus-link p {
-    display: inline-block;
-    position: relative;
-    z-index: 1;
-}
-
-.focus-link p::after {
-    content: '';
-    position: absolute;
-    width: calc(100% - 20px);
-    /* Adjust the width to end at the ">" */
-    transform: scaleX(0);
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: currentColor;
-    transform-origin: bottom right;
-    transition: transform 0.25s ease-out;
-}
-
-.focus-link:hover p::after,
-.focus-link:active p::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-}
-
-.update-section {
-    padding: 10px;
-}
-
-.instagram-handle {
-    display: block;
-    font-size: 24px;
-    margin-top: 10px;
-    text-decoration: underline;
-    color: white;
-}
-
-.instagram-modal {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    right: auto;
-    bottom: auto;
-    transform: translate(-50%, -50%);
-    background: white;
-    padding: 20px;
-    max-width: 500px;
-    width: 100%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    outline: none;
-}
-
-.instagram-modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.75);
-}
-
-.instagram-modal-content {
-    text-align: center;
-}
-
-.instagram-modal-image {
-    max-width: 100%;
-    height: auto;
-}
-
-.instagram-modal-content p {
-    margin-top: 20px;
-    font-size: 1rem;
-}
-
-.instagram-modal-content button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .home-header {
-        font-size: 2.5rem;
+    .studio-content { 
+        font-size: 14px;
     }
 
-    .text-xl {
-        font-size: 1rem;
+    .focus-space {
+        margin-top: 50px;
     }
 
-    .btn-submit {
-        font-size: 0.875rem;
-    }
 
-    .instagram-handle {
-        font-size: 1.5rem;
-    }
-
-    .focus-images .focus-image img {
-        max-width: 100px;
-        /* Set the width */
-        max-height: 100px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .home-divider {
-        flex-direction: column;
-    }
-
-    .custom-width-left,
-    .custom-width-right {
-        flex: 0 0 100%;
-        max-width: 100%;
-    }
-
-    .home-divider::after {
-        left: 50%;
-        top: 10px;
-        bottom: 10px;
-    }
-
-    .content-right {
-        margin-left: 0px;
-        margin-top: 0px;
-    }
 }
 
-/* Responsive Design for small devices */
+@media (max-width: 992px) {
+
+    .header-text-section {
+        font-size: 30px;
+    }
+
+    .studio-content { 
+        font-size: 10px;
+    }
+
+    .focus-space {
+        margin-top: 50px;
+    }
+
+
+}
+
 @media (max-width: 576px) {
-    .home-header-image {
-        height: auto;
+
+    .header-text-section {
+        font-size: 30px;
     }
 
-    .home-header {
-        font-size: 2rem;
+    .studio-content { 
+        font-size: 10px;
     }
 
-    .text-xl {
-        font-size: 1rem;
+    .focus-space {
+        margin-top: 50px;
+    }
+    
+    .focus-border {
+        border-style: hidden;
     }
 
-    .btn-submit {
-        font-size: 0.875rem;
+    .flex-col-direction {
+        flex-direction: row;
     }
-
-    .instagram-handle {
-        font-size: 1.25rem;
-    }
-
-    .focus-images .focus-image img {
-        max-width: 350px;
-        /* Set the width */
-        max-height: 250px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .home-divider {
+    
+    .flex-row-direction {
         flex-direction: column;
-        position: relative;
-        display: flex;
-        flex-wrap: wrap;
     }
 
-    .custom-width-left,
-    .custom-width-right {
-        flex: 0 0 100%;
-        max-width: 100%;
-    }
-
-    .home-divider::after {
-        display: none;
-    }
-
-    .text-header {
-        text-align: center;
-    }
-
-    .update-section .text-header {
-        font-size: 2rem;
-    }
-
-    .content-divider {
-        margin-top: 20px;
-    }
-
-    .instagram-modal {
-        width: 90%;
-    }
-
-    .content-right {
-        margin-left: 0px;
-        margin-top: 0px;
-    }
 }

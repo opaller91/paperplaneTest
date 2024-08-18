@@ -1,90 +1,236 @@
-/* App.css */
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-.App {
-  text-align: center;
+html {
+  scroll-behavior: smooth;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+:root {
+  --primary: white;
+  --secondary: black;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary) var(--primary);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 15px;
 }
 
-.App-link {
-  color: #61dafb;
+*::-webkit-scrollbar-track {
+  background: var(--primary);
+  border-radius: 5px;
 }
 
-@keyframes App-logo-spin {
+*::-webkit-scrollbar-thumb {
+  background-color: var(--secondary);
+  border-radius: 14px;
+  border: 3px solid var(--primary);
+}
+
+/* Left Arrow Effect */
+@keyframes slideAnimationLeftOut {
   from {
-    transform: rotate(0deg);
+    transform: translateX(0%);
   }
   to {
-    transform: rotate(360deg);
+    transform: translateX(-40%);
   }
 }
 
-.ProjectDetail {
-  display: flex; /* Establishes a flex container */
-  flex-wrap: nowrap; /* Prevents items from wrapping */
-  overflow-x: auto; /* Enables horizontal scrolling */
-  align-items: center; /* Centers items vertically */
-  padding: 20px; /* Adds padding around the content */
-}
-
-.project-item {
-  min-width: 600px; /* Ensures a minimum width for each item */
-  margin-right: 10px; /* Adds space between items */
-}
-
-@keyframes fadeIn {
-  from {
-      opacity: 0;
-  }
-  to {
-      opacity: 1;
-  }
-}
-
-.fade-in {
-  animation: fadeIn 1s ease-out forwards;
-}
-
-.fade-in-right {
-  opacity: 0;
-  transform: translateX(100%);
-  transition: transform 0.8s ease-out, opacity 0.8s ease-out;
-}
-
-.fade-in-right.visible {
-  transform: translateX(0%);
+.group:hover .hover-slide-left-arrow {
+  animation: slideAnimationLeftOut 0.3s forwards;
   opacity: 1;
 }
 
-/* Ensure content starts below the navbar on non-home pages */
-.content-below-navbar {
-  margin-top: 64px; /* Adjust this value to match the height of your navbar */
+/* Right Arrow Effect */
+@keyframes slideAnimationRightOut {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(40%);
+  }
 }
 
-.main-content {
-  padding: 20px; /* Add padding around the main content */
+.group:hover .hover-slide-right-arrow {
+  animation: slideAnimationRightOut 0.5s forwards;
+  opacity: 1;
+}
+
+.hover-slide-left-arrow,
+.hover-slide-right-arrow {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+/* Navber */
+.navbar-black-bg {
+  position: absolute;
+  inset: 0;
+  background-color: black;
+  
+}
+
+.navbar-black-sub-bg {
+  background-color: black;
+}
+
+.navbar-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, black, transparent);
+  
+}
+
+.navbar-content {
+  position: relative;
+  z-index: 10;
+  font-size: large;
+}
+
+.search-text {
+  font-size: large;
+}
+
+.space-control {
+  margin-left: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1086px) {
+  .navbar-content {
+    position: relative;
+    z-index: 10;
+    font-size: 14px;
+  }
+
+  .search-text {
+    font-size: 14px;
+  }
+
+  .space-control {
+    margin-left: 0px;
+  }
+}
+
+@media (max-width: 953px) {
+  .ham {
+    visibility: hidden;
+  }
+
+  .logo {
+    height: 40px;
+    width: 30px;
+  }
+}
+
+.transition-effect {
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.transition-effect::before {
+  content: '';
+  position: absolute;
+  background: white;
+  height: 2px;
+  width: 0;
+  left: 0;
+  bottom: 0;
+  top: 25px;
+  transition: width 0.7s ease-in-out;
+}
+
+.transition-effect:hover::before {
+  width: var(--transition-width, 52px);
+}
+
+/* Next Slide Animations */
+.slide-animation-out-next {
+  animation: slideAnimationOutNext 0.7s ease-in-out forwards;
+}
+
+@keyframes slideAnimationOutNext {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.slide-animation-in-next {
+  animation: slideAnimationInNext 0.7s ease-in-out forwards;
+}
+
+@keyframes slideAnimationInNext {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+/* Previous Slide Animations */
+.slide-animation-in-prev {
+  animation: slideAnimationInPrev 0.7s ease-in-out forwards;
+}
+
+@keyframes slideAnimationInPrev {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+.slide-animation-out-prev {
+  animation: slideAnimationOutPrev 0.7s ease-in-out forwards;
+}
+
+@keyframes slideAnimationOutPrev {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+
+/* Logo Carousel */
+
+@keyframes slide-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-slide-left-infinite {
+  animation: slide-left 20s linear infinite;
+}
+
+
+.mask-gradient {
+  mask-image: linear-gradient(to right, transparent 0, white 128px, white calc(100% - 128px), transparent 100%);
+}
+
+.home-card {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  transition: transform 0.5s ease-out;
 }

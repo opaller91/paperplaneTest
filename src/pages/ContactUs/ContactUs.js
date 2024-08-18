@@ -2,16 +2,14 @@ import React from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import './ContactUs.css';
 import { SlArrowRight } from "react-icons/sl";
-import { CiPhone, CiMail } from "react-icons/ci"; // Import the header image
+import { CiPhone } from "react-icons/ci";
+import { CiMail } from "react-icons/ci"; // Import the header image
 
 function ContactUs() {
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        // handle form submission
-    };
+    const handleSubmit = (event) => { };
 
     return (
-        <div className="bg-black text-white font-montserrat min-h-screen min-w-screen p-5">
+        <div className="bg-black text-white font-montserrat min-h-screen min-w-screen p-5 mt-10">
             <div>
                 <div className="text-header mb-4 left-aligned">
                     <label>PAPER PLANE PROJECT STUDIO CO, LTD.</label>
@@ -84,9 +82,12 @@ function ContactUs() {
                                     <textarea type="text" className="form-control ml-4" style={{ height: '176.61px' }} id="tellUs" name="tellUs" />
                                 </Col>
                             </Row>
-                            <button type="submit" className="float-end mt-7" variant="none">
-                                <span className="btn-submit ml-6 mb-3">SUBMIT ></span>
-                            </button>
+                            {/* Right-aligned and vertically centered submit button */}
+                            <div className="d-flex justify-content-end align-items-center" style={{ height: '50px' }}>
+                                <button type="submit" className="btn-submit" variant="none">
+                                    <span className="ml-6">SUBMIT</span><SlArrowRight className="icon-right" />
+                                </button>
+                            </div>
                         </Col>
                     </Row>
                     <hr />

@@ -37,7 +37,7 @@ function Navbar({ handleFilterClick }) {
                 <img src="/images/navbar/logo/logo-white.png" alt="Paper Plane Logo" className="navbar-logo" />
                 {(isMenuOpen && location.pathname != '/project') && (
                     <ul className={`flex flex-row items-center justify-center mt-3 space-x-4 ${navbarStyle.textColor} ${animationClass}`}>
-                        <li><Link to="/" className={`no-underline hover:underline ${navbarStyle.textColor}`}>HOME</Link></li>
+                        <li><Link to="/home" className={`no-underline hover:underline ${navbarStyle.textColor}`}>HOME</Link></li>
                         <li><Link to="/project" className={`no-underline hover:underline ${navbarStyle.textColor}`}>PROJECT</Link></li>
                         <li><Link to="/studio" className={`no-underline hover:underline ${navbarStyle.textColor}`}>STUDIO</Link></li>
                         <li><Link to="/career" className={`no-underline hover:underline ${navbarStyle.textColor}`}>CAREER</Link></li>
@@ -47,7 +47,7 @@ function Navbar({ handleFilterClick }) {
                 {(location.pathname === '/project' && isMenuOpen) && (
                     <div className="flex flex-col items-center mt-3">
                         <ul className={`flex flex-row items-center justify-center space-x-4 ${navbarStyle.textColor} ${animationClass}`}>
-                            <li><Link to="/" className={`no-underline hover:underline ${navbarStyle.textColor}`}>HOME</Link></li>
+                            <li><Link to="/home" className={`no-underline hover:underline ${navbarStyle.textColor}`}>HOME</Link></li>
                             <li><Link to="/project" className={`no-underline hover:underline ${navbarStyle.textColor}`}>PROJECT</Link></li>
                             <li><Link to="/studio" className={`no-underline hover:underline ${navbarStyle.textColor}`}>STUDIO</Link></li>
                             <li><Link to="/career" className={`no-underline hover:underline ${navbarStyle.textColor}`}>CAREER</Link></li>

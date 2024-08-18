@@ -1,42 +1,53 @@
-import React, {  useState, useEffect } from 'react';
-import { Link} from 'react-router-dom';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { filterProjectsByType, resetFilter } from '../features/work-projects/projectSliceReducer';
+import { setActiveButtons } from '../features/navbar/navbarSliceActions';
+import { useNavigate } from 'react-router-dom';
 import './Footer.css';
 
-function Footer({ handleFilterClick }) {
-    const [activeFilter, setActiveFilter] = useState('All');
+function Footer() {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-    const handleFilterClickLocal = (filter) => {
-        setActiveFilter(filter);
-        handleFilterClick(filter);
+    const handleFilterClick = (type) => {
+        dispatch(setActiveButtons(type));
+
+        if (type === 'All') {
+            dispatch(resetFilter());
+            navigate('/projects');
+        } else {
+            dispatch(filterProjectsByType(type));
+            navigate(`/projects/${type.toLowerCase()}`);
+        }
     };
 
     return (
-        <footer className="p-5 footer bg-black text-white font-montserrat">
-            <div className="mx-auto flex justify-between items-center py-8">
+        <footer className="footer bg-black font-montserrat font-normal text-lg tracking-wide text-white p-14">
+            <div className="container mx-auto flex justify-between items-center py-8">
                 <div className="footer-logo">
                     <img src="/images/navbar/logo/logo-white.png" alt="Paper Plane Logo" className="h-12" />
                     <p className="mt-2">PAPER PLANE PROJECT STUDIO</p>
-                    <p>© 2024 Paper Plane Project Studio. All Rights Reserved.</p>
+                    <p className="text-[14px]" style={{ opacity: 0.75 }}>© 2024 Paper Plane Project Studio. All Rights Reserved.</p>
                 </div>
-                <div className="footer-links flex justify-between w-1/2">
+                <div className="footer-links  text-[16px] flex justify-between w-1/2">
                     <div className="footer-column">
-                        <h4 className="font-bold mb-2">PROJECT</h4>
-                        <ul>
-                            <li><Link to="/project"><button onClick={() => handleFilterClickLocal('Architecture')}>Architecture</button></Link></li>
-                            <li><Link to="/project"><button onClick={() => handleFilterClickLocal('Interior')} >Interior</button></Link></li>
-                            <li><Link to="/project"><button onClick={() => handleFilterClickLocal('Object')} >Object</button></Link></li>
+                        <h4 className="mb-2 list-none"><li><a href="#" onClick={() => handleFilterClick('All')} className="no-underline ">PROJECT</a></li></h4>
+                        <ul className="mt-4">
+                            <li><a href="#" onClick={() => handleFilterClick('Architecture')} className="no-underline hover:underline">Architecture</a></li>
+                            <li><a href="#" onClick={() => handleFilterClick('Interior')} className="no-underline hover:underline">Interior</a></li>
+                            <li><a href="#" onClick={() => handleFilterClick('Object')} className="no-underline hover:underline">Object</a></li>
                         </ul>
                     </div>
                     <div className="footer-column">
-                        <h4 className="font-bold mb-2">STUDIO</h4>
-                        <ul>
-                            <li><Link to="/studio" className="no-underline hover:underline">About</Link></li>
-                            <li><Link to="/contact-us" className="no-underline hover:underline">Contact</Link></li>
+                        <h4 className="mb-2 list-none"><li><a href="/studio" className="no-underline ">STUDIO</a></li></h4>
+                        <ul className="mt-4">
+                            <li><a href="/studio" className="no-underline hover:underline">About</a></li>
+                            <li><a href="/contact-us" className="no-underline hover:underline">Contact</a></li>
                         </ul>
                     </div>
                     <div className="footer-column">
-                        <h4 className="font-bold mb-2">MEDIA</h4>
-                        <ul>
+                        <h4 className="mb-2">MEDIA</h4>
+                        <ul className="mt-4">
                             <li><a href="https://instagram.com" target="_blank" className="no-underline hover:underline">Instagram</a></li>
                             <li><a href="https://linkedin.com" target="_blank" className="no-underline hover:underline">LinkedIn</a></li>
                         </ul>

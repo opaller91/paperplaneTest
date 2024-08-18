@@ -1,193 +1,134 @@
-import React, { useEffect, useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useEffect, useRef, useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectedScrollPosition, selectedTotalHeight } from '../../features/home-slice/homeSliceSelectors';
+import { setScrollPosition, setTotalHeight } from '../../features/home-slice/homeSliceActions';
+import ImageCarousel from '../../components/Home/ImageCarousel';
+import LogoCarousel from '../../components/Home/LogoCarousel';
+import WorkTypeGrid from '../../components/Home/WorkTypeGrid';
+import InstaPictureSlice from '../../components/Home/InstaPictureSlice';
+import { IoIosArrowForward } from 'react-icons/io';
 import './Home.css';
-import { Carousel } from 'react-bootstrap';
-import { SlArrowRight } from "react-icons/sl";
-import Modal from 'react-modal';
 
-function Home() {
-  const [focusedImage, setFocusedImage] = useState(null); // State to track focused image
+const Home = () => {
+  const dispatch = useDispatch();
+  const imageCarouselRef = useRef(null); // Reference for Image Carousel section
+  const homeRef = useRef(null);
+  const hasScrolled = useRef(false); // Track if we've already scrolled
 
-  // Array of image sources
-  const images = [
-    '/assets/images/HomeHeaderPic1.png',
-    '/assets/images/HomeHeaderPic2.png',
-    '/assets/images/HomeHeaderPic3.png',
-    '/assets/images/PaperPlaneProject.png'
-  ];
+  const handleScroll = useCallback(() => {
+    dispatch(setScrollPosition(window.scrollY));
 
-  // Function to handle image click
-  const handleImageClick = (index) => {
-    // Toggle focus on and off
-    if (focusedImage === index) {
-      setFocusedImage(null); // Clicking the same image will remove focus
-    } else {
-      setFocusedImage(index); // Focus on clicked image
+    const imageCarouselBottom = imageCarouselRef.current?.offsetTop + imageCarouselRef.current?.offsetHeight || 0;
+
+    if (!hasScrolled.current && window.scrollY >= 10 && window.scrollY < imageCarouselBottom) {
+      window.scrollTo({ top: imageCarouselBottom, behavior: 'smooth' });
+      hasScrolled.current = true;
+    } else if (window.scrollY <= 10) {
+      hasScrolled.current = false;
     }
-  };
+  }, [dispatch]);
 
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [selectedPost, setSelectedPost] = useState(null);
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [handleScroll]);
 
-  // Mock data for Instagram posts
-  const instagramPosts = [
-    {
-      url: '/assets/images/InstagramImage1.jpg',
-      caption: 'This is the caption for Instagram Image 1',
-    },
-    {
-      url: '/assets/images/InstagramImage2.jpg',
-      caption: 'This is the caption for Instagram Image 2',
-    },
-    {
-      url: '/assets/images/InstagramImage3.jpg',
-      caption: 'This is the caption for Instagram Image 3',
-    },
-  ];
-
-  const openModal = (post) => {
-    setSelectedPost(post);
-    setModalIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalIsOpen(false);
-    setSelectedPost(null);
-  };
+  useEffect(() => {
+    if (homeRef.current) {
+      const homeHeight = homeRef.current.offsetHeight;
+      dispatch(setTotalHeight(homeHeight));
+    }
+  }, [dispatch]);
 
   return (
-    <div className="bg-black text-white font-montserrat top-0 " style={{overflowX: 'hidden'}}>
-      <Carousel className="custom-carousel">
-        {images.map((image, index) => (
-          <Carousel.Item key={index}>
-            <img
-              src={image}
-              alt={`Slide ${index + 1}`}
-              className='home-header-image'
-              style={{ width: '1920px', height: '1079px', objectFit: 'cover' }}
-            />
-          </Carousel.Item>
-        ))}
-      </Carousel>
-      <div className='ml-10 mt-10'>
-        <h1 className='home-header'>PAPER PLANE PROJECT STUDIO</h1>
-        <div style={{ height: "300px" }}></div>
-        <hr></hr>
-        <p className="text-xl font-light mt-10">
-          Paper Plane Project Studio is a renowned design firm headquartered in Bangkok,<br />
-          specialising in architecture, interior, furniture, and product design for the hospitality<br />
-          industry. At Paper Plane Project Studio, our commitment lies in translating vision<br />
-          into reality with seamless execution.
-        </p>
-        <div className="button-container-home">
-          <Link to="/studio" className="btn-submit-home mt-8">
-            <span className="btn-text-home">STUDIO</span><SlArrowRight className="icon-right" />
-          </Link>
-        </div>
+    <div ref={homeRef} className="relative overflow-hidden">
+
+      {/* Image Carousel SECTION */}
+      <div className="relative" ref={imageCarouselRef}>
+        <ImageCarousel />
       </div>
-      <div className="scrolling-logos mt-10">
-        <div className="horizontal-logos logos-container">
-          {[
-            { src: '/images/LogoCompany/TichucaLogo.png' },
-            { src: '/images/LogoCompany/PaperPlaneProjectLogo.png' },
-            { src: '/images/LogoCompany/GirLogo.png' },
-            { src: '/images/LogoCompany/LloydClubLogo.png' },
-            { src: '/images/LogoCompany/TahonaLogo.png' },
-            { src: '/images/LogoCompany/UnknownLogo.png' },
-            { src: '/images/LogoCompany/PeaPalLogo.png' },
-            { src: '/images/LogoCompany/FicoLogo.png' }
-          ].map((logo, index) => (
-            <img
-              key={index}
-              src={logo.src}
-              alt={`Logo ${index}`}
-              className={`logo-image ${logo.extraSpace ? 'logo-image-extra-space' : ''}`}
-            />
-          ))}
-        </div>
-      </div>
-      <div style={{ height: "100px" }}></div>
-      <div className="bg-white text-black font-montserrat">
-        <div className='home-divider'>
-          <div className="custom-width-left">
-            <h1 className="text-header ml-10 mt-10" style={{ fontSize: '72px' }}>
-              FOCUS AREA
-            </h1>
-            <div style={{ height: '226px' }}></div>
-            <div className="content-divider ml-10">
-              <div className="mt-10">
-                <p>Our team comprises specialized designers with profound expertise in architecture, interior</p>
-                <p>design, and industrial design. We harness our extensive expertise to curate exceptional</p>
-                <p>experiences, employing meticulous and detail-oriented approach to design.</p>
+
+      {/* PAPER PLANE PROJECT STUDIO SECTION */}
+      <div className="relative mt-20 p-14 bg-black text-white">
+        <div className="flex flex-col items-left">
+          <div className="flex-1">
+            <h2 className="header-text-section font-montserrat">PAPER PLANE PROJECT STUDIO</h2>
+            <div style={{ marginTop: '240.2702px' }} />
+            <div className="mt-64 border-t border-white" />
+            <div className="py-[38px]">
+              <div className="font-montserrat font-normal studio-content leading-[1.5] tracking-widest text-white">
+                <p>Paper Plane Project Studio is a reknowned design firm headquartered in Bangkok,</p>
+                <p>specializing in architecture, interior, furniture, and product design for the hospitality</p>
+                <p>industry. At Paper Plane Project Studio, our commitment lies in translating vision</p>
+                <p>into reality with seamless execution.</p>
               </div>
             </div>
-            <div style={{ height: "200px" }}></div>
+            <a href="/studio" className="font-montserrat font-medium no-underline studio-content text-white">
+              <div className="flex flex-col">
+                <div className="flex items-center">
+                  <span>STUDIO</span>
+                  <IoIosArrowForward size={14} className="ml-2" />
+                </div>
+                <div className="w-[5.75rem] border-t border-white" />
+              </div>
+            </a>
+            <div style={{ marginTop: '120px' }} />
+            <LogoCarousel />
           </div>
-          <div className="custom-width-right focus-images">
-            <div className="row content-right">
-              <div className="col-md-6 mb-3">
-                <div className="focus-image">
-                  <Link to="/project?category=Architecture" className="focus-link">
-                    <img src="/assets/images/TichucaH.png" alt="Architectural Design" />
-                    <p>ARCHITECTURAL DESIGN ></p>
-                  </Link>
-                </div>
-              </div>
-              <div className="col-md-6 mb-3">
-                <div className="focus-image">
-                  <Link to="/project?category=Interior" className="focus-link">
-                    <img src="/assets/images/PaperH.png" alt="Interior Design" />
-                    <p>INTERIOR DESIGN ></p>
-                  </Link>
-                </div>
-              </div>
-              <div className="col-md-12">
-                <div className="focus-image">
-                  <Link to="/project?category=Object" className="focus-link">
-                    <img src="/assets/images/SanctuaryH.png" alt="Product Design" />
-                    <p>PRODUCT DESIGN ></p>
-                  </Link>
-                </div>
-              </div>
+        </div>
+      </div>
+
+      {/* FOCUS AREA SECTION */}
+      <div className="relative mt-20 p-14 bg-white text-black">
+        <div className="flex flex-row-direction">
+          {/* Left Content - Text */}
+          <div className="flex-1">
+            <h2 className="header-text-section font-montserrat">FOCUS AREA</h2>
+            <div className='focus-space' />
+            <div className='relative basis-[58%] border-b border-black' />
+            <div className="mt-[38px] font-montserrat font-normal studio-content leading-[1.5] tracking-widest text-black">
+              <p>Our team comprises specialized designers with profound expertise in architecture, interior</p>
+              <p>design, and industrial design. We harness our extensive expertise to curate exceptional</p>
+              <p>experiences, employing meticulous and detail-oriented approach to design.</p>
             </div>
           </div>
+
+          {/* Right Content - WorkTypeGrid (Images) */}
+          <div className="flex-1 flex flex-col space-y-8 mt-8 relative h-full border-l border-black md:mt-0 focus-border">
+            <WorkTypeGrid />
+          </div>
         </div>
       </div>
-      <div className="bg-black text-white font-montserrat">
-        <div className='update-section ml-10 '>
-          <h1 className="text-header mt-10" style={{ fontSize: '72px' }}>
-            OUR LASTEST UPDATE
-          </h1>
-          <a href="https://www.instagram.com/paperplaneproject.studio" target="_blank" rel="noopener noreferrer" className="instagram-handle">@paperplaneproject.studio ></a>
-          <div className="row mt-10">
-            {instagramPosts.map((post, index) => (
-              <div className="col-md-4 mb-3" key={index} onClick={() => openModal(post)}>
-                <div className="focus-image">
-                  <img src={post.url} alt={`Instagram Post ${index + 1}`} />
+
+
+      {/* OUR LATEST UPDATE SECTION */}
+      <div className="relative mt-20 p-14 bg-black text-white">
+        <div className="flex flex-col items-left">
+          <h2 className="header-text-section font-montserrat">OUR LATEST UPDATE</h2>
+          <div className="mt-3 mb-[4.5rem]">
+            <a
+              href="https://www.instagram.com/paperplaneproject.studio/"
+              className="font-sans font-medium no-underline text-[16px] text-white"
+            >
+              <div className="flex flex-col">
+                <div className="flex items-center border-white">
+                  <span>@paperplaneproject.studio</span>
+                  <IoIosArrowForward size={15} className="ml-2" />
                 </div>
+                <div className="w-[14rem] border-t border-white mt-1" />
               </div>
-            ))}
+            </a>
+          </div>
+          <div className="mt-4">
+            <InstaPictureSlice />
           </div>
         </div>
       </div>
-      {selectedPost && (
-        <Modal
-          isOpen={modalIsOpen}
-          onRequestClose={closeModal}
-          contentLabel="Instagram Post"
-          className="instagram-modal"
-          overlayClassName="instagram-modal-overlay"
-        >
-          <div className="instagram-modal-content">
-            <img src={selectedPost.url} alt="Instagram Post" className="instagram-modal-image" />
-            <p>{selectedPost.caption}</p>
-            <button onClick={closeModal}>Close</button>
-          </div>
-        </Modal>
-      )}
+
     </div>
   );
-}
+};
 
 export default Home;

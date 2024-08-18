@@ -2,32 +2,42 @@
     position: relative;
     display: flex;
     flex-wrap: wrap; /* Ensure responsive wrapping */
+    padding-bottom: 20px; /* Add padding to separate content */
 }
 
 .studio-divider::after {
     content: "";
     position: absolute;
-    left: 50%;  /* Set the divider at 35% */
+    left: 41%;  /* Set the divider at 40.5% */
     top: 0;
     bottom: 0;
-    width: 2px;
-    background-color: #ccc;
+    width: 1px;
+    background-color: white; /* Set divider color to white */
     display: block; /* Show divider */
 }
 
-.studio-image {
-    width: 949.39px;
-    height: 865.48px
-}
-
 .custom-width-left {
-    flex: 0 0 50%; /* 35% width */
-    max-width: 50%;
+    padding-right: 20px; /* Adjust padding if necessary */
 }
 
 .custom-width-right {
-    flex: 0 0 50%; /* Remaining space */
-    max-width: 50%;
+    padding-left: 20px; /* Adjust padding if necessary */
+}
+
+.studio-image {
+    width: 100%;
+    height: 100%;
+    max-width: 949px;
+    max-height: 865.4767px; /* Maintain aspect ratio */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.studio-image img {
+    width: 100%;
+    height: 100%; /* Maintain aspect ratio */
+    object-fit: cover;
 }
 
 .text-header {
@@ -36,23 +46,66 @@
 }
 
 .studio-content-divider {
-    border-top: 1px solid #ccc;
+    border-top: 1px solid white; /* Set border color to white */
     margin-top: 20px;
     padding-top: 20px;
 }
 
-@media (max-width: 767px) {
+.studio-space {
+    height: 226px;
+}
+
+@media (max-width: 992px) { /* For screens less than 992px (tablets) */
+    .text-header {
+        font-size: 48px; /* Smaller font size for tablets */
+    }
+    .studio-divider::after {
+        visibility: hidden;
+    }
+    .studio-image {
+        max-width: 80%; /* Scale down image for tablets */
+    }
+
+    .studio-space {
+        height: 100px;
+    }
+}
+
+@media (max-width: 767px) { /* For screens less than 767px (small devices) */
     .studio-divider::after {
         display: none; /* Hide divider on smaller screens */
     }
     .text-header {
         font-size: 36px; /* Smaller font size for mobile */
     }
+    .custom-width-left, .custom-width-right {
+        flex: 0 0 100%; /* Stack columns vertically on smaller devices */
+        max-width: 100%;
+    }
+    .studio-image {
+        max-width: 100%; /* Full width for smaller devices */
+        margin-top: 20px; /* Add space above image */
+    }
+
+    .studio-space {
+        height: 50px;
+    }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 576px) { /* For screens less than 576px (extra small devices) */
+    .text-header {
+        font-size: 32px; /* Even smaller font size for mobile */
+    }
     .custom-width-left, .custom-width-right {
-        flex: 0 0 100%; /* Stack columns vertically on very small devices */
-        max-width: 100%;
+        padding-left: 10px;
+        padding-right: 10px; /* Reduce padding on very small screens */
+    }
+    .studio-content-divider {
+        margin-top: 10px;
+        padding-top: 10px;
+    }
+
+    .studio-space {
+        height: 10px;
     }
 }
