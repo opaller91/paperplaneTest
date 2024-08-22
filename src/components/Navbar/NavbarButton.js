@@ -36,7 +36,7 @@ const NavbarButton = ({ button, activeButtons }) => {
             >
                 {button.title}
                 <div
-                    className={`${isActive ? 'border-b-2 border-white' : ''}`}
+                    className={`${isActive ? 'border-white' : ''}`}
                     style={{ width: button.width, pointerEvents: 'none' }}
                 />
             </a>

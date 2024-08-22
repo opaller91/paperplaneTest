@@ -61,7 +61,7 @@ function ProjectDetail() {
                 alt="Detail Image"
                 className="w-full h-auto object-cover"
             />
-            <div className='p-20 '>
+            <div className='p-14'>
                 <h1 className="text-header mb-3">
                     {displayName} {/* Display project name */}
                 </h1>
@@ -95,6 +95,15 @@ function ProjectDetail() {
                                 </Col>
                                 <div className="underline-full"></div>
                             </Row>
+                            <Row className="content-divider">
+                                <Col xs={4}>
+                                    <label htmlFor="photographer" className="form-label ml-4">Photographer</label>
+                                </Col>
+                                <Col xs={8} className="text-right">
+                                    <label htmlFor="photographer" className="form-label ml-4">{project.photographer}</label>
+                                </Col>
+                                <div className="underline-full"></div>
+                            </Row>
                         </Col>
                         <Col md={8} className="d-flex justify-content-start align-items-start project-col">
                             <Row className='mt-2'>
@@ -116,7 +125,7 @@ function ProjectDetail() {
 
                     <div style={{height: '121px'}}></div>
                     {/* Image Container */}
-                    <div className="image-container mt-5" onClick={handleContainerClick}>
+                    <div className="image-container scrollable-container mt-5" onClick={handleContainerClick}>
                         {images.map((src, index) => (
                             <img
                                 key={index}

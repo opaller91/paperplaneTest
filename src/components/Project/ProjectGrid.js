@@ -9,7 +9,7 @@ const WorkProjectGrid = () => {
   const navigate = useNavigate();
 
   const handleProjectClick = (project) => {
-    navigate(`/projects/detail/${project.name.replace(/ /g, '-').toLowerCase()}`, {
+    navigate(`/projects/detail/${project.displayname}`, {
       state: { project } // Pass the entire project object
     });
   };
@@ -31,7 +31,6 @@ const WorkProjectGrid = () => {
               />
               <div className="flex justify-between">
                 <span>{project.name}</span>
-                <span>{project.year}</span>
               </div>
             </div>
           </div>

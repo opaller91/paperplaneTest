@@ -102,6 +102,11 @@ html {
   margin-left: 1rem;
 }
 
+.logo {
+  height: 57.2032px;
+  width: 40.4467px;
+}
+
 /* Responsive Design */
 @media (max-width: 1086px) {
   .navbar-content {
@@ -141,16 +146,17 @@ html {
   position: absolute;
   background: white;
   height: 2px;
-  width: 0;
+  width: var(--underline-width, 0); /* Use --underline-width to control the width */
   left: 0;
   bottom: 0;
-  top: 25px;
   transition: width 0.7s ease-in-out;
 }
 
-.transition-effect:hover::before {
-  width: var(--transition-width, 52px);
+.transition-effect:hover::before,
+.transition-effect.active::before { /* Apply full width on hover or when active */
+  width: 100%;
 }
+
 
 /* Next Slide Animations */
 .slide-animation-out-next {

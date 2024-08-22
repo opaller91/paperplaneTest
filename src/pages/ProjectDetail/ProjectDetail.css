@@ -15,6 +15,12 @@
     white-space: nowrap; /* Ensures images stay on the same line */
 }
 
+.scrollable-container {
+    overflow: auto; /* Allows scrolling */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
 .image-part {
     object-fit: cover; /* Ensures images cover their allocated space without stretching */
     margin-right: 20px; /* Add spacing between images if needed */

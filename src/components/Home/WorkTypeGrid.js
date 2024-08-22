@@ -1,19 +1,19 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { filterProjectsByType, resetFilter } from '../../features/work-projects/projectSliceReducer';
-import { useSelector } from 'react-redux';
-import { selectWorktypeImages } from '../../features/work-types/worktypeSelectors';
+import { setActiveButton, toggleProjectContent, toggleMenu } from '../../features/navbar/navbarSliceReducer'; // Import toggleMenu
 import { IoIosArrowForward } from "react-icons/io";
+import { selectWorktypeImages } from '../../features/work-types/worktypeSelectors';
 import './HomeComponent.css';
 
 const WorkTypeGrid = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const worktypes = useSelector(selectWorktypeImages);
+  const isMenuOpen = useSelector((state) => state.navbar.isMenuOpen); // Get the menu open state
 
   const handleClick = (worktype) => {
-    // Determine the correct route and filter type
     let route = '';
     let filterType = '';
 
@@ -37,13 +37,16 @@ const WorkTypeGrid = () => {
         break;
     }
 
-    // Dispatch the filter action
-    if (filterType !== 'All') {
-      dispatch(filterProjectsByType(filterType));
+    // Ensure the menu is open first, then update the state
+    if (!isMenuOpen) {
+      dispatch(toggleMenu());
     }
-
-    // Navigate to the correct path
-    navigate(route);
+    dispatch(setActiveButton('PROJECT')); // Activate the PROJECT button in Navbar
+    if (filterType !== 'All') {
+      dispatch(setActiveButton(filterType)); // Activate the specific project type
+      dispatch(filterProjectsByType(filterType)); // Filter the projects based on the type
+    }
+    navigate(route); // Navigate to the appropriate route
   };
 
   return (
@@ -51,7 +54,7 @@ const WorkTypeGrid = () => {
       {worktypes.map((worktype, index) => (
         <div key={index} className="worktype-item">
           <div
-            onClick={() => handleClick(worktype)} // Handle click here
+            onClick={() => handleClick(worktype)}
             className="cursor-pointer font-montserrat font-semibold no-underline text-[16px] text-black"
           >
             <img src={worktype.image} alt={`Worktype ${index}`} className='worktype-image-size mb-3' />
@@ -60,7 +63,7 @@ const WorkTypeGrid = () => {
                 <span>{worktype.title}</span>
                 <IoIosArrowForward size={14} className="ml-2" />
               </div>
-              <div className={`border-t border-black ${worktype.title === 'ARCHITECTURAL DESIGN' ? 'w-[17rem]' : 'w-[14rem]'} worktype-border `} />
+              <div className={`border-t border-black ${worktype.title === 'ARCHITECTURAL DESIGN' ? 'w-[17rem]' : 'w-[14rem]'} worktype-border`} />
             </div>
           </div>
         </div>

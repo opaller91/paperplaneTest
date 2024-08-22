@@ -63,7 +63,7 @@ const navbarSlice = createSlice({
           state.isProjectContentVisible = true;
           state.activeButtons = ['PROJECT'];
         }
-      } else if (['STUDIO', 'CAREER', 'CONTACT'].includes(buttonTitle)) {
+      } else if (['STUDIO', 'CAREER', 'CONTACT', 'HOME'].includes(buttonTitle)) {
         state.isProjectContentVisible = false;
         state.activeButtons = [buttonTitle];
       } else if (state.isProjectContentVisible) {

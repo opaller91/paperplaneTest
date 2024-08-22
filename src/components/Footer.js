@@ -1,16 +1,33 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { filterProjectsByType, resetFilter } from '../features/work-projects/projectSliceReducer';
 import { setActiveButtons } from '../features/navbar/navbarSliceActions';
+import { toggleMenu } from '../features/navbar/navbarSliceReducer'; 
 import { useNavigate } from 'react-router-dom';
 import './Footer.css';
 
 function Footer() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const isMenuOpen = useSelector((state) => state.navbar.isMenuOpen); // Get the menu open state
+    const activeButtons = useSelector((state) => state.navbar.activeButtons);
 
     const handleFilterClick = (type) => {
         dispatch(setActiveButtons(type));
+        const isProjectActive = activeButtons.includes('PROJECT');
+
+        if (!isMenuOpen) {
+            dispatch(toggleMenu());
+        }
+
+        if (!isProjectActive) {
+            dispatch(setActiveButtons('PROJECT')); // Activate the PROJECT button in Navbar
+        }
+        
+        if (type !== 'All') {
+            dispatch(setActiveButtons(type)); // Activate the specific project type
+            dispatch(filterProjectsByType(type)); // Filter the projects based on the type
+        }
 
         if (type === 'All') {
             dispatch(resetFilter());

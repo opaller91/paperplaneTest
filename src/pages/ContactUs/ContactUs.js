@@ -56,31 +56,31 @@ function ContactUs() {
                                 <Col sm={2}>
                                     <label htmlFor="name" className="form-label mt-2 ml-4">Name</label>
                                 </Col>
-                                <Col sm={9}>
+                                <div className='col-sm-9-5'>
                                     <input type="text" className="form-control ml-4" id="name" name="name" />
-                                </Col>
+                                </div>
                             </Row>
                             <Row className='content-divider'>
                                 <Col sm={2}>
                                     <label htmlFor="tel" className="form-label ml-4">Tel</label>
                                 </Col>
-                                <Col sm={9}>
+                                <div className='col-sm-9-5'>
                                     <input type="text" className="form-control ml-4" id="tel" name="tel" />
-                                </Col>
+                                </div>
                             </Row>
                             <Row className='content-divider'>
                                 <Col sm={2}>
                                     <label htmlFor="mail" className="form-label ml-4">Mail</label>
                                 </Col>
-                                <Col sm={9}>
+                                <div className='col-sm-9-5'>
                                     <input type="email" className="form-control ml-4" id="mail" name="mail" />
-                                </Col>
+                                </div>
                             </Row>
                             <Row className='content-divider'>
-                                <Col sm={11}>
+                                <div className='col-sm-11-5'>
                                     <label htmlFor="tellUs" className="form-label ml-4">Message</label>
-                                    <textarea type="text" className="form-control ml-4" style={{ height: '176.61px' }} id="tellUs" name="tellUs" />
-                                </Col>
+                                    <textarea type="text" className="form-control ml-4" style={{ height: '176.61px', resize: 'none' }} id="tellUs" name="tellUs" />
+                                </div>
                             </Row>
                             {/* Right-aligned and vertically centered submit button */}
                             <div className="d-flex justify-content-end align-items-center" style={{ height: '50px' }}>

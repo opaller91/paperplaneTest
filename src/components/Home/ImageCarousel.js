@@ -74,7 +74,7 @@ const ImageCarousel = () => {
       </div>
 
       {/* Slider Indicators */}
-      <div className="absolute bottom-14 left-1/2 transform -translate-x-1/2 flex space-x-4">
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex space-x-4">
         {images.map((_, index) => (
           <div
             key={index}

@@ -12,16 +12,16 @@ import project10 from '../../assets/images/works/projects/project10.png';
 
 const initialState = {
   projects: [
-    { image: project1, name: 'Tichuca, 2020', year: '2020', location: 'Bangkok', type: "Architecture", link: '##' },
-    { image: project2, name: 'Paper Plane Project, 2021', year: '2021', location: 'Bangkok', type: "Interior", link: '##' },
-    { image: project3, name: 'Lloyd’s Club, 2023', year: '2023', location: 'Bangkok', type: "Interior", link: '##' },
-    { image: project4, name: 'Gir, 2023', year: '2023', location: 'Bangkok', type: "Object", link: '##' },
-    { image: project5, name: 'Tichuca, 2020', year: '2020', location: 'Bangkok', type: "Architecture", link: '##' },
-    { image: project6, name: 'Tichuca, 2020', year: '2020', location: 'Bangkok', type: "Architecture", link: '##' },
-    { image: project7, name: 'Tichuca, 2020', year: '2020', location: 'Bangkok', type: "Architecture", link: '##' },
-    { image: project8, name: 'Tichuca, 2020', year: '2020', location: 'Bangkok', type: "Architecture", link: '##' },
-    { image: project9, name: 'Tichuca, 2020', year: '2020', location: 'Bangkok', type: "Architecture", link: '##' },
-    { image: project10, name: 'Tichuca, 2020', year: '2020', location: 'Bangkok', type: "Architecture", link: '##' },
+    { image: project1, name: 'Tichuca, 2020', displayname: 'tichuca', year: '2020', location: 'Bangkok', type: "Architecture", photographer: 'xxxx', link: '##' },
+    { image: project2, name: 'Paper Plane Project, 2021', displayname: 'paperplaneproject', year: '2021', location: 'Bangkok', type: "Interior", photographer: 'xxxx', link: '##' },
+    { image: project3, name: 'Lloyd’s Club, 2023', displayname: 'lloyd’sclub', year: '2023', location: 'Bangkok', type: "Interior", photographer: 'xxxx', link: '##' },
+    { image: project4, name: 'Gir, 2023', displayname: 'gir', year: '2023', location: 'Bangkok', type: "Object", photographer: 'xxxx', link: '##' },
+    { image: project5, name: 'Tichuca, 2020', displayname: 'tichuca', year: '2020', location: 'Bangkok', type: "Architecture", photographer: 'xxxx', link: '##' },
+    { image: project6, name: 'Tichuca, 2020', displayname: 'tichuca', year: '2020', location: 'Bangkok', type: "Architecture", photographer: 'xxxx', link: '##' },
+    { image: project7, name: 'Tichuca, 2020', displayname: 'tichuca', year: '2020', location: 'Bangkok', type: "Architecture", photographer: 'xxxx', link: '##' },
+    { image: project8, name: 'Tichuca, 2020', displayname: 'tichuca', year: '2020', location: 'Bangkok', type: "Architecture", photographer: 'xxxx', link: '##' },
+    { image: project9, name: 'Tichuca, 2020', displayname: 'tichuca', year: '2020', location: 'Bangkok', type: "Architecture", photographer: 'xxxx', link: '##' },
+    { image: project10, name: 'Tichuca, 2020', displayname: 'tichuca', year: '2020', location: 'Bangkok', type: "Architecture", photographer: 'xxxx', link: '##' },
   ],
   filteredProjects: [],  // To hold the filtered projects
 };

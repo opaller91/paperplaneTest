@@ -57,6 +57,14 @@ button {
     padding-top: 20px; /* Adds space below the border */
 }
 
+.col-sm-9-5 {
+    width: 79.16666667%; /* (9.5 / 12) * 100% */
+}
+
+.col-sm-11-5 {
+    width: 96%; /* (9.5 / 12) * 100% */
+}
+
 /* Base styles already seem optimized for dark mode presentation */
 
 /* Enhanced Media Queries */
