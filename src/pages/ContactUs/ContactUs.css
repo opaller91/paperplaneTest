@@ -66,10 +66,16 @@ button {
 }
 
 /* Base styles already seem optimized for dark mode presentation */
+@media (max-width: 1238px) {
+    .contact-text-header {
+        font-size: 40px; /* Reduce font size for smaller devices */
+    }
+
+}
 
 /* Enhanced Media Queries */
 @media (max-width: 992px) { /* For tablets and below */
-    .text-header {
+    .contact-text-header {
         font-size: 48px; /* Reduce font size for smaller devices */
     }
 
@@ -94,7 +100,7 @@ button {
 }
 
 @media (max-width: 768px) { /* For mobile devices */
-    .text-header {
+    .contact-text-header {
         font-size: 30px; /* Further reduce font size */
     }
 

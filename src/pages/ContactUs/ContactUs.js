@@ -9,9 +9,9 @@ function ContactUs() {
     const handleSubmit = (event) => { };
 
     return (
-        <div className="bg-black text-white font-montserrat min-h-screen min-w-screen p-5 mt-10">
+        <div className="bg-black text-white font-montserrat min-h-screen min-w-screen p-5 mt-14">
             <div>
-                <div className="text-header mb-4 left-aligned">
+                <div className="contact-text-header mb-4 left-aligned">
                     <label>PAPER PLANE PROJECT STUDIO CO, LTD.</label>
                 </div>
                 <form onSubmit={handleSubmit} className="form-with-divider">

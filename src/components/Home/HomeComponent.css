@@ -32,7 +32,27 @@
         max-height: 250px;
     }
 
+    .worktype-content {
+        font-size: 10px;
+    }
 
+}
+
+@media (max-width: 1238px) {
+
+    .worktype-image-size {
+        max-width: 200px;
+        max-height: 200px;
+    }
+
+    .worktype-border {
+        border-style: hidden;
+    }
+
+    .insta-image-size {
+        max-width: 350px;
+        max-height: 350px;
+    }  
 }
 
 @media (max-width: 992px) {
