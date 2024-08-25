@@ -125,6 +125,11 @@ html {
 }
 
 @media (max-width: 953px) {
+  .isPC {
+    visibility: hidden;
+    position: absolute;
+  }
+
   .ham {
     visibility: hidden;
   }

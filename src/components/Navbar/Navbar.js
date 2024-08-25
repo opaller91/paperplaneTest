@@ -83,7 +83,7 @@ const Navbar = () => {
                     <div className='w-[145px]'></div>
 
                     {/* Menu Buttons Section */}
-                    <div className='flex items-center justify-center'>
+                    <div className='flex items-center justify-center isPC'>
                         <div className={`navbar-content flex font-montserrat font-normal text-lg tracking-wide`}>
                             <AnimatePresence>
                                 {isMenuOpen && (
