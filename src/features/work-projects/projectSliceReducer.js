@@ -35,12 +35,18 @@ const projectSlice = createSlice({
         (project) => project.type === action.payload
       );
     },
+    filterProjectsByName(state, action) {
+      const query = action.payload.toLowerCase(); // Convert the query to lowercase
+      state.filteredProjects = state.projects.filter(
+        (project) => project.displayname.toLowerCase().includes(query) // Match any part of the displayname
+      );
+    },
     resetFilter(state) {
       state.filteredProjects = state.projects;
     },
   },
 });
 
-export const { filterProjectsByType, resetFilter } = projectSlice.actions;
+export const { filterProjectsByType, resetFilter, filterProjectsByName } = projectSlice.actions;
 
 export default projectSlice.reducer;
