@@ -59,7 +59,7 @@ function ProjectDetail() {
             <img
                 src={project.image}
                 alt="Detail Image"
-                className="w-full h-auto object-cover"
+                className="w-full h-[850px] object-cover"
             />
             <div className='p-14'>
                 <h1 className="text-header mb-3">

@@ -8,6 +8,7 @@ import WorkTypeGrid from '../../components/Home/WorkTypeGrid';
 import InstaPictureSlice from '../../components/Home/InstaPictureSlice';
 import { IoIosArrowForward } from 'react-icons/io';
 import './Home.css';
+import { px } from 'framer-motion';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ const Home = () => {
   const handleScroll = useCallback(() => {
     dispatch(setScrollPosition(window.scrollY));
 
-    const imageCarouselBottom = imageCarouselRef.current?.offsetTop + imageCarouselRef.current?.offsetHeight || 0;
+    const imageCarouselBottom = imageCarouselRef.current?.offsetTop + imageCarouselRef.current?.offsetHeight + 95 || 0;
 
     if (!hasScrolled.current && window.scrollY >= 10 && window.scrollY < imageCarouselBottom) {
       window.scrollTo({ top: imageCarouselBottom, behavior: 'smooth' });
@@ -51,11 +52,11 @@ const Home = () => {
       </div>
 
       {/* PAPER PLANE PROJECT STUDIO SECTION */}
-      <div className="relative mt-20 p-14 bg-black text-white">
+      <div className="relative p-14 bg-black text-white" style={{ marginTop: '3.5rem' }}>
         <div className="flex flex-col items-left">
           <div className="flex-1">
             <h2 className="header-text-section font-montserrat">PAPER PLANE PROJECT STUDIO</h2>
-            <div style={{ marginTop: '240.2702px' }} />
+            <div style={{ marginTop: '15.02rem' }} />
             <div className="mt-64 border-t border-white" />
             <div className="py-[38px]">
               <div className="font-montserrat font-normal studio-content leading-[1.5] tracking-widest text-white">
@@ -74,8 +75,9 @@ const Home = () => {
                 <div className="w-[5.75rem] border-t border-white" />
               </div>
             </a>
-            <div style={{ marginTop: '120px' }} />
+            <div style={{ marginTop: '6.5rem' }} />
             <LogoCarousel />
+            <div className="mt-16" />
           </div>
         </div>
       </div>
@@ -121,7 +123,7 @@ const Home = () => {
               </div>
             </a>
           </div>
-          <div className="mt-4">
+          <div className="mt-2">
             <InstaPictureSlice />
           </div>
         </div>

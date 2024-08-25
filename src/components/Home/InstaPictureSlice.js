@@ -22,13 +22,13 @@ const InstaPictureSlice = () => {
 
   return (
     <div className="flex-grow flex items-center justify-center">
-      <div className="grid grid-col-position gap-8 w-full">
+      <div className="grid grid-col-position gap-8 w-screen">
         {pictures && pictures.map((pic, index) => (
           <img
             key={index}
             src={pic.picture}
             alt={`Insta Pic ${index}`}
-            className="insta-image-size object-cover cursor-pointer"
+            className="object-cover cursor-pointer"
             onClick={() => handleImageClick(pic)}
           />
         ))}

@@ -79,8 +79,8 @@ const ImageCarousel = () => {
           <div
             key={index}
             onClick={() => handleIndicatorClick(index)}
-            className={`h-1 cursor-pointer transition-all duration-300 ease-in-out ${
-              currentIndex === index ? 'w-20 bg-white' : 'w-1 bg-white'
+            className={`h-[0.7px] cursor-pointer transition-all duration-300 ease-in-out ${
+              currentIndex === index ? 'w-20 bg-white' : 'w-[2px] bg-white'
             }`}
           />
         ))}

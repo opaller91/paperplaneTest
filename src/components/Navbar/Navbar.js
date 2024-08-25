@@ -17,6 +17,7 @@ const Navbar = () => {
     const isMenuOpen = useSelector(selectedIsMenuOpen);
     const isProjectClick = useSelector(isProjectContentVisible);
     const activeButtons = useSelector(selectedActiveButtons);
+    const [isSubProjectVisible, setIsSubProjectVisible] = useState(true);
     const [isNavVisible, setIsNavVisible] = useState(true);
     const [isSearchVisible, setIsSearchVisible] = useState(false); // State to manage search box visibility
     const [searchQuery, setSearchQuery] = useState(''); // State to manage search input
@@ -32,10 +33,12 @@ const Navbar = () => {
 
     const handleProjectClick = useCallback(() => {
         dispatch(handleProjectButtonClick());
+        setIsSubProjectVisible(false);
     }, [dispatch]);
 
     const handleNormalButtonClick = useCallback((buttonTitle) => {
         dispatch(setActiveButtons(buttonTitle));
+        setIsSubProjectVisible(false);
         setIsNavVisible(false);
     }, [dispatch]);
 
@@ -94,10 +97,10 @@ const Navbar = () => {
 
     return (
         <section id='navbar' className='overflow-hidden'>
-            <nav className={`${location.pathname === '/' ? 'flex flex items-center z-10 w-full h-[131.0194px] -mt-4 px-14 navbar-bg' : 'fixed flex items-center z-10 w-full h-[131.0194px] -mt-4 px-14'}`}>
+            <nav className={`${location.pathname === '/' ? 'flex flex items-center z-10 w-full h-[97.4587px] -mt-4 px-14 navbar-bg' : 'fixed flex items-center z-10 w-full h-[97.4587px] -mt-4 px-14'}`}>
                 <div className={location.pathname === '/' ? 'navbar-bg' : 'navbar-black-bg'}></div>
                 <div className='flex items-center justify-between w-full'>
-                    <div className='navbar-content flex items-center'>
+                    <div className='navbar-content flex items-center mt-3'>
                         <Link to='/' className='flex'>
                             <img src={logo} alt='Home Logo' className='logo max-w-58px max-h-80px filter' />
                         </Link>
@@ -106,15 +109,15 @@ const Navbar = () => {
                     <div className='flex-1'></div>
                     <div className='w-[145px]'></div>
 
-                    <div className='flex items-center justify-center isPC'>
+                    <div className='flex items-center justify-center isPC mt-3'>
                         <div className={`navbar-content flex font-montserrat font-normal text-lg tracking-wide`}>
                             <AnimatePresence>
                                 {isMenuOpen && (
                                     <motion.div
-                                        className='z-20'
-                                        initial={{ x: '100%' }}
-                                        animate={{ x: 0 }}
-                                        exit={{ x: '100%' }}
+                                        className='z-10'
+                                        initial={{ x: '30%', opacity: 0 }}  // Start slightly offscreen and invisible
+                                        animate={{ x: 0, opacity: 1 }}     // Slide in and fade in
+                                        exit={{ x: '30%', opacity: 0 }}    // Slide out and fade out
                                         transition={{ duration: 0.5 }}
                                     >
                                         <div className='flex items-center space-control'>
@@ -125,7 +128,7 @@ const Navbar = () => {
                             </AnimatePresence>
                             {buttons.find(button => button.title === 'PROJECT')?.projects && (
                                 <AnimatePresence>
-                                    {isProjectClick && (
+                                    {isProjectClick && isSubProjectVisible && (
                                         <motion.div
                                             className={`project-sub-buttons absolute flex flex-wrap top-10 items-center font-montserrat font-normal search-text z-10 space-control ml-32`}
                                             initial={{ opacity: 0, y: -15 }}
@@ -149,18 +152,18 @@ const Navbar = () => {
 
                     <div className='flex-1'></div>
 
-                    <div className='ham navbar-content flex items-center justify-end'>
+                    <div className='ham flex navbar-content items-center justify-end mt-3'>
                         <AnimatePresence>
                             {isMenuOpen && (
                                 <motion.div
-                                    className='z-20'
-                                    initial={{ x: '100%' }}
-                                    animate={{ x: 0 }}
-                                    exit={{ x: '100%' }}
-                                    transition={{ duration: 0.5 }}
+                                className='z-10'
+                                initial={{ x: '30%', opacity: 0 }}  // Start slightly offscreen and invisible
+                                animate={{ x: 0, opacity: 1 }}     // Slide in and fade in
+                                exit={{ x: '30%', opacity: 0 }}    // Slide out and fade out
+                                transition={{ duration: 0.5 }}
                                 >
                                     <div
-                                        className='text-white font-montserrat font-normal search-text no-underline mr-6'
+                                        className='text-white font-montserrat font-normal search-text no-underline mr-6 mt-2'
                                         style={{ '--transition-width': '110px', cursor: 'pointer' }}
                                         onClick={handleSearchClick}
                                     >
@@ -169,7 +172,7 @@ const Navbar = () => {
                                 </motion.div>
                             )}
                         </AnimatePresence>
-                        <Hamburger toggled={isMenuOpen} toggle={toggleMenu} size={20} color='white' />
+                        <Hamburger toggled={isMenuOpen} toggle={toggleMenu} size={17} color='white' className="mt-2"/>
                     </div>
                 </div>
 

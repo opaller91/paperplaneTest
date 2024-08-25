@@ -18,11 +18,12 @@ function Studio() {
                             </div>
                         </div>
                     </Col>
-                    <Col md={7} className="custom-width-right d-flex justify-content-center align-items-center">
+                    <Col xs={12} sm={10} md={7} className="custom-width-right d-flex justify-content-center align-items-center">
                         <div className="studio-image">
-                            <img src='/images/home/projects/project4.png' alt="Detail Image" className="studio-image-size" />
+                            <img src='/images/home/projects/project4.png' alt="Detail Image" className="studio-image-size img-fluid" />
                         </div>
                     </Col>
+
                 </Row>
             </div>
         </div>
