@@ -17,7 +17,6 @@ const Navbar = () => {
     const isMenuOpen = useSelector(selectedIsMenuOpen);
     const isProjectClick = useSelector(isProjectContentVisible);
     const activeButtons = useSelector(selectedActiveButtons);
-    const [isSubProjectVisible, setIsSubProjectVisible] = useState(true);
     const [isNavVisible, setIsNavVisible] = useState(true);
     const [isSearchVisible, setIsSearchVisible] = useState(false); // State to manage search box visibility
     const [searchQuery, setSearchQuery] = useState(''); // State to manage search input
@@ -33,12 +32,10 @@ const Navbar = () => {
 
     const handleProjectClick = useCallback(() => {
         dispatch(handleProjectButtonClick());
-        setIsSubProjectVisible(false);
     }, [dispatch]);
 
     const handleNormalButtonClick = useCallback((buttonTitle) => {
         dispatch(setActiveButtons(buttonTitle));
-        setIsSubProjectVisible(false);
         setIsNavVisible(false);
     }, [dispatch]);
 
@@ -128,7 +125,7 @@ const Navbar = () => {
                             </AnimatePresence>
                             {buttons.find(button => button.title === 'PROJECT')?.projects && (
                                 <AnimatePresence>
-                                    {isProjectClick && isSubProjectVisible && (
+                                    {isProjectClick && location.pathname == '/projects' && (
                                         <motion.div
                                             className={`project-sub-buttons absolute flex flex-wrap top-10 items-center font-montserrat font-normal search-text z-10 space-control ml-32`}
                                             initial={{ opacity: 0, y: -15 }}
