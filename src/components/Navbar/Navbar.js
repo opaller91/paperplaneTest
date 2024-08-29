@@ -181,32 +181,34 @@ const Navbar = () => {
                                 exit={{ x: '30%', opacity: 0 }}    // Slide out and fade out
                                 transition={{ duration: 0.5 }}
                                 >
-                                    <div
+                                    {!isSearchVisible && (
+                                        <div
                                         className='text-white font-montserrat font-normal search-text no-underline mr-6 mt-2'
                                         style={{ '--transition-width': '110px', cursor: 'pointer' }}
                                         onClick={handleSearchClick}
                                     >
                                         SEARCH
                                     </div>
+                                    )}
+                                    {/* Search Box */}
+                                    {isSearchVisible && location.pathname.startsWith('/projects') && (
+                                        <div className="search-box ml-4">
+                                            <input
+                                                type="text"
+                                                value={searchQuery}
+                                                onChange={handleSearchInputChange}
+                                                onKeyDown={handleSearchSubmit} // Listen for Enter key press
+                                                placeholder="Search projects..."
+                                                className="search-input"
+                                            />
+                                        </div>
+                                    )}
                                 </motion.div>
                             )}
                         </AnimatePresence>
                         <Hamburger toggled={isMenuOpen} toggle={toggleMenu} size={17} color='white' className="mt-2"/>
                     </div>
                 </div>
-
-                {isSearchVisible && location.pathname.startsWith('/projects') && (
-                    <div className="search-box flex items-center justify-center">
-                        <input
-                            type="text"
-                            value={searchQuery}
-                            onChange={handleSearchInputChange}
-                            onKeyDown={handleSearchSubmit} // Listen for Enter key press
-                            placeholder="Search projects..."
-                            className="search-input"
-                        />
-                    </div>
-                )}
             </nav>
         </section>
     );
