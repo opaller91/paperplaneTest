@@ -171,9 +171,7 @@ html {
   top: 100%; /* Position the search box right below the navbar */
   left: 0;
   width: 100%;
-  background-color: black;
   padding: 10px 20px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Adds a slight shadow for depth */
   z-index: 100; /* Ensures it sits above other elements */
   display: flex; /* Align items horizontally */
   justify-content: center; /* Center the search input */
@@ -184,10 +182,17 @@ html {
   max-width: 600px;
   padding: 10px;
   border-radius: 4px;
-  background-color: #1a1a1a;
-  color: white;
+  background-color: transparent;
   font-size: 16px;
   outline: none;
+}
+
+.search-box.search-input.transparent {
+  background-color: transparent; /* Transparent background for the home page */
+}
+
+.search-box.search-input.default {
+  background-color: black; /* Black background for other pages */
 }
 
 .search-input::placeholder {

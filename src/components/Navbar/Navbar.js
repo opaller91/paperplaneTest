@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { selectedLogo, selectedButtons, isProjectContentVisible, selectedActiveButtons, selectedIsMenuOpen } from '../../features/navbar/navbarSliceSelectors';
 import { handleProjectButtonClick, setActiveButtons, toggleMenuHandler } from '../../features/navbar/navbarSliceActions';
-import { filterProjectsByName, resetFilter } from '../../features/work-projects/projectSliceReducer'; // Import the action to filter projects
+import { filterProjectsByName, resetFilter } from '../../features/work-projects/projectSliceReducer'; 
 import { motion, AnimatePresence } from "framer-motion";
 import NavbarButton from './NavbarButton';
 
@@ -18,9 +18,9 @@ const Navbar = () => {
     const isProjectClick = useSelector(isProjectContentVisible);
     const activeButtons = useSelector(selectedActiveButtons);
     const [isNavVisible, setIsNavVisible] = useState(true);
-    const [isSearchVisible, setIsSearchVisible] = useState(false); // State to manage search box visibility
-    const [isScrolled, setIsScrolled] = useState(false); // State to track if user has scrolled
-    const [searchQuery, setSearchQuery] = useState(''); // State to manage search input
+    const [isSearchVisible, setIsSearchVisible] = useState(false); 
+    const [isScrolled, setIsScrolled] = useState(false); 
+    const [searchQuery, setSearchQuery] = useState(''); 
 
     const toggleMenu = useCallback(() => {
         if (location.pathname === '/') {
@@ -41,24 +41,24 @@ const Navbar = () => {
     }, [dispatch]);
 
     const handleSearchClick = useCallback(() => {
-        if (!location.pathname.startsWith('/projects'))
-        {
+        setIsSearchVisible(true); // Show the search box
+    }, []);
+
+    const handleSearchInputChange = useCallback((e) => {
+        const query = e.target.value;
+        setSearchQuery(query);
+        if (query.length === 1 && !location.pathname.startsWith('/projects')) {
             dispatch(resetFilter());
             dispatch(setActiveButtons('All'));
-            dispatch(setActiveButtons('PROJECT')); // Activate the PROJECT button in Navbar
+            dispatch(setActiveButtons('PROJECT'));
             navigate('/projects');
         }
-        setIsSearchVisible(true); // Toggle search box visibility
-    }, [isSearchVisible, navigate, dispatch]);
-
-    const handleSearchInputChange = (e) => {
-        setSearchQuery(e.target.value);
-        dispatch(filterProjectsByName(e.target.value)); // Dispatch the search action with the search query as the user types
-    };
+        dispatch(filterProjectsByName(query)); 
+    }, [dispatch, location.pathname, navigate]);
 
     const handleSearchSubmit = (e) => {
         if (e.key === 'Enter') {
-            dispatch(filterProjectsByName(searchQuery)); // Dispatch the search action with the search query
+            dispatch(filterProjectsByName(searchQuery)); 
             setIsSearchVisible(false);
         }
     };
@@ -72,7 +72,6 @@ const Navbar = () => {
     }, []);
 
     useEffect(() => {
-        console.log("Debug isProjectClick" + isProjectClick);
         if (activeButtons.includes('PROJECT') && !isProjectClick) {
             dispatch(handleProjectButtonClick());
         }
@@ -80,10 +79,9 @@ const Navbar = () => {
 
     useEffect(() => {
         setIsNavVisible(true);
-        if (location.pathname != '/projects') {
+        if (location.pathname !== '/projects') {
             setIsSearchVisible(false);
         }
-
     }, [location.pathname]);
 
     useEffect(() => {
@@ -96,11 +94,11 @@ const Navbar = () => {
     const renderButton = (button) => {
         const isProjectButton = button.title === 'PROJECT';
         const handleClick = isProjectButton
-        ? () => {
-            dispatch(setActiveButtons('All')); // First, dispatch the action to set active buttons to 'All'
-            handleProjectClick(); // Then, call the handleProjectClick function
-        }
-        : () => handleNormalButtonClick(button.title);
+            ? () => {
+                  dispatch(setActiveButtons('All'));
+                  handleProjectClick();
+              }
+            : () => handleNormalButtonClick(button.title);
 
         return (
             <NavbarButton
@@ -113,6 +111,9 @@ const Navbar = () => {
     };
 
     if (!isNavVisible) return null;
+
+    // Determine the class for the search box
+    const searchBoxClass = location.pathname === '/' ? 'search-box search-input transparent' : 'search-box search-input default';
 
     return (
         <section id='navbar' className='overflow-hidden'>
@@ -134,9 +135,9 @@ const Navbar = () => {
                                 {isMenuOpen && (
                                     <motion.div
                                         className='z-10'
-                                        initial={{ x: '30%', opacity: 0 }}  // Start slightly offscreen and invisible
-                                        animate={{ x: 0, opacity: 1 }}     // Slide in and fade in
-                                        exit={{ x: '30%', opacity: 0 }}    // Slide out and fade out
+                                        initial={{ x: '30%', opacity: 0 }}
+                                        animate={{ x: 0, opacity: 1 }}
+                                        exit={{ x: '30%', opacity: 0 }}
                                         transition={{ duration: 0.5 }}
                                     >
                                         <div className='flex items-center space-control'>
@@ -147,7 +148,7 @@ const Navbar = () => {
                             </AnimatePresence>
                             {buttons.find(button => button.title === 'PROJECT')?.projects && (
                                 <AnimatePresence>
-                                    {location.pathname == '/projects' && !isScrolled &&(
+                                    {location.pathname === '/projects' && !isScrolled && (
                                         <motion.div
                                             className={`project-sub-buttons absolute flex flex-wrap top-10 items-center font-montserrat font-normal search-text z-10 space-control ml-32`}
                                             initial={{ opacity: 0, y: -15 }}
@@ -175,29 +176,28 @@ const Navbar = () => {
                         <AnimatePresence>
                             {isMenuOpen && (
                                 <motion.div
-                                className='z-10'
-                                initial={{ x: '30%', opacity: 0 }}  // Start slightly offscreen and invisible
-                                animate={{ x: 0, opacity: 1 }}     // Slide in and fade in
-                                exit={{ x: '30%', opacity: 0 }}    // Slide out and fade out
-                                transition={{ duration: 0.5 }}
+                                    className='z-10'
+                                    initial={{ x: '30%', opacity: 0 }}
+                                    animate={{ x: 0, opacity: 1 }}
+                                    exit={{ x: '30%', opacity: 0 }}
+                                    transition={{ duration: 0.5 }}
                                 >
                                     {!isSearchVisible && (
                                         <div
-                                        className='text-white font-montserrat font-normal search-text no-underline mr-6 mt-2'
-                                        style={{ '--transition-width': '110px', cursor: 'pointer' }}
-                                        onClick={handleSearchClick}
-                                    >
-                                        SEARCH
-                                    </div>
+                                            className='text-white font-montserrat font-normal search-text no-underline mr-6 mt-2'
+                                            style={{ '--transition-width': '110px', cursor: 'pointer' }}
+                                            onClick={handleSearchClick}
+                                        >
+                                            SEARCH
+                                        </div>
                                     )}
-                                    {/* Search Box */}
-                                    {isSearchVisible && location.pathname.startsWith('/projects') && (
-                                        <div className="search-box ml-4">
+                                    {isSearchVisible && (
+                                        <div className={searchBoxClass}>
                                             <input
                                                 type="text"
                                                 value={searchQuery}
                                                 onChange={handleSearchInputChange}
-                                                onKeyDown={handleSearchSubmit} // Listen for Enter key press
+                                                onKeyDown={handleSearchSubmit}
                                                 placeholder="Search projects..."
                                                 className="search-input"
                                             />
