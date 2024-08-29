@@ -19,6 +19,7 @@ const Navbar = () => {
     const activeButtons = useSelector(selectedActiveButtons);
     const [isNavVisible, setIsNavVisible] = useState(true);
     const [isSearchVisible, setIsSearchVisible] = useState(false); // State to manage search box visibility
+    const [isScrolled, setIsScrolled] = useState(false); // State to track if user has scrolled
     const [searchQuery, setSearchQuery] = useState(''); // State to manage search input
 
     const toggleMenu = useCallback(() => {
@@ -62,7 +63,16 @@ const Navbar = () => {
         }
     };
 
+    const handleScroll = useCallback(() => {
+        if (window.scrollY > 0) {
+            setIsScrolled(true);
+        } else {
+            setIsScrolled(false);
+        }
+    }, []);
+
     useEffect(() => {
+        console.log("Debug isProjectClick" + isProjectClick);
         if (activeButtons.includes('PROJECT') && !isProjectClick) {
             dispatch(handleProjectButtonClick());
         }
@@ -76,9 +86,21 @@ const Navbar = () => {
 
     }, [location.pathname]);
 
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [handleScroll]);
+
     const renderButton = (button) => {
         const isProjectButton = button.title === 'PROJECT';
-        const handleClick = isProjectButton ? handleProjectClick : () => handleNormalButtonClick(button.title);
+        const handleClick = isProjectButton
+        ? () => {
+            dispatch(setActiveButtons('All')); // First, dispatch the action to set active buttons to 'All'
+            handleProjectClick(); // Then, call the handleProjectClick function
+        }
+        : () => handleNormalButtonClick(button.title);
 
         return (
             <NavbarButton
@@ -125,7 +147,7 @@ const Navbar = () => {
                             </AnimatePresence>
                             {buttons.find(button => button.title === 'PROJECT')?.projects && (
                                 <AnimatePresence>
-                                    {isProjectClick && location.pathname == '/projects' && (
+                                    {location.pathname == '/projects' && !isScrolled &&(
                                         <motion.div
                                             className={`project-sub-buttons absolute flex flex-wrap top-10 items-center font-montserrat font-normal search-text z-10 space-control ml-32`}
                                             initial={{ opacity: 0, y: -15 }}

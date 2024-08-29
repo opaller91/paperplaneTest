@@ -18,7 +18,10 @@ const NavbarButton = ({ button, activeButtons }) => {
         if (['Architecture', 'Interior', 'Object'].includes(button.title)) {
             dispatch(filterProjectsByType(button.title));
             navigate(`/projects/${button.title.toLowerCase()}`);
-        } else if (button.title === 'PROJECT' || button.title === 'All') {
+        } else if (button.title === 'All') {
+            dispatch(resetFilter());
+            navigate(`/projects/${button.title.toLowerCase()}`);
+        } else if (button.title === 'PROJECT') {
             dispatch(resetFilter());
             navigate('/projects');
         } else {

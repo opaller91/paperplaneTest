@@ -3,13 +3,13 @@ import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import './ContactUs.css';
 import { SlArrowRight } from "react-icons/sl";
 import { CiPhone } from "react-icons/ci";
-import { CiMail } from "react-icons/ci"; // Import the header image
+import { CiMail } from "react-icons/ci";
 
 function ContactUs() {
     const handleSubmit = (event) => { };
 
     return (
-        <div className="bg-black text-white font-montserrat min-h-screen min-w-screen p-5 mt-14">
+        <div className="bg-black text-white font-montserrat min-h-screen min-w-screen p-5 mt-[3rem]">
             <div>
                 <div className="contact-text-header mb-4 left-aligned">
                     <label>PAPER PLANE PROJECT STUDIO CO, LTD.</label>
@@ -29,6 +29,7 @@ function ContactUs() {
                                     </label>
                                 </Col>
                             </Row>
+                            <div className="space-line-contact"></div>
                             <Row className="mb-3 align-items-center">
                                 <Col sm={2}>
                                     <label className="form-label mt-2">Tel.</label>
@@ -37,6 +38,7 @@ function ContactUs() {
                                     <label className="form-label mt-2">+66 64 789 4428</label>
                                 </Col>
                             </Row>
+                            <div className="space-line-contact"></div>
                             <Row className="mb-3 align-items-center">
                                 <Col sm={2}>
                                     <label className="form-label mt-2">Email</label>
@@ -48,11 +50,13 @@ function ContactUs() {
                         </Col>
                         <Col md={6} className="additional-content">
                             <Row className="mt-4">
-                                <Col className="text-header left-aligned ml-4">
-                                    <label style={{ fontSize: '36px' }}>We are here to tackle your<br /> questions head-on</label>
+                                <Col className="text-header font-montserrat font-reguler left-aligned ml-4">
+                                    <label className="motto-text" style={{ fontWeight: 400 }}>
+                                        We are here to tackle your<br /> questions head-on
+                                    </label>
                                 </Col>
                             </Row>
-                            <Row className='content-divider'> {/* Adds division from here onward */}
+                            <Row className='content-divider'>
                                 <Col sm={2}>
                                     <label htmlFor="name" className="form-label mt-2 ml-4">Name</label>
                                 </Col>
@@ -77,21 +81,20 @@ function ContactUs() {
                                 </div>
                             </Row>
                             <Row className='content-divider'>
-                                <div className='col-sm-11-5'>
+                                <div className='col-sm-11-5 mb-10'>
                                     <label htmlFor="tellUs" className="form-label ml-4">Message</label>
-                                    <textarea type="text" className="form-control ml-4" style={{ height: '176.61px', resize: 'none' }} id="tellUs" name="tellUs" />
+                                    <textarea type="text" className="form-control ml-4" style={{ height: '20vh', resize: 'none' }} id="tellUs" name="tellUs" />
                                 </div>
                             </Row>
-                            {/* Right-aligned and vertically centered submit button */}
-                            <div className="d-flex justify-content-end align-items-center" style={{ height: '50px' }}>
-                                <button type="submit" className="btn-submit" variant="none">
-                                    <span className="ml-6">SUBMIT</span><SlArrowRight className="icon-right" />
-                                </button>
-                            </div>
                         </Col>
                     </Row>
                     <hr />
                 </form>
+                <div className="d-flex justify-content-end align-items-center" style={{ height: '5vh' }}>
+                    <button type="submit" className="btn-submit" variant="none">
+                        <span className="ml-6">SUBMIT</span><SlArrowRight className="icon-right" />
+                    </button>
+                </div>
             </div>
         </div>
     );

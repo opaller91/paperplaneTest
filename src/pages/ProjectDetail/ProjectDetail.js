@@ -54,12 +54,42 @@ function ProjectDetail() {
         navigate('/projects');
     };
 
+    // Handle wheel scrolling behavior for horizontal scrolling
+    const handleWheel = (e) => {
+        if (e.currentTarget.classList.contains('image-container')) {
+            e.preventDefault(); // Prevent default vertical scroll
+            e.currentTarget.scrollLeft += e.deltaY; // Scroll horizontally using the vertical wheel scroll
+        }
+    };
+
+    useEffect(() => {
+        const preventDefault = (e) => {
+            e.preventDefault();
+        };
+
+        const imageContainer = document.querySelector('.image-container');
+
+        if (imageContainer) {
+            imageContainer.addEventListener('mouseenter', () => {
+                window.addEventListener('wheel', preventDefault, { passive: false });
+            });
+
+            imageContainer.addEventListener('mouseleave', () => {
+                window.removeEventListener('wheel', preventDefault);
+            });
+        }
+
+        return () => {
+            window.removeEventListener('wheel', preventDefault);
+        };
+    }, []);
+
     return (
-        <div className="bg-black text-white font-montserrat w-full">
+        <div className="bg-black text-white font-montserrat w-full min-h-screen">
             <img
                 src={project.image}
                 alt="Detail Image"
-                className="w-full h-[850px] object-cover"
+                className="w-full h-[81.5vh] object-cover"
             />
             <div className='p-14'>
                 <h1 className="text-header mb-3">
@@ -123,9 +153,12 @@ function ProjectDetail() {
                         </Col>
                     </Row>
 
-                    <div style={{height: '121px'}}></div>
+                    <div style={{ height: '7.5vh'}}></div>
                     {/* Image Container */}
-                    <div className="image-container scrollable-container mt-5" onClick={handleContainerClick}>
+                    <div
+                        className="image-container scrollable-container mt-5"
+                        onWheel={handleWheel}
+                    >
                         {images.map((src, index) => (
                             <img
                                 key={index}
@@ -138,12 +171,12 @@ function ProjectDetail() {
                     </div>
 
                     {/* Slider Indicators */}
-                    <div className="flex space-x-4 justify-center mt-2">
+                    <div className="flex space-x-4 justify-center mt-3">
                         {images.map((_, index) => (
                             <div
                                 key={index}
                                 onClick={() => handleIndicatorClick(index)}
-                                className={`h-1 cursor-pointer transition-all duration-300 ease-in-out ${currentIndex === index ? 'w-20 bg-white' : 'w-1 bg-white'}`}
+                                className={`h-[0.7px] cursor-pointer transition-all duration-300 ease-in-out ${currentIndex === index ? 'w-20 bg-white' : 'w-[2px] bg-white'}`}
                             />
                         ))}
                     </div>

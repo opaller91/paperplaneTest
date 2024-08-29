@@ -60,6 +60,14 @@ textarea.form-control,
 
 }
 
+.remove-right-padding {
+    padding-right: 0;
+}
+
+.add-input-right-padding{
+    padding-right: calc(var(--bs-gutter-x)* 2);
+}
+
 hr {
     border-top: 1px solid white;
     opacity: 100;
@@ -70,10 +78,14 @@ hr {
 }
 
 .space-height {
-    height: 78px;
+    height: 4.875rem;
 }
 
 input.form-control {
+    height: auto; /* Automatically adjust height based on content */
+    padding: 2px; /* Add padding for comfortable text entry */
+    font-size: 1rem; /* Set font size */
+    line-height: 1.5; /* Set line height */
     border-radius: 0;
     /* Removes rounded corners */
     background-color: rgba(24, 24, 24, 255);
@@ -98,6 +110,7 @@ input.form-control {
     font-size: 5rem;
     /* Large "+" sign */
     line-height: 190px;
+    font-weight: 100; /* Make the line thinner */
     /* Center the "+" vertically inside the button */
     text-align: center;
     border: none;

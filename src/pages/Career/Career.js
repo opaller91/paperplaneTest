@@ -61,20 +61,20 @@ function Career() {
     };
 
     return (
-        <div className="bg-black text-white font-montserrat min-h-screen min-w-screen p-14 mt-14">
+        <div className="bg-black text-white font-montserrat max-h-screen min-w-screen p-14 mt-[3.5rem]">
             <div>
-                <div className="text-[36px] leading-normal mb-4 left-aligned">
-                    <p className='mb-[-1px]'>We are constantly seeking talented designers</p>
-                    <p className='mb-[-1px]'>join our team of innovative, ambitious, and</p>
-                    <p className='mb-[-1px]'>vibrant designers</p>
+                <div className="text-[2vw] leading-normal mb-4">
+                    <p className='mb-[-0.5vw]'>We are constantly seeking talented designers</p>
+                    <p className='mb-[-0.5vw]'>join our team of innovative, ambitious, and</p>
+                    <p className='mb-[-0.5vw]'>vibrant designers</p>
                     <a href="mailto:careers.studio@paperplanebkk.com" className="email-link">careers.studio@paperplanebkk.com</a>
                 </div>
                 <div className='space-height'></div>
                 <form onSubmit={handleSubmit}>
                     <hr />
                     <Row>
-                        <Col md={6} className="vertical-divider">
-                            <Row className="mb-3 align-items-center">
+                        <Col md={6} className="vertical-divider remove-right-padding">
+                            <Row className="mb-3 align-items-center add-input-right-padding">
                                 <Col sm={2}>
                                     <label htmlFor="name" className="form-label mt-2">Name</label>
                                 </Col>
@@ -83,7 +83,7 @@ function Career() {
                                 </Col>
                             </Row>
                             <hr />
-                            <Row className="mb-3 align-items-center">
+                            <Row className="mb-3 align-items-center add-input-right-padding">
                                 <Col sm={2}>
                                     <label htmlFor="tel" className="form-label mt-2">Tel</label>
                                 </Col>
@@ -92,7 +92,7 @@ function Career() {
                                 </Col>
                             </Row>
                             <hr />
-                            <Row className="mb-3 align-items-center">
+                            <Row className="mb-3 align-items-center add-input-right-padding">
                                 <Col sm={2}>
                                     <label htmlFor="mail" className="form-label mt-2">Mail</label>
                                 </Col>
@@ -101,7 +101,7 @@ function Career() {
                                 </Col>
                             </Row>
                             <hr />
-                            <Row className="mb-4">
+                            <Row className="mb-4 add-input-right-padding">
                                 <Col sm={12}>
                                     <label htmlFor="tellUs" className="form-label mt-2">Anything to tell us?</label>
                                     <textarea type="text" className="form-control" style={{ height: '176.61px', resize: 'none'}} id="tellUs" name="tellUs" value={formData.tellUs} onChange={handleChange} />

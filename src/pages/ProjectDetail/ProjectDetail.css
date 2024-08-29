@@ -4,14 +4,14 @@
 }
 
 .text-header {
-    font-size: 72px;
+    font-size: 3.75vw;
 }
 
 .image-container {
     display: flex;
-    overflow-x: scroll; /* Allows horizontal scrolling */
+    overflow-x: auto; /* Allows horizontal scrolling */
     overflow-y: hidden; /* Prevents vertical scrolling */
-    height: 810px; /* Set the fixed height */
+    height: 80vh; /* Set the fixed height */
     white-space: nowrap; /* Ensures images stay on the same line */
 }
 
@@ -27,23 +27,24 @@
 }
 
 .image-part.first {
-    width: 1055px;
-    height: 791px;
+    width: 55vw; /* Adjusted to occupy around 55% of the viewport width */
+    height: 42vw; /* Adjusted to maintain a similar aspect ratio */
 }
 
 .image-part:nth-child(2) {
-    width: 445px;
-    height: 791px;
+    width: 23vw; /* Adjusted to occupy around 23% of the viewport width */
+    height: 42vw; /* Ensuring consistent height with other images */
 }
 
 .image-part.last {
-    width: 445px;
-    height: 791px;
+    width: 23vw; /* Adjusted to occupy around 23% of the viewport width */
+    height: 42vw; /* Ensuring consistent height with other images */
 }
+
 
 .underline-full {
     width: 95%;
-    height: 1px;
+    height: 0.5px;
     background-color: white;
     margin-top: 5px; /* Adjust as needed */
     margin-bottom: 10px; /* Adjust as needed */
@@ -55,9 +56,8 @@
 }
 
 @media (max-width: 1567px) {
-    .image-part.first {
-        width: 100%;
-        height: 791px;
+    .image-container {
+        height: 70vh; /* Increases height for smaller screens */
     }
 }
 

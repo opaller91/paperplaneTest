@@ -4,7 +4,7 @@ import { Row, Col } from 'react-bootstrap';
 
 function Studio() {
     return (
-        <div className="bg-black text-white font-montserrat min-h-screen min-w-screen p-14 mt-14">
+        <div className="bg-black text-white font-montserrat max-h-screen min-w-screen p-14 mt-14">
             <div className="studio-divider">
                 <Row>
                     <Col md={5} className="custom-width-left">
@@ -18,7 +18,7 @@ function Studio() {
                             </div>
                         </div>
                     </Col>
-                    <Col xs={12} sm={10} md={7} className="custom-width-right d-flex justify-content-center align-items-center">
+                    <Col xs={12} sm={10} md={7} className="custom-width-right d-flex align-items-center">
                         <div className="studio-image">
                             <img src='/images/home/projects/project4.png' alt="Detail Image" className="studio-image-size img-fluid" />
                         </div>

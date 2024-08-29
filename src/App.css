@@ -103,11 +103,9 @@ html {
 }
 
 .logo {
-  height: 57.2032px;
-  width: 40.4467px;
+  height: 5vh;
+  width: auto;
 }
-
-
 
 /* Responsive Design */
 @media (max-width: 1086px) {
@@ -124,6 +122,11 @@ html {
   .space-control {
     margin-left: 0px;
   }
+
+  .logo {
+    height: 5vh;
+    width: auto;
+  }
 }
 
 @media (max-width: 953px) {
@@ -137,8 +140,8 @@ html {
   }
 
   .logo {
-    height: 40px;
-    width: 30px;
+    height: 5vh;
+    width: auto;
   }
 }
 
