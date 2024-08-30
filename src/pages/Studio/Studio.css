@@ -8,7 +8,7 @@
 .studio-divider::after {
     content: "";
     position: absolute;
-    left: 41%;  /* Set the divider at 40.5% */
+    left: calc(41.6667% - 15px);
     top: 0;
     bottom: 0;
     width: 1px;
