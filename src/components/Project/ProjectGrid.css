@@ -1,15 +1,25 @@
 .project-grid-col-position {
-    grid-template-columns: repeat(2, 1fr); /* Default to two columns */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* Default to two columns */
+    gap: 20px;
+    /* Add some gap between grid items */
 }
 
 .project-image-size {
-    width: 860.1487px;
-    height: 573.4324px;
+    width: 44.8vw;
+    /* 44.8% of viewport width */
+    height: 53.1vh;
+    /* 53.1% of viewport height */
+    object-fit: cover;
+    /* Ensure the image covers the container without stretching */
 }
 
 .projectgrid-content {
-    font-size: 24px;
+    font-size: clamp(1rem, 1.25vw, 1.5rem);
+    /* Responsive font size between 1rem and 1.5rem */
 }
+
 
 /* Media Query for Medium Screens and Above */
 @media (max-width: 992px) {
@@ -20,14 +30,15 @@
         object-position: center;
     }
 
-    .projectgrid-content { 
+    .projectgrid-content {
         font-size: 14px;
     }
 }
 
 @media (max-width: 576px) {
     .project-grid-col-position {
-        grid-template-columns: repeat(1, 1fr); /* Default to two columns */
+        grid-template-columns: repeat(1, 1fr);
+        /* Default to two columns */
     }
 
     .project-image-size {
@@ -36,7 +47,7 @@
         object-position: center;
     }
 
-    .projectgrid-content { 
+    .projectgrid-content {
         font-size: 14px;
     }
 }

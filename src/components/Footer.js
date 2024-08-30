@@ -38,6 +38,23 @@ function Footer() {
         }
     };
 
+    const handleNormalBtn = (button) => {
+        if (!isMenuOpen) {
+            dispatch(toggleMenu());
+        }
+        
+        dispatch(setActiveButtons(button));
+
+        if(button == 'CONTACT')
+        {
+            navigate(`/contact-us`);
+        }
+        else
+        {
+            navigate(`/${button.toLowerCase()}`);
+        }
+    }
+
     return (
         <footer className="footer bg-black font-montserrat font-normal text-lg tracking-wide text-white p-14">
             <div className="container mx-auto flex justify-between items-center py-8">
@@ -56,14 +73,14 @@ function Footer() {
                         </ul>
                     </div>
                     <div className="footer-column">
-                        <h4 className="mb-2 list-none"><li><a href="/studio" className="no-underline ">STUDIO</a></li></h4>
+                        <h4 className="mb-2 list-none"><li><a onClick={() => handleNormalBtn('STUDIO')} className="no-underline ">STUDIO</a></li></h4>
                         <ul className="mt-4">
-                            <li><a href="/studio" className="no-underline hover:underline">About</a></li>
-                            <li><a href="/contact-us" className="no-underline hover:underline">Contact</a></li>
+                            <li><a onClick={() => handleNormalBtn('STUDIO')} className="no-underline hover:underline">About</a></li>
+                            <li><a  onClick={() => handleNormalBtn('CONTACT')} className="no-underline hover:underline">Contact</a></li>
                         </ul>
                     </div>
                     <div className="footer-column">
-                        <h4 className="mb-2">MEDIA</h4>
+                        <h4 className="mb-2 list-none"><li><a href="https://instagram.com" className="no-underline">MEDIA</a></li></h4>
                         <ul className="mt-4">
                             <li><a href="https://instagram.com" target="_blank" className="no-underline hover:underline">Instagram</a></li>
                             <li><a href="https://linkedin.com" target="_blank" className="no-underline hover:underline">LinkedIn</a></li>
