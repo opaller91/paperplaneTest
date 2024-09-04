@@ -47,6 +47,7 @@ button {
     border-top: 0.05vw solid #ccc;
     margin-top: 1vw;
     padding-top: 1vw;
+    margin-right: 0.05rem;
 }
 
 .col-sm-9-5 {

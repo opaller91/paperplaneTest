@@ -130,11 +130,12 @@ const Navbar = () => {
                         </Link>
                     </div>
 
-                    <div className='flex-1'></div>
-                    <div className='w-[145px]'></div>
+                    <div className={`${isSearchVisible?'': 'flex-1' }`}></div>
+                    <div className={`${isSearchVisible?'w-[145px]': 'w-[87px]' }`}></div>
+                 
 
                     <div className='flex items-center justify-center isPC mt-3'>
-                        <div className={`navbar-content flex font-montserrat font-normal search-text tracking-wide`}>
+                        <div className={`navbar-content flex  tracking-wide`}>
                             <AnimatePresence>
                                 {isMenuOpen && (
                                     <motion.div
@@ -174,7 +175,7 @@ const Navbar = () => {
                         </div>
                     </div>
 
-                    <div className='flex-1'></div>
+                    <div className={`${isSearchVisible?'': 'flex-1' }`}></div>
 
                     <div className='ham flex navbar-content items-center justify-end mt-2'>
                         <AnimatePresence>
