@@ -8,6 +8,7 @@
 }
 
 .image-container {
+    width: 100%;
     display: flex;
     overflow-x: auto; /* Allows horizontal scrolling */
     overflow-y: hidden; /* Prevents vertical scrolling */

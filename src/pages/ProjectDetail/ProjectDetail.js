@@ -19,7 +19,7 @@ function ProjectDetail() {
     const project = location.state?.project; // Access the project data from the state
 
     const displayName = project.name.split(',')[0];
-   
+
 
     const images = [
         '/assets/images/PaperPlaneProject.png',
@@ -153,10 +153,10 @@ function ProjectDetail() {
                         </Col>
                     </Row>
 
-                    <div style={{ height: '7.5vh'}}></div>
+                    <div style={{ height: '7.5vh' }}></div>
                     {/* Image Container */}
                     <div
-                        className="image-container scrollable-container mt-5"
+                        className="image-container scrollable-container mt-5 -mx-14"
                         onWheel={handleWheel}
                     >
                         {images.map((src, index) => (
@@ -169,6 +169,7 @@ function ProjectDetail() {
                             />
                         ))}
                     </div>
+
 
                     {/* Slider Indicators */}
                     <div className="flex space-x-4 justify-center mt-3">
@@ -199,7 +200,7 @@ function ProjectDetail() {
                             onClick={handleBackToProjects}
                         >
                             <div className="flex flex-col items-end">
-                                <div className="flex items-center">
+                                <div className="flex items-center cursor-pointer">
                                     <span>BACK TO PROJECTS</span>
                                     <IoIosArrowForward size={14} className="ml-2" />
                                 </div>

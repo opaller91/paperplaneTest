@@ -43,7 +43,10 @@ function Footer() {
             dispatch(toggleMenu());
         }
         
-        dispatch(setActiveButtons(button));
+        if(!activeButtons.includes(button))
+        {
+            dispatch(setActiveButtons(button));
+        }
 
         if(button == 'CONTACT')
         {
@@ -73,10 +76,10 @@ function Footer() {
                         </ul>
                     </div>
                     <div className="footer-column">
-                        <h4 className="mb-2 list-none"><li><a onClick={() => handleNormalBtn('STUDIO')} className="no-underline ">STUDIO</a></li></h4>
+                        <h4 className="mb-2 list-none"><li><a href="#" onClick={() => handleNormalBtn('STUDIO')} className="no-underline ">STUDIO</a></li></h4>
                         <ul className="mt-4">
-                            <li><a onClick={() => handleNormalBtn('STUDIO')} className="no-underline hover:underline">About</a></li>
-                            <li><a  onClick={() => handleNormalBtn('CONTACT')} className="no-underline hover:underline">Contact</a></li>
+                            <li><a href="#" onClick={() => handleNormalBtn('STUDIO')} className="no-underline hover:underline">About</a></li>
+                            <li><a href="#" onClick={() => handleNormalBtn('CONTACT')} className="no-underline hover:underline">Contact</a></li>
                         </ul>
                     </div>
                     <div className="footer-column">

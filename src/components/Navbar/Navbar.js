@@ -47,21 +47,21 @@ const Navbar = () => {
     const handleSearchInputChange = useCallback((e) => {
         const query = e.target.value;
         setSearchQuery(query);
-        if (query.length === 1 && !location.pathname.startsWith('/projects')) {
-            dispatch(resetFilter());
-            dispatch(setActiveButtons('All'));
-            dispatch(setActiveButtons('PROJECT'));
-            navigate('/projects');
-        }
-        dispatch(filterProjectsByName(query)); 
     }, [dispatch, location.pathname, navigate]);
 
     const handleSearchSubmit = (e) => {
         if (e.key === 'Enter') {
-            dispatch(filterProjectsByName(searchQuery)); 
+            if (!location.pathname.startsWith('/projects')) {
+                dispatch(resetFilter());
+                dispatch(setActiveButtons('All'));
+                dispatch(setActiveButtons('PROJECT'));
+                navigate('/projects');
+            }
+            dispatch(filterProjectsByName(searchQuery));
             setIsSearchVisible(false);
+            setSearchQuery('');
         }
-    };
+    }
 
     const handleScroll = useCallback(() => {
         if (window.scrollY > 0) {
@@ -121,7 +121,11 @@ const Navbar = () => {
                 <div className={location.pathname === '/' ? 'navbar-bg' : 'navbar-black-bg'}></div>
                 <div className='flex items-center justify-between w-full'>
                     <div className='navbar-content flex items-center mt-3'>
-                        <Link to='/' className='flex'>
+                        <Link 
+                            to='/' 
+                            className='flex'
+                            onClick={() => dispatch(setActiveButtons('HOME'))} // Dispatch 'HOME' action on click
+                        >
                             <img src={logo} alt='Home Logo' className='logo max-w-58px max-h-80px filter' />
                         </Link>
                     </div>
@@ -130,7 +134,7 @@ const Navbar = () => {
                     <div className='w-[145px]'></div>
 
                     <div className='flex items-center justify-center isPC mt-3'>
-                        <div className={`navbar-content flex font-montserrat font-normal text-lg tracking-wide`}>
+                        <div className={`navbar-content flex font-montserrat font-normal search-text tracking-wide`}>
                             <AnimatePresence>
                                 {isMenuOpen && (
                                     <motion.div
@@ -172,7 +176,7 @@ const Navbar = () => {
 
                     <div className='flex-1'></div>
 
-                    <div className='ham flex navbar-content items-center justify-end mt-3'>
+                    <div className='ham flex navbar-content items-center justify-end mt-2'>
                         <AnimatePresence>
                             {isMenuOpen && (
                                 <motion.div

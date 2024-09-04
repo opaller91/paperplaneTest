@@ -34,14 +34,8 @@ const InstaPictureSlice = () => {
         ))}
       </div>
       {isVisible && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center" onClick={handleClosePopup} >
           <div className="relative">
-            <button
-              className="absolute -top-1 right-0.5 text-3xl font-bold"
-              onClick={handleClosePopup}
-            >
-              &times;
-            </button>
             <InstaPost 
                 img={selectImage}
             />
