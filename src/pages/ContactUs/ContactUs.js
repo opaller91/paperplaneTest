@@ -20,10 +20,10 @@ function ContactUs() {
                         <Col md={6} className="info-column">
                             <Row className="mb-3 align-items-center">
                                 <Col sm={2}>
-                                    <label className="form-label mt-[-2]">Location</label>
+                                    <label className="form-label mt-[-2] font-light">Location</label>
                                 </Col>
                                 <Col sm={9}>
-                                    <label className="form-label mt-2">
+                                    <label className="form-label mt-2 font-light">
                                         8 T-one Building, 12th floor, Sukhumvit 40 Rd., Phra Khanong<br />
                                         Sub-Districts, Klong toei District, Bangkok 10110.
                                     </label>
@@ -32,19 +32,19 @@ function ContactUs() {
                             <div className="space-line-contact"></div>
                             <Row className="mb-3 align-items-center">
                                 <Col sm={2}>
-                                    <label className="form-label mt-2">Tel.</label>
+                                    <label className="form-label mt-2 font-light">Tel.</label>
                                 </Col>
                                 <Col sm={10}>
-                                    <label className="form-label mt-2">+66 64 789 4428</label>
+                                    <label className="form-label mt-2 font-light">+66 64 789 4428</label>
                                 </Col>
                             </Row>
                             <div className="space-line-contact"></div>
                             <Row className="mb-3 align-items-center">
                                 <Col sm={2}>
-                                    <label className="form-label mt-2">Email</label>
+                                    <label className="form-label mt-2 font-light">Email</label>
                                 </Col>
                                 <Col sm={10}>
-                                    <label className="form-label mt-2">paperplane.studio@paperplanebkk.com</label>
+                                    <label className="form-label mt-2 font-light">paperplane.studio@paperplanebkk.com</label>
                                 </Col>
                             </Row>
                         </Col>

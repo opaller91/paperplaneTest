@@ -91,11 +91,13 @@ function ProjectDetail() {
                 alt="Detail Image"
                 className="w-full h-[81.5vh] object-cover"
             />
-            <div className='p-14'>
+            <div className='px-5 mt-14'>
                 <h1 className="text-header mb-3">
                     {displayName} {/* Display project name */}
                 </h1>
-                <div onClick={handleContainerClick} className='mt-10'>
+            </div>
+            <div onClick={handleContainerClick} className='mt-10'>
+                <div className='px-5'>
                     <Row>
                         <Col md={5} className="custom-width mb-5">
                             <Row className="content-divider">
@@ -154,60 +156,60 @@ function ProjectDetail() {
                     </Row>
 
                     <div style={{ height: '7.5vh' }}></div>
-                    {/* Image Container */}
-                    <div
-                        className="image-container scrollable-container mt-5 -mx-14"
-                        onWheel={handleWheel}
+                </div>
+                {/* Image Container */}
+                <div
+                    className="image-container scrollable-container mt-5 w-full"
+                    onWheel={handleWheel}
+                >
+                    {images.map((src, index) => (
+                        <img
+                            key={index}
+                            src={src}
+                            className={`image-part ${index === 0 ? 'first' : index === images.length - 1 ? 'last' : ''}`}
+                            alt={`Detail Image ${index + 1}`}
+                            onClick={() => handleImageClick(index)}
+                        />
+                    ))}
+                </div>
+
+
+                {/* Slider Indicators */}
+                <div className="flex space-x-4 justify-center mt-3">
+                    {images.map((_, index) => (
+                        <div
+                            key={index}
+                            onClick={() => handleIndicatorClick(index)}
+                            className={`h-[0.7px] cursor-pointer transition-all duration-300 ease-in-out ${currentIndex === index ? 'w-20 bg-white' : 'w-[2px] bg-white'}`}
+                        />
+                    ))}
+                </div>
+
+                {/* Modal for Full Image Display */}
+                <Modal show={showModal} onHide={handleCloseModal} centered size="lg">
+                    <Modal.Body className="p-0">
+                        <img
+                            src={images[focusedImage]}
+                            alt={`Full Detail Image ${focusedImage + 1}`}
+                            style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
+                        />
+                    </Modal.Body>
+                </Modal>
+
+                {/* Back to Projects Button */}
+                <div className="flex justify-end px-5 mt-4">
+                    <a
+                        className="font-montserrat font-medium no-underline text-base text-white"
+                        onClick={handleBackToProjects}
                     >
-                        {images.map((src, index) => (
-                            <img
-                                key={index}
-                                src={src}
-                                className={`image-part ${index === 0 ? 'first' : index === images.length - 1 ? 'last' : ''}`}
-                                alt={`Detail Image ${index + 1}`}
-                                onClick={() => handleImageClick(index)}
-                            />
-                        ))}
-                    </div>
-
-
-                    {/* Slider Indicators */}
-                    <div className="flex space-x-4 justify-center mt-3">
-                        {images.map((_, index) => (
-                            <div
-                                key={index}
-                                onClick={() => handleIndicatorClick(index)}
-                                className={`h-[0.7px] cursor-pointer transition-all duration-300 ease-in-out ${currentIndex === index ? 'w-20 bg-white' : 'w-[2px] bg-white'}`}
-                            />
-                        ))}
-                    </div>
-
-                    {/* Modal for Full Image Display */}
-                    <Modal show={showModal} onHide={handleCloseModal} centered size="lg">
-                        <Modal.Body className="p-0">
-                            <img
-                                src={images[focusedImage]}
-                                alt={`Full Detail Image ${focusedImage + 1}`}
-                                style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
-                            />
-                        </Modal.Body>
-                    </Modal>
-
-                    {/* Back to Projects Button */}
-                    <div className="flex justify-end mt-5">
-                        <a
-                            className="font-montserrat font-medium no-underline text-base text-white"
-                            onClick={handleBackToProjects}
-                        >
-                            <div className="flex flex-col items-end">
-                                <div className="flex items-center cursor-pointer">
-                                    <span>BACK TO PROJECTS</span>
-                                    <IoIosArrowForward size={14} className="ml-2" />
-                                </div>
-                                <div className="w-[13rem] border-t border-white mt-1" />
+                        <div className="flex flex-col items-end">
+                            <div className="flex items-center cursor-pointer">
+                                <span>BACK TO PROJECTS</span>
+                                <IoIosArrowForward size={14} className="ml-2" />
                             </div>
-                        </a>
-                    </div>
+                            <div className="w-[13rem] border-t border-white mt-1" />
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>

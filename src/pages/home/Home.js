@@ -52,7 +52,7 @@ const Home = () => {
       </div>
 
       {/* PAPER PLANE PROJECT STUDIO SECTION */}
-      <div className="relative p-14 bg-black text-white" style={{ marginTop: '3.5rem' }}>
+      <div className="relative p-5 bg-black text-white" style={{ marginTop: '3.5rem' }}>
         <div className="flex flex-col items-left">
           <div className="flex-1">
             <h2 className="header-text-section font-montserrat">PAPER PLANE PROJECT STUDIO</h2>

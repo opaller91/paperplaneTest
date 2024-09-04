@@ -12,7 +12,7 @@
     display: flex;
     overflow-x: auto; /* Allows horizontal scrolling */
     overflow-y: hidden; /* Prevents vertical scrolling */
-    height: 80vh; /* Set the fixed height */
+    height: 77vh; /* Set the fixed height */
     white-space: nowrap; /* Ensures images stay on the same line */
 }
 
@@ -29,17 +29,17 @@
 
 .image-part.first {
     width: 55vw; /* Adjusted to occupy around 55% of the viewport width */
-    height: 42vw; /* Adjusted to maintain a similar aspect ratio */
+    height: 40vw; /* Adjusted to maintain a similar aspect ratio */
 }
 
 .image-part:nth-child(2) {
     width: 23vw; /* Adjusted to occupy around 23% of the viewport width */
-    height: 42vw; /* Ensuring consistent height with other images */
+    height: 40vw; /* Ensuring consistent height with other images */
 }
 
 .image-part.last {
     width: 23vw; /* Adjusted to occupy around 23% of the viewport width */
-    height: 42vw; /* Ensuring consistent height with other images */
+    height: 40vw; /* Ensuring consistent height with other images */
 }
 
 

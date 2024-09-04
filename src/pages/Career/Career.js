@@ -61,7 +61,7 @@ function Career() {
     };
 
     return (
-        <div className="bg-black text-white font-montserrat max-h-screen min-w-screen p-14 mt-[3.5rem]">
+        <div className="bg-black text-white font-montserrat max-h-screen min-w-screen p-5 mt-[3.5rem]">
             <div>
                 <div className="text-[2vw] leading-normal mb-4">
                     <p className='mb-[-0.5vw]'>We are constantly seeking talented designers</p>
