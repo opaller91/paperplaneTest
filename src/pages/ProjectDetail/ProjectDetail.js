@@ -6,26 +6,48 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectCurrentIndex } from '../../features/image-carousel/imageCarouselSelectors';
 import { resetFilter } from '../../features/work-projects/projectSliceReducer';
 import { setCurrentIndex, restartAutomaticSliding } from '../../features/image-carousel/imageCarouselActions';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, useParams } from 'react-router-dom';
 import { IoIosArrowForward } from 'react-icons/io';
+import { setActiveButtons } from '../../features/navbar/navbarSliceActions';
+import { toggleMenu } from '../../features/navbar/navbarSliceReducer';
+import { selectProject } from '../../features/work-projects/projectSliceSelectors';
 
 function ProjectDetail() {
+    // const [project, setProject] = useState(null);
     const [focusedImage, setFocusedImage] = useState(null);
     const [showModal, setShowModal] = useState(false);
+    const [error, setError] = useState(null); // Error state for handling project fetch errors
     const dispatch = useDispatch();
     const currentIndex = useSelector(selectCurrentIndex);
     const navigate = useNavigate();
-    const location = useLocation(); // Use useLocation to access state
-    const project = location.state?.project; // Access the project data from the state
-
-    const displayName = project.name.split(',')[0];
-
-
+    const location = useLocation(); // Access location
+    const { name } = useParams(); // Get the project name from URL params
+    const isMenuOpen = useSelector((state) => state.navbar.isMenuOpen);
+    const activeButtons = useSelector((state) => state.navbar.activeButtons);
+    const project = useSelector(selectProject)
+    
     const images = [
         '/assets/images/PaperPlaneProject.png',
         '/assets/images/PaperPlaneProject.png',
         '/images/home/projects/project5.png'
     ];
+
+    useEffect(() => {
+        if (!project) {
+            navigate('/projects');
+        }
+    }, [project, navigate]);
+
+    useEffect(() => {
+        if (!isMenuOpen) {
+            dispatch(toggleMenu());
+        }
+        if (!activeButtons.includes('PROJECT')) {
+            dispatch(setActiveButtons('PROJECT'));
+        }
+    }, [dispatch, isMenuOpen, activeButtons]);
+
+    //const images = project?.images || []; // Use project images if available
 
     const handleImageClick = (index) => {
         setFocusedImage(focusedImage === index ? null : index);
@@ -84,11 +106,21 @@ function ProjectDetail() {
         };
     }, []);
 
+    if (error) {
+        return <div className="bg-black text-white font-montserrat w-full min-h-screen">{error}</div>;
+    }
+
+    if (!project) {
+        return <div className="bg-black text-white font-montserrat w-full min-h-screen">Loading...</div>;
+    }
+
+    const displayName = project.name.split(',')[0];
+
     return (
         <div className="bg-black text-white font-montserrat w-full min-h-screen">
             <img
-                src={project.image}
-                alt="Detail Image"
+                src={project.image_header}
+                alt="Project Detail"
                 className="w-full h-[81.5vh] object-cover"
             />
             <div className='px-5 mt-14'>
@@ -114,7 +146,7 @@ function ProjectDetail() {
                                     <label htmlFor="area" className="form-label ml-4">Area</label>
                                 </Col>
                                 <Col xs={8} className="text-right">
-                                    <label htmlFor="areaNumber" className="form-label ml-4">430 sq.m.</label>
+                                    <label htmlFor="areaNumber" className="form-label ml-4">{project.area} sq.m.</label>
                                 </Col>
                                 <div className="underline-full"></div>
                             </Row>
@@ -138,18 +170,15 @@ function ProjectDetail() {
                             </Row>
                         </Col>
                         <Col md={8} className="d-flex justify-content-start align-items-start project-col">
-                            <Row className='mt-2'>
-                                <Col xs={12}>
-                                    Converting an ordinary rooftop into a vibrant tropical rainforest oasis. The inspiration stemmed from a dual longing: the yearning for the serene embrace of nature and the excitement that comes with a dynamic urban nightlife. This fusion of desires prompted us to conceive Tichuca, an extraordinary venture that bridges the gap between these seemingly disparate worlds.
+                            <Row>
+                                <Col xs={12} className='mt-2'>
+                                    <p className="break-words">{project.description_part_1}</p>
                                 </Col>
                                 <Col xs={12} className='mt-4'>
-                                    Tichuca is more than just a venue; it's an experiential haven that intimately connects individuals with the captivating Bangkok skyline while offering respite from the demands of their daily routines. The endeavor involves a transformation that turns the typically mundane floors 46 to 50 into an immersive jungle-like environment.
+                                    <p className="break-words">{project.description_part_2}</p>
                                 </Col>
                                 <Col xs={12} className='mt-4'>
-                                    Tichuca promises an unforgettable journey, inviting even the most urban-weary souls to escape the routine and immerse themselves in a truly remarkable setting. It's a unique and thrilling opportunity for those seeking to break free from the ordinary urban backdrop and relish in an exceptional, unforgettable experience.
-                                </Col>
-                                <Col xs={12} className='mt-4'>
-                                    The tree sculpture will serve as the focal point, with roots extending outward to function as both counter bars and benches throughout the space. This concept not only provides practical seating and serving areas but also adds a touch of natural aesthetics, seamlessly integrating the beauty of nature with the functionality of the venue.
+                                    <p className="break-words">{project.description_part_3}</p>
                                 </Col>
                             </Row>
                         </Col>
@@ -166,13 +195,12 @@ function ProjectDetail() {
                         <img
                             key={index}
                             src={src}
-                            className={`image-part ${index === 0 ? 'first' : index === images.length - 1 ? 'last' : ''}`}
-                            alt={`Detail Image ${index + 1}`}
+                            className={`image-part ${index % 2 === 0 ? 'first' : 'second'}`} // Alternate between "first" and "second"
+                            alt={`Project Detail ${index + 1}`}
                             onClick={() => handleImageClick(index)}
                         />
                     ))}
                 </div>
-
 
                 {/* Slider Indicators */}
                 <div className="flex space-x-4 justify-center mt-3">
@@ -190,7 +218,7 @@ function ProjectDetail() {
                     <Modal.Body className="p-0">
                         <img
                             src={images[focusedImage]}
-                            alt={`Full Detail Image ${focusedImage + 1}`}
+                            alt={`Project Full Detail ${focusedImage + 1}`}
                             style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
                         />
                     </Modal.Body>

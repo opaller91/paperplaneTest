@@ -5,8 +5,68 @@ import { SlArrowRight } from "react-icons/sl";
 import React, { useState, useEffect, Component } from 'react';
 import { Row, Col, Container, Button } from 'react-bootstrap';
 import { Placeholder } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { setActiveButtons } from '../../features/navbar/navbarSliceActions';
+import { toggleMenu } from '../../features/navbar/navbarSliceReducer';
+import axios from 'axios';
+import { useCareersData } from '../../hooks/useCareersData';
+
 
 function Career() {
+    const dispatch = useDispatch();
+    const isMenuOpen = useSelector((state) => state.navbar.isMenuOpen);
+    const activeButtons = useSelector((state) => state.navbar.activeButtons);
+    const { data: career } = useCareersData();
+    const [careerHeader, setCareerHeader] = useState([]);// State for the current career header
+    const [careerEmail, setCareerEmail] = useState('');// State for the current career Email
+
+    // Fetch data when the component is mounted
+    useEffect(() => {
+        // Fetch career header
+        if (career) {
+            setCareerHeader(career.career_header)
+            setCareerEmail(career.email)
+        }
+
+        // axios
+        //     .get('http://localhost:3001/career/editCareer/careerHeader')
+        //     .then((response) => {
+        //         if (response.data?.careerHeader) {
+        //             const header = response.data.careerHeader;
+        //             // If it's a string, split it into an array by words
+        //             const headerLines = Array.isArray(header) ? header : splitTextIntoLines(header);
+        //             setCareerHeader(headerLines);
+        //         }
+        //     })
+        //     .catch((error) => {
+        //         console.error('There was an error fetching studio Detail!', error);
+        //     });
+        
+        // // Fetch career email from the backend
+        // axios
+        //     .get('http://localhost:3001/career/editCareer/careerEmail')
+        //     .then((response) => {
+        //         if (response.data?.careerEmail) {
+        //             setCareerEmail(response.data.careerEmail);
+        //         }
+        //     })
+        //     .catch((error) => {
+        //         console.error('There was an error fetching studio Detail!', error);
+        //     });
+    }, [career]);
+
+    // Split career header text into lines for display
+    const splitTextIntoLines = (text, wordsPerLine = 5) => {
+        const words = text.split(' ');
+        const lines = [];
+
+        for (let i = 0; i < words.length; i += wordsPerLine) {
+            lines.push(words.slice(i, i + wordsPerLine).join(' '));
+        }
+
+        return lines;
+    };
+
     // State with object destructuring
     const [formData, setFormData] = useState({
         name: '',
@@ -37,37 +97,97 @@ function Career() {
         event.preventDefault();
 
         // Create a form data object to send the file
-        const data = new FormData();
-        if (file) { // Make sure file is not null
-            data.append("file", file);
+        //const data = new FormData();
+        if (!file) {
+            alert("Please upload a portfolio before submitting.");
+            return;
+        }
+
+        if (file.size > 10 * 1024 * 1024) {
+            alert("File size exceeds the 10MB limit. Please upload a smaller file.");
+            return;
         }
 
         // Append other data
-        data.append("name", formData.name);
-        data.append("tel", formData.tel);
-        data.append("mail", formData.mail);
-        data.append("tellUs", formData.tellUs);
+        // data.append("name", formData.name);
+        // data.append("tel", formData.tel);
+        // data.append("mail", formData.mail);
+        // data.append("tellUs", formData.tellUs);
 
 
         // Send email
-        // emailjs.sendForm('your_service_id', 'your_template_id', data, 'your_user_id')
-        //     .then((result) => {
-        //         console.log('Email successfully sent!', result.text);
-        //         // Handle success (e.g., notify the user)
-        //     }, (error) => {
-        //         console.log('Failed to send the email:', error.text);
-        //         // Handle errors (e.g., notify the user)
-        //     });
+        Email.send({
+            Host : "smtp.elasticemail.com",
+            Username : "paperplaneproject24@gmail.com",
+            Password : "8FEB2FB1AD2020C919D79F92D98CAAE22095",
+            To: "paperplaneproject24@gmail.com",
+            From: "paperplaneproject24@gmail.com",
+            Subject: "Test Email",
+            Body: "This is a test email from localhost.",
+        }).then((message) => console.log("Email sent:", message))
+          .catch((error) => console.error("Error sending email:", error));
+        
+        // const reader = new FileReader();
+        // reader.onload = function () {
+        //     Email.send({
+        //         Host : "smtp.elasticemail.com",
+        //         Username : "paperplaneproject24@gmail.com",
+        //         Password : "8FEB2FB1AD2020C919D79F92D98CAAE22095",
+        //         To: "paperplaneproject24@gmail.com", // Default fallback email
+        //         // To: careerEmail || "company_email@example.com", // Default fallback email
+        //         From: "paperplaneproject24@gmail.com", //sender email
+        //         Subject: "New Career Application",
+        //         Body: `
+        //             <p><strong>Name:</strong> ${formData.name}</p>
+        //             <p><strong>Tel:</strong> ${formData.tel}</p>
+        //             <p><strong>Email:</strong> ${formData.mail}</p>
+        //             <p><strong>Message:</strong> ${formData.tellUs}</p>
+        //         `,
+        //         Attachments: [
+        //             {
+        //                 name: file.name,
+        //                 data: reader.result,
+        //             },
+        //         ],
+        //     })
+        //         .then((message) => {
+        //             alert("Your application has been submitted successfully!");
+        //             setFormData({
+        //                 name: '',
+        //                 tel: '',
+        //                 mail: '',
+        //                 tellUs: '',
+        //             });
+        //             setFile(null);
+        //         })
+        //         .catch((error) => {
+        //             console.error("Error sending email:", error);
+        //             alert("There was an error submitting your application. Please try again later.");
+        //         });
+        // };
+
+        // reader.readAsDataURL(file);
     };
+
+    useEffect(() => {
+        if (!isMenuOpen) {
+          dispatch(toggleMenu());
+        }
+        if (!activeButtons.includes('CAREER')) {
+          dispatch(setActiveButtons('CAREER'));
+        }
+      }, [dispatch, isMenuOpen, activeButtons]);
 
     return (
         <div className="bg-black text-white font-montserrat max-h-screen min-w-screen p-5 mt-[3.5rem]">
             <div>
-                <div className="text-[2vw] leading-normal mb-4">
-                    <p className='mb-[-0.5vw]'>We are constantly seeking talented designers</p>
-                    <p className='mb-[-0.5vw]'>join our team of innovative, ambitious, and</p>
-                    <p className='mb-[-0.5vw]'>vibrant designers</p>
-                    <a href="mailto:careers.studio@paperplanebkk.com" className="email-link">careers.studio@paperplanebkk.com</a>
+                {/* Career Header Display */}
+                <div className="block w-2/4 text-[2vw] leading-normal mb-4">
+                    {/* {careerHeader.map((line, index) => (
+                        <p key={index} className="mb-[-0.5vw]">{line}</p>
+                    ))} */}
+                    <p className="mb-[-0.5vw]">{careerHeader}</p>
+                    <a href={`mailto:${careerEmail}`} className="email-link">{careerEmail}</a>
                 </div>
                 <div className='space-height'></div>
                 <form onSubmit={handleSubmit}>
@@ -120,6 +240,7 @@ function Career() {
                                         id="fileInput"
                                         onChange={handleFileChange}
                                         style={{ display: 'none' }} // Hide the actual input element
+                                        required
                                     />
                                     {file && <span className="file-name">{file.name}</span>}
                                 </Col>

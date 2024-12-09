@@ -1,4 +1,23 @@
-import { updateCurrentIndex, setIntervalId, clearIntervalId, setAnimationDirection } from './imageCarouselReducer';
+import { setImages,
+         updateCurrentIndex, 
+         setIntervalId, 
+         clearIntervalId, 
+         setAnimationDirection,
+         addImage,
+         removeImage,
+        } from './imageCarouselReducer';
+
+export const setImagesCarousel = (value) => (dispatch) => {
+  dispatch(setImages(value));
+};
+
+export const addImageCarousel = (value) => (dispatch) => {
+  dispatch(addImage(value));
+};
+
+export const removeImageCarousel = (value) => (dispatch) => {
+  dispatch(removeImage(value));
+};
 
 // Action to go to the next image
 export const nextImage = () => (dispatch, getState) => {

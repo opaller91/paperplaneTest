@@ -35,4 +35,4 @@ const InstaPost = ({ img }) => {
     )
 }
 
-export default InstaPost; 
+export default InstaPost;

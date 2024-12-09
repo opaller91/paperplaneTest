@@ -1,5 +1,6 @@
 .custom-width {
-    flex: 0 0 25%;  /* Exact custom width if needed, matching the 'md={5}' setting */
+    flex: 0 0 25%;
+    /* Exact custom width if needed, matching the 'md={5}' setting */
     max-width: 25%;
 }
 
@@ -10,36 +11,44 @@
 .image-container {
     width: 100%;
     display: flex;
-    overflow-x: auto; /* Allows horizontal scrolling */
-    overflow-y: hidden; /* Prevents vertical scrolling */
-    height: 77vh; /* Set the fixed height */
-    white-space: nowrap; /* Ensures images stay on the same line */
+    overflow-x: auto;
+    /* Allows horizontal scrolling */
+    overflow-y: hidden;
+    /* Prevents vertical scrolling */
+    height: 77vh;
+    /* Set the fixed height */
+    white-space: nowrap;
+    /* Ensures images stay on the same line */
 }
 
 .scrollable-container {
-    overflow: auto; /* Allows scrolling */
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    overflow: auto;
+    /* Allows scrolling */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
 }
 
 .image-part {
-    object-fit: cover; /* Ensures images cover their allocated space without stretching */
-    margin-right: 20px; /* Add spacing between images if needed */
+    object-fit: cover;
+    /* Ensures images cover their allocated space without stretching */
+    margin-right: 20px;
+    /* Add spacing between images if needed */
 }
 
 .image-part.first {
-    width: 55vw; /* Adjusted to occupy around 55% of the viewport width */
-    height: 40vw; /* Adjusted to maintain a similar aspect ratio */
+    width: 55vw;
+    /* Occupies around 55% of the viewport width */
+    height: 40vw;
+    /* Ensures consistent height */
 }
 
-.image-part:nth-child(2) {
-    width: 23vw; /* Adjusted to occupy around 23% of the viewport width */
-    height: 40vw; /* Ensuring consistent height with other images */
-}
-
-.image-part.last {
-    width: 23vw; /* Adjusted to occupy around 23% of the viewport width */
-    height: 40vw; /* Ensuring consistent height with other images */
+.image-part.second {
+    width: 23vw;
+    /* Occupies around 23% of the viewport width */
+    height: 40vw;
+    /* Ensures consistent height */
 }
 
 
@@ -47,9 +56,12 @@
     width: 95%;
     height: 0.5px;
     background-color: white;
-    margin-top: 5px; /* Adjust as needed */
-    margin-bottom: 10px; /* Adjust as needed */
-    margin-left: 5%; /* This will push the underline to the right, leaving 10% space on the left */
+    margin-top: 5px;
+    /* Adjust as needed */
+    margin-bottom: 10px;
+    /* Adjust as needed */
+    margin-left: 5%;
+    /* This will push the underline to the right, leaving 10% space on the left */
 }
 
 .project-col {
@@ -58,113 +70,151 @@
 
 @media (max-width: 1567px) {
     .image-container {
-        height: 70vh; /* Increases height for smaller screens */
+        height: 70vh;
+        /* Increases height for smaller screens */
     }
 }
 
 /* Responsive Media Queries */
-@media (max-width: 992px) { /* Adjustments for tablets and mobile phones */
+@media (max-width: 992px) {
+
+    /* Adjustments for tablets and mobile phones */
     .custom-width {
-        flex: 0 0 100%; /* Full width on small screens */
+        flex: 0 0 100%;
+        /* Full width on small screens */
         max-width: 100%;
     }
 
     .text-header {
-        font-size: 50px; /* Smaller font size for headers */
-        margin-left: 15px; /* Adjust alignment */
+        font-size: 50px;
+        /* Smaller font size for headers */
+        margin-left: 15px;
+        /* Adjust alignment */
     }
 
-    .form-label, .form-value {
-        font-size: 16px; /* Adjust font size for readability */
+    .form-label,
+    .form-value {
+        font-size: 16px;
+        /* Adjust font size for readability */
     }
 
     .image-part {
-        width: 100%; /* Full width within its container */
+        width: 100%;
+        /* Full width within its container */
     }
 
     .form-with-divider::after {
-        width: 100%; /* Change divider to full width at the top */
-        height: 1px; /* Single pixel line */
-        top: 0; /* Align at the top */
-        left: 0; /* Start from the left */
+        width: 100%;
+        /* Change divider to full width at the top */
+        height: 1px;
+        /* Single pixel line */
+        top: 0;
+        /* Align at the top */
+        left: 0;
+        /* Start from the left */
     }
 
     .content-divider {
-        margin-top: 15px; /* Slightly less space on tablets */
+        margin-top: 15px;
+        /* Slightly less space on tablets */
         padding-top: 15px;
     }
 
     .project-col {
-        flex: 0 0 100%; /* Full width on small screens */
+        flex: 0 0 100%;
+        /* Full width on small screens */
         max-width: 100%;
         margin-left: 0;
     }
 }
 
-@media (max-width: 768px) { /* Adjustments for tablets and mobile phones */
+@media (max-width: 768px) {
+
+    /* Adjustments for tablets and mobile phones */
     .custom-width {
-        flex: 0 0 100%; /* Full width on small screens */
+        flex: 0 0 100%;
+        /* Full width on small screens */
         max-width: 100%;
     }
 
     .text-header {
-        font-size: 40px; /* Smaller font size for headers */
-        margin-left: 15px; /* Adjust alignment */
+        font-size: 40px;
+        /* Smaller font size for headers */
+        margin-left: 15px;
+        /* Adjust alignment */
     }
 
-    .form-label, .form-value {
-        font-size: 16px; /* Adjust font size for readability */
+    .form-label,
+    .form-value {
+        font-size: 16px;
+        /* Adjust font size for readability */
     }
 
     .image-part {
-        width: 100%; /* Full width within its container */
+        width: 100%;
+        /* Full width within its container */
     }
 
     .form-with-divider::after {
-        width: 100%; /* Change divider to full width at the top */
-        height: 1px; /* Single pixel line */
-        top: 0; /* Align at the top */
-        left: 0; /* Start from the left */
+        width: 100%;
+        /* Change divider to full width at the top */
+        height: 1px;
+        /* Single pixel line */
+        top: 0;
+        /* Align at the top */
+        left: 0;
+        /* Start from the left */
     }
 
     .content-divider {
-        margin-top: 15px; /* Slightly less space on tablets */
+        margin-top: 15px;
+        /* Slightly less space on tablets */
         padding-top: 15px;
     }
 
     .project-col {
-        flex: 0 0 100%; /* Full width on small screens */
+        flex: 0 0 100%;
+        /* Full width on small screens */
         max-width: 100%;
         margin-left: 0;
     }
 }
 
-@media (max-width: 576px) { /* Additional adjustments for very small devices */
+@media (max-width: 576px) {
+
+    /* Additional adjustments for very small devices */
     .text-header {
-        font-size: 32px; /* Even smaller font size */
+        font-size: 32px;
+        /* Even smaller font size */
     }
-    
+
     .form-label {
-        font-size: 14px; /* Smaller labels */
+        font-size: 14px;
+        /* Smaller labels */
     }
 
     .custom-width {
-        flex: 0 0 100%; /* Full width on small screens */
+        flex: 0 0 100%;
+        /* Full width on small screens */
         max-width: 100%;
     }
 
     .image-part {
-        width: 100%; /* Full width within its container */
+        width: 100%;
+        /* Full width within its container */
     }
 
     .content-divider {
-        margin-top: 10px; /* Reduced spacing on small devices */
+        margin-top: 10px;
+        /* Reduced spacing on small devices */
         padding-top: 10px;
-        border-top: none; /* Optional: Remove border if it clutters the design */
+        border-top: none;
+        /* Optional: Remove border if it clutters the design */
     }
 
     .project-col {
-        flex: 0 0 100%; /* Full width on small screens */
+        flex: 0 0 100%;
+        /* Full width on small screens */
         max-width: 100%;
     }
 }

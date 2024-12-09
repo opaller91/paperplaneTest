@@ -1,49 +1,80 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectInstaPictures } from '../../features/insta-pics/instaPictureSelectors';
-import { showPopup, hidePopup } from '../../features/popup/popupSliceReducer';
-import { isPopupVisible, selectedImage } from '../../features/popup/popupSliceSelectors';
-import InstaPost from './InstaPost';
+import React, { useEffect } from 'react';
 
 const InstaPictureSlice = () => {
-    const dispatch = useDispatch();
-    const pictures = useSelector(selectInstaPictures);
-    const isVisible = useSelector(isPopupVisible);
-    const selectImage = useSelector(selectedImage);
 
-    const handleImageClick = (pic) => {
-      dispatch(showPopup(pic));
-    };
-  
-    const handleClosePopup = () => {
-      dispatch(hidePopup());
-    };
+  useEffect(() => {
+    // Dynamically load the Instagram embed script
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = "//www.instagram.com/embed.js";
+    document.body.appendChild(script);
+  }, []); // Empty dependency array to only run once on component mount
 
 
   return (
     <div className="flex-grow flex items-center justify-center">
       <div className="grid grid-col-position gap-8 w-screen">
-        {pictures && pictures.map((pic, index) => (
-          <img
-            key={index}
-            src={pic.picture}
-            alt={`Insta Pic ${index}`}
-            className="object-cover cursor-pointer"
-            onClick={() => handleImageClick(pic)}
-          />
-        ))}
+      <blockquote
+          className="instagram-media"
+          data-instgrm-permalink="https://www.instagram.com/p/C-SHgSYSGEP/?utm_source=ig_embed&amp;utm_campaign=loading"
+          data-instgrm-version="14"
+          style={{
+            background: "#FFF",
+            border: "none",
+            margin: "1px",
+            maxWidth: "540px",
+            width: "calc(100% - 2px)",
+            height: "500px",  // Fixed height
+            borderRadius: "3px",
+            boxShadow: "0 0 1px 0 rgba(0, 0, 0, 0.5),0 1px 10px 0 rgba(0, 0, 0, 0.15)",
+            padding: "0",
+            display: "block",
+            overflow: "hidden", // Hide any overflow content
+          }}
+        ></blockquote>
+
+        <blockquote
+          className="instagram-media"
+          data-instgrm-permalink="https://www.instagram.com/p/C-SHeajyXsF/?utm_source=ig_embed&amp;utm_campaign=loading"
+          data-instgrm-version="14"
+          style={{
+            background: "#FFF",
+            border: "none",
+            margin: "1px",
+            maxWidth: "540px",
+            width: "calc(100% - 2px)",
+            height: "500px",  // Fixed height
+            borderRadius: "3px",
+            boxShadow: "0 0 1px 0 rgba(0, 0, 0, 0.5),0 1px 10px 0 rgba(0, 0, 0, 0.15)",
+            padding: "0",
+            display: "block",
+            overflow: "hidden",
+          }}
+        ></blockquote>
+
+        <blockquote
+          className="instagram-media"
+          data-instgrm-permalink="https://www.instagram.com/p/C-SHgSYSGEP/?utm_source=ig_embed&amp;utm_campaign=loading"
+          data-instgrm-version="14"
+          style={{
+            background: "#FFF",
+            border: "none",
+            margin: "1px",
+            maxWidth: "540px",
+            width: "calc(100% - 2px)",
+            height: "500px",  // Fixed height
+            borderRadius: "3px",
+            boxShadow: "0 0 1px 0 rgba(0, 0, 0, 0.5),0 1px 10px 0 rgba(0, 0, 0, 0.15)",
+            padding: "0",
+            display: "block",
+            overflow: "hidden",
+          }}
+        ></blockquote>
       </div>
-      {isVisible && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center" onClick={handleClosePopup} >
-          <div className="relative">
-            <InstaPost 
-                img={selectImage}
-            />
-          </div>
-        </div>
-      )}
     </div>
   );
+
 };
 
 export default React.memo(InstaPictureSlice);
+

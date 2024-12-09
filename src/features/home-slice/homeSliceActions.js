@@ -1,4 +1,8 @@
-import { updateScrollPosition, updateTotalHeight } from './homeSliceReducer';
+import { updateHomeDescription, updateScrollPosition, updateTotalHeight } from './homeSliceReducer';
+
+export const setHomeDescription = (value) => (dispatch) => {
+  dispatch(updateHomeDescription(value));
+};
 
 export const setScrollPosition = (value) => (dispatch) => {
   dispatch(updateScrollPosition(value));

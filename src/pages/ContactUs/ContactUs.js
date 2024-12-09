@@ -1,18 +1,128 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import './ContactUs.css';
 import { SlArrowRight } from "react-icons/sl";
 import { CiPhone } from "react-icons/ci";
 import { CiMail } from "react-icons/ci";
+import { useDispatch, useSelector } from 'react-redux';
+import { setActiveButtons } from '../../features/navbar/navbarSliceActions';
+import { toggleMenu } from '../../features/navbar/navbarSliceReducer';
+import { useContactData } from '../../hooks/useContactData';
+import axios from 'axios';
 
 function ContactUs() {
     const handleSubmit = (event) => { };
+    const dispatch = useDispatch();
+    const isMenuOpen = useSelector((state) => state.navbar.isMenuOpen);
+    const activeButtons = useSelector((state) => state.navbar.activeButtons);
+    const { data: contact } = useContactData();
+    const [contactHeader, setContactHeader] = useState('');// State for the current career header
+    const [contactLocation, setContactLocation] = useState('');// State for the current career Email
+    const [contactTel, setContactTel] = useState('');// State for the current career header
+    const [contactEmail, setContactEmail] = useState('');// State for the current career Email
+    const [contactDescription, setContactDescription] = useState([]);// State for the current career Email
+
+    useEffect(() => {
+        if (!isMenuOpen) {
+            dispatch(toggleMenu());
+        }
+        if (!activeButtons.includes('CONTACT')) {
+            dispatch(setActiveButtons('CONTACT'));
+        }
+    }, [dispatch, isMenuOpen, activeButtons]);
+
+    // Fetch data when the component is mounted
+    useEffect(() => {
+        if (contact) {
+            setContactHeader(contact.contact_header)
+            setContactLocation(contact.location)
+            setContactTel(contact.telephone)
+            setContactEmail(contact.email)
+            setContactDescription(contact.description)
+        }
+        // // Fetch contact header from the backend
+        // axios
+        //     .get('http://localhost:3001/contact/editContact/contactHeader')
+        //     .then((response) => {
+        //         if (response.data?.contactHeader) {
+        //             const header = response.data.contactHeader;
+        //             setContactHeader(header);
+        //         }
+        //     })
+        //     .catch((error) => {
+        //         console.error('There was an error fetching contact header!', error);
+        //     });
+
+        // // Fetch contact location from the backend
+        // axios
+        //     .get('http://localhost:3001/contact/editContact/contactLocation')
+        //     .then((response) => {
+        //         if (response.data?.contactLocation) {
+        //             setContactLocation(response.data.contactLocation);
+        //         }
+        //     })
+        //     .catch((error) => {
+        //         console.error('There was an error fetching contact location!', error);
+        //     });
+
+        // // Fetch contact tel from the backend
+        // axios
+        //     .get('http://localhost:3001/contact/editContact/contactTel')
+        //     .then((response) => {
+        //         if (response.data?.contactTel) {
+        //             setContactTel(response.data.contactTel);
+        //         }
+        //     })
+        //     .catch((error) => {
+        //         console.error('There was an error fetching contact tel!', error);
+        //     });
+
+        // // Fetch contact email from the backend
+        // axios
+        //     .get('http://localhost:3001/contact/editContact/contactEmail')
+        //     .then((response) => {
+        //         if (response.data?.contactEmail) {
+        //             setContactEmail(response.data.contactEmail);
+        //         }
+        //     })
+        //     .catch((error) => {
+        //         console.error('There was an error fetching contact email!', error);
+        //     });
+
+        // // Fetch contact description from the backend
+        // axios
+        //     .get('http://localhost:3001/contact/editContact/contactDescription')
+        //     .then((response) => {
+        //         if (response.data?.contactDescription) {
+        //             const description = response.data.contactDescription;
+        //             // If it's a string, split it into an array by words
+        //             const descriptionLines = Array.isArray(description) ? description : splitTextIntoLines(description);
+        //             setContactDescription(descriptionLines);
+        //         }
+        //     })
+        //     .catch((error) => {
+        //         console.error('There was an error fetching contact email!', error);
+        //     });
+    }, [contact]);
+
+    // Split career header text into lines for display
+    const splitTextIntoLines = (text, wordsPerLine = 5) => {
+        const words = text.split(' ');
+        const lines = [];
+
+        for (let i = 0; i < words.length; i += wordsPerLine) {
+            lines.push(words.slice(i, i + wordsPerLine).join(' '));
+        }
+
+        return lines;
+    };
 
     return (
         <div className="bg-black text-white font-montserrat min-h-screen min-w-screen p-5 mt-[3rem]">
             <div>
-                <div className="contact-text-header mb-4 left-aligned">
-                    <label>PAPER PLANE PROJECT STUDIO CO, LTD.</label>
+                <div className="contact-text-header py-4">
+                    {/* <label>PAPER PLANE PROJECT STUDIO CO, LTD.</label> */}
+                    <label>{contactHeader}</label>
                 </div>
                 <form onSubmit={handleSubmit} className="form-with-divider">
                     <hr />
@@ -23,9 +133,12 @@ function ContactUs() {
                                     <label className="form-label mt-[-2] font-light">Location</label>
                                 </Col>
                                 <Col sm={9}>
-                                    <label className="form-label mt-2 font-light">
+                                    {/* <label className="form-label mt-2 font-light">
                                         8 T-one Building, 12th floor, Sukhumvit 40 Rd., Phra Khanong<br />
                                         Sub-Districts, Klong toei District, Bangkok 10110.
+                                    </label> */}
+                                    <label className="w-3/4 mt-4 form-label font-light">
+                                        {contactLocation}
                                     </label>
                                 </Col>
                             </Row>
@@ -35,7 +148,8 @@ function ContactUs() {
                                     <label className="form-label mt-2 font-light">Tel.</label>
                                 </Col>
                                 <Col sm={10}>
-                                    <label className="form-label mt-2 font-light">+66 64 789 4428</label>
+                                    {/* <label className="form-label mt-2 font-light">+66 64 789 4428</label> */}
+                                    <label className="form-label mt-2 font-light">{contactTel}</label>
                                 </Col>
                             </Row>
                             <div className="space-line-contact"></div>
@@ -44,15 +158,22 @@ function ContactUs() {
                                     <label className="form-label mt-2 font-light">Email</label>
                                 </Col>
                                 <Col sm={10}>
-                                    <label className="form-label mt-2 font-light">paperplane.studio@paperplanebkk.com</label>
+                                    {/* <label className="form-label mt-2 font-light">paperplane.studio@paperplanebkk.com</label> */}
+                                    <label className="form-label mt-2 font-light">{contactEmail}</label>
                                 </Col>
                             </Row>
                         </Col>
                         <Col md={6} className="additional-content">
                             <Row className="mt-4">
                                 <Col className="text-header font-montserrat font-reguler left-aligned ml-4">
-                                    <label className="motto-text" style={{ fontWeight: 400 }}>
+                                    {/* <label className="motto-text" style={{ fontWeight: 400 }}>
                                         We are here to tackle your<br /> questions head-on
+                                    </label> */}
+                                    <label className="motto-text" style={{ fontWeight: 400 }}>
+                                        {/* {contactDescription.map((line, index) => (
+                                            <p key={index} className="mb-[-0.5vw]">{line}</p>
+                                        ))} */}
+                                        <p className="w-2/3 mt-7 mb-[-0.5vw]">{contactDescription}</p>
                                     </label>
                                 </Col>
                             </Row>

@@ -1,19 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
-import image1 from '../../assets/images/carousel-slice/image-slide1.png';
-import image2 from '../../assets/images/carousel-slice/image-slide2.png';
-import image3 from '../../assets/images/carousel-slice/image-slide3.png';
 
 const initialState = {
-  images: [image1, image2, image3],
+  images: [],
   currentIndex: 0,
   intervalId: null,
-  animationDirection: 'next',
+  animationDirection: 'next'
 };
 
 const imageCarousel = createSlice({
   name: 'imageCarousel',
   initialState,
   reducers: {
+    setImages(state, action) {
+      state.images = action.payload;
+    },
     updateCurrentIndex(state, action) {
       state.currentIndex = action.payload;
     },
@@ -29,9 +29,27 @@ const imageCarousel = createSlice({
     setAnimationDirection(state, action) {
       state.animationDirection = action.payload;
     },
-  },
+    addImage(state, action) {
+      const newImage = action.payload;
+      if (newImage && typeof newImage === 'string') {
+        state.images.push(newImage);
+      }
+    },
+    removeImage(state, action) {
+      state.images = state.images.filter(image => image !== action.payload);
+    },
+  }
 });
 
-export const { updateCurrentIndex, setIntervalId, clearIntervalId, setAnimationDirection } = imageCarousel.actions;
+export const {
+  setImages,
+  updateCurrentIndex,
+  setIntervalId,
+  clearIntervalId,
+  setAnimationDirection,
+  addImage,
+  removeImage,
+  updateImage
+} = imageCarousel.actions;
 
 export default imageCarousel.reducer;

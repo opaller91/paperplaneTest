@@ -11,12 +11,13 @@ const ImageCarousel = () => {
   const animationDirection = useSelector(selectAnimationDirection);
 
   useEffect(() => {
+    console.log('Current images in carousel:', images);
     dispatch(startAutomaticSliding(5000));
 
     return () => {
       dispatch(stopAutomaticSliding());
     };
-  }, [dispatch]);
+  }, [dispatch, images]);
 
   const handleIndicatorClick = (index) => {
     dispatch(setCurrentIndex(index));

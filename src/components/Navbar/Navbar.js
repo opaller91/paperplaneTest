@@ -47,7 +47,7 @@ const Navbar = () => {
     const handleSearchInputChange = useCallback((e) => {
         const query = e.target.value;
         setSearchQuery(query);
-    }, [dispatch, location.pathname, navigate]);
+    }, []);
 
     const handleSearchSubmit = (e) => {
         if (e.key === 'Enter') {
@@ -117,7 +117,7 @@ const Navbar = () => {
 
     return (
         <section id='navbar' className='overflow-hidden'>
-            <nav className={`${location.pathname === '/' ? 'flex flex items-center z-10 w-full h-[97.4587px] -mt-4 px-14 navbar-bg' : 'fixed flex items-center z-10 w-full h-[97.4587px] -mt-4 px-14'}`}>
+            <nav className={`${location.pathname === '/' ? 'flex items-center z-10 w-full h-[97.4587px] -mt-4 px-14 navbar-bg' : 'fixed flex items-center z-10 w-full h-[97.4587px] -mt-4 px-14'}`}>
                 <div className={location.pathname === '/' ? 'navbar-bg' : 'navbar-black-bg'}></div>
                 <div className='flex items-center justify-between w-full'>
                     <div className='navbar-content flex items-center mt-3'>

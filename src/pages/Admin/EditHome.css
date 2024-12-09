@@ -1,0 +1,82 @@
+/* EditHome.css */
+.editHeaderContainer {
+    background-color: black;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    padding: 3.5rem;
+    margin-top: 3.5rem;
+    min-width: 100vw;
+    min-height: 100vh; /* Ensure full height */
+    box-sizing: border-box;
+    overflow-y: auto; /* Scroll if content exceeds the page height */
+    display: flex;
+    flex-direction: column;
+}
+
+.editHeaderContent {
+    flex-grow: 1; /* Content pushes footer down */
+}
+
+.editHeaderFooter {
+    background-color: #222;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    color: #888;
+}
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Responsive columns */
+    gap: 1rem;
+}
+
+.imageContainer {
+    position: relative;
+    background-color: #333;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.removeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: red;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.inputFile {
+    color: white;
+    background-color: #555;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #666;
+}
+
+.addButton {
+    margin-left: 10px;
+    background-color: blue;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.addButton:hover {
+    background-color: darkblue;
+}

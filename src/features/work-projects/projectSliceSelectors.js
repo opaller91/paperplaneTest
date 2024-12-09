@@ -2,14 +2,32 @@ import { createSelector } from '@reduxjs/toolkit';
 
 const selectProjectState = (state) => state.projectSlice;
 
-// Selector to get all projects
-export const selectedProjects = createSelector(
+export const selectAllProjects = createSelector(
   [selectProjectState],
-  (projectSlice) => projectSlice.projects
+  (projectState) => Object.values(projectState.projects)
 );
 
-// Selector to get filtered projects
+export const selectProject = createSelector(
+  [selectProjectState],
+  (projectState) => projectState.selectedProject
+);
+
+export const selectLoading= createSelector(
+  [selectProjectState],
+  (projectState) => projectState.loading
+);
+
+export const selectProjectType= createSelector(
+  [selectProjectState],
+  (projectState) => projectState.selectedType
+);
+
 export const selectedFilteredProjects = createSelector(
   [selectProjectState],
   (projectSlice) => projectSlice.filteredProjects
+);
+
+export const selectedSearchQuery = createSelector(
+  [selectProjectState],
+  (projectSlice) => projectSlice.searchQuery
 );

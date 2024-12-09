@@ -60,7 +60,7 @@ function Footer() {
 
     return (
         <footer className="footer bg-black font-montserrat font-normal text-lg tracking-wide text-white p-14">
-            <div className="container mx-auto flex justify-between items-center py-8">
+            <div className="mx-auto flex justify-between items-center py-8">
                 <div className="footer-logo">
                     <img src="/images/navbar/logo/logo-white.png" alt="Paper Plane Logo" className="h-12" />
                     <p className="mt-2">PAPER PLANE PROJECT STUDIO</p>

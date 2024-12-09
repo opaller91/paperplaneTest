@@ -1,6 +1,5 @@
 .studio-divider {
     position: relative;
-    display: flex;
     flex-wrap: wrap; /* Ensure responsive wrapping */
     padding-bottom: 20px; /* Add padding to separate content */
 }

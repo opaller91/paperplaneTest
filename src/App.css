@@ -270,10 +270,6 @@ html {
   }
 }
 
-.animate-slide-left-infinite {
-  animation: slide-left 20s linear infinite;
-}
-
 
 .mask-gradient {
   mask-image: linear-gradient(to right, transparent 0, white 128px, white calc(100% - 128px), transparent 100%);
